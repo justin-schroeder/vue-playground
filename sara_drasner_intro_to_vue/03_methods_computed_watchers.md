@@ -254,3 +254,81 @@ React is not "Reactive" - it uses "pull" rather than "push"
 * [Vue Reactivity Documentation](https://vuejs.org/v2/guide/reactivity.html)
 * [Damian Dulisz' post](https://www.monterail.com/blog/2016/how-to-build-a-reactive-engine-in-javascript-part-1-observable-objects)
 
+## 3. Methods, Computed & Watchers - 6 Watchers
+slides: http://slides.com/sdrasner/intro-to-vue-2?token=502n2b7V#/25
+
+### How does Vue use reactivity? 
+It takes the `data` prop, then converts them to getters/setters
+each component has a watcher instance
+properties touched by the watcher during render are registered as dependencies
+* Vue knows they are called because it has created the getter
+* when setter is triggered, it lets the watcher know, and causes the component to re-render
+
+### watcher pen 1
+http://slides.com/sdrasner/intro-to-vue-2?token=502n2b7V#/27
+you can see that the getters and setters for the added property don't get added
+the vue instance = the middleman between DOM and the business logic
+watchers are good for things like async updates
+* updates / transitions with data changes
+
+### watcher pen 2 - create the simplest watcher with a counter
+you place a function _named the same as a key from your data object_ in a key called `watch`, 
+then it gets called when the data item changes:
+
+```vue
+new Vue({
+  el: '#app',
+  data () {
+    return {
+      counter: 0
+    }
+  },
+  watch: {
+    counter(counter) {
+      console.log('The counter has changed!')
+    }
+  }
+});
+
+<div id="app">
+  <input type="number" v-model.number="counter"></input>
+</div>
+```
+
+### watcher pen 3 - punk beers - Vue watchers + axios to do infinite scroll
+http://slides.com/sdrasner/intro-to-vue-2?token=502n2b7V#/31
+uses `https://punkapi.com/v2/beers/random`
+uses the [`created()` Vue item](https://vuejs.org/v2/api/#created)
+on created, set it so that scroll events call `this.bottomVisible()` & set result to `this.bottom`
+this makes it so `this.bottom` is a boolean that is true if you can see the bottom
+when it changes, if it is true, then it adds a beer
+clever!
+
+### watchers - access to new and old value
+http://slides.com/sdrasner/intro-to-vue-2?token=502n2b7V#/36
+```vue
+watch: {
+  watchedProperty (value, oldValue) {
+    //your dope code here
+  }
+},
+```
+
+There's also an ability to gain access to nested values with `deep`
+```vue
+watch: {
+  watchedProperty {
+    deep: true,
+    nestedWatchedProperty (value, oldValue) {
+      //your dope code here
+    }
+  }
+},
+```
+
+we use oldValue and value with requestanimationframe to animate transitions
+
+She uses "greensock" library to "tween" between values before and after
+example: http://slides.com/sdrasner/intro-to-vue-2?token=502n2b7V#/37
+
+end
