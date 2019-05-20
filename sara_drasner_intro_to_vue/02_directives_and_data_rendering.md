@@ -85,4 +85,81 @@ The key thing here is that you have to see the Vue component to understand the t
 ### `v-if` / `v-show`
 note - she's using [codepen debugger chrome extension](https://chrome.google.com/webstore/detail/codopen/agnkphdgffianchpipdbkeaclfbobaak)
 
-left off at 08:12
+* `v-if` will unmount and re-mount component
+  * http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX#/24
+  * the dom node disappears
+* `v-show` will make it `display: none` - more performant than `v-if`
+  * if it's initially hidden and it'a big component, `v-if` is better than `v-show` because it ends up not ever mounting it
+  
+#### `v-else` & `v-else-if`
+codepen http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX#/26
+do you like tacos? yes or no - if yes, thumbs up, if no, "you're a monster"
+
+### `v-bind`
+codepen: http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX#/28
+it's used a lot; shortcut is `:`
+used for class & style binding
+
+#### `v-bind` example 1 - changing a DOM element's class
+```
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      tacos: '',
+      activeClass: 'active'
+    }
+  }
+})
+<div id="app">
+  <h3>What is your favorite kind of taco?</h3>
+  <textarea v-model="tacos"></textarea>
+  
+  <br>
+  <button :class="[tacos ? activeClass : '']">Let us know!</button>
+</div>
+```
+
+?? How do you know that tacos is in scope here? that's what I think is so weird about Vue
+
+#### `v-bind` tron perspective example - changing style
+codepen example: http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX#/29
+
+Here Vue sets up two variables and changes the style when the 
+mouse moves. 
+
+?? note, this uses `@mousemove`, which I presume is a Vue directive? It passes the `coords` method
+to it.
+
+```vue
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      x: 0, 
+      y: 0
+    }
+  },
+  methods: {
+    coords(e) {
+      this.x = e.clientX / 10;
+      this.y = e.clientY / 10;
+    },
+  }
+})
+
+<div id="app" @mousemove="coords">
+  <div id="contain" :style="{ perspectiveOrigin: `${x}% ${y}%` }">
+    <div class="square square2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 419.9 421.9" preserveAspectRatio="none">
+        <title>
+          circ3
+        </title>
+        <!-- ... --> 
+      </svg>
+    </div>
+  </div>
+</div>
+```
+
+left off at 1402
