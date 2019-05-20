@@ -1,8 +1,9 @@
-
 # [Intro to Vue 1: Directives & Data Rendering](http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX)
 Use password `!vue!`
 
 Videos: https://frontendmasters.com/courses/vue/directives/
+
+[Introduction to Vue Workshop Materials](https://codepen.io/collection/noYZxW/)
 
 ## 3. Directives
 `v-text`
@@ -79,10 +80,10 @@ new Vue({
 The key thing here is that you have to see the Vue component to understand the template code;
 `.value` doesn't come from the dom node, it comes from the data property `options`
 
-#### modifiers to directives
-`m-model.trim` - strip leading or trailing whitespace
-`m-model.number` - change string to number
-`m-model.lazy` - won't populate automatically; will wait until event happens to bind - listen to change events (?)
+#### `v-model` modifiers
+`v-model.trim` - strip leading or trailing whitespace
+`v-model.number` - change string to number
+`v-model.lazy` - won't populate automatically; will wait until event happens to bind - listen to change events (?)
 
 ### 3. Directives - `v-if` / `v-show`
 note - she's using [codepen debugger chrome extension](https://chrome.google.com/webstore/detail/codopen/agnkphdgffianchpipdbkeaclfbobaak)
@@ -258,4 +259,91 @@ both lines do same thing:
 <p>{{tacos}}</p>
 ```
 
-end of video
+end of 3. Directives video
+
+### 4. Challenge 1: Calculator
+https://frontendmasters.com/courses/vue/challenge-1-calculator/
+[Directives Exercise Start Codepen](https://codepen.io/sdras/pen/vZjozM)
+[My Vue Directives Exercise Finish](https://codepen.io/codekiln/pen/RmLGWJ?editors=1111)
+
+I had a challenge with getting the syntax on the options with v-for correct.
+
+```vue
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      num1: 0,
+      num2: 0,
+      name: "",
+      options: [
+        { value: 'Asado' },
+        { value: 'Barbacoa' },
+        { value: 'Chorizo' },
+        { value: 'Carnitas' }
+      ]
+    }
+  },
+  methods: {
+    sum: function() {
+      return this.num1 + this.num2;
+    }
+  }
+})
+
+
+<div id="app">
+  <div class="row">
+    <input v-model.number="num1"/>
+    <span>+</span>
+    <input v-model.number="num2"/>
+    <span>=</span>
+    <span v-text="sum(num1, num2)"/>
+  </div>
+  <div class="row second"> 
+    <select v-model="name">
+      <option v-for="option in options" :id="option.value" :value="option.value">{{option.value}}</option>
+    </select>
+    <p>My favorite kind of taco is {{ name }}</p>
+  </div>
+</div>
+```
+
+I didn't realize you could do calculation in moustache templates. 
+I also forgot to put a v-if on the taco favorite. Here's the end result: 
+
+```vue
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      num1: 0,
+      num2: 0,
+      name: "",
+      options: [
+        { value: 'Asado' },
+        { value: 'Barbacoa' },
+        { value: 'Chorizo' },
+        { value: 'Carnitas' }
+      ]
+    }
+  }
+})
+
+<div id="app">
+  <div class="row">
+    <input v-model.number="num1" type="number"/>
+    <span>+</span>
+    <input v-model.number="num2" type="number"/>
+    <span>=</span>
+    <span>{{num1 + num2}}</span>
+  </div>
+  <div class="row second"> 
+    <select v-model="name">
+      <option v-for="option in options" :id="option.value" :value="option.value">{{option.value}}</option>
+    </select>
+    <p v-if="name">My favorite kind of taco is {{ name }}</p>
+  </div>
+
+</div>
+```
