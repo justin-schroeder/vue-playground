@@ -1,6 +1,8 @@
 
-[Intro to Vue 1: Directives & Data Rendering](http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX)
-https://frontendmasters.com/courses/vue/directives/
+# [Intro to Vue 1: Directives & Data Rendering](http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX)
+Use password `!vue!`
+
+Videos: https://frontendmasters.com/courses/vue/directives/
 
 ## 3. Directives
 `v-text`
@@ -17,7 +19,7 @@ https://frontendmasters.com/courses/vue/directives/
 `v-cloak`
 `v-once`
 
-### `v-model`
+### 3. Directives - `v-model`
 * _Creates a relationship between the data in the instance/component 
 and a form input, so you can dynamically update values_
 * she suggests you always write `data()` as a function (it can be an object)
@@ -82,7 +84,7 @@ The key thing here is that you have to see the Vue component to understand the t
 `m-model.number` - change string to number
 `m-model.lazy` - won't populate automatically; will wait until event happens to bind - listen to change events (?)
 
-### `v-if` / `v-show`
+### 3. Directives - `v-if` / `v-show`
 note - she's using [codepen debugger chrome extension](https://chrome.google.com/webstore/detail/codopen/agnkphdgffianchpipdbkeaclfbobaak)
 
 * `v-if` will unmount and re-mount component
@@ -95,7 +97,7 @@ note - she's using [codepen debugger chrome extension](https://chrome.google.com
 codepen http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX#/26
 do you like tacos? yes or no - if yes, thumbs up, if no, "you're a monster"
 
-### `v-bind`
+### 3. Directives - `v-bind`
 codepen: http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX#/28
 it's used a lot; shortcut is `:`
 used for class & style binding
@@ -162,4 +164,98 @@ new Vue({
 </div>
 ```
 
-left off at 1402
+### 3. Directives - `v-once` & `v-pre`
+1800
+
+#### `v-once` will not update once it's rendered
+not quite as useful
+
+#### `v-pre` - prints out inner text exactly how it is
+it won't process the information, so for example, it won't interpolate variables.
+The first thing
+
+```vue
+<span v-pre>This is good if I need to show the mustache view of {{ $data }}</span>
+  <pre>{{ $data }}</pre>
+```
+
+Here, the first part is literally going to output `{{ $data }}`
+the second part is going to output the _contents_ of the variable `data`.
+
+### 3. Directives - `v-on` or `@`
+1900 - http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX#/32
+[codepen example - backpack counter w/ 0 & 1](https://codepen.io/sdras/pen/f979956bee610da7563db67b1358619f)
+keeping boundary conditions
+`v-on:click` is same as `@click`
+you can use expressions like ternaries as well as handlers
+
+```vue
+<button class="inc" @click="counter > 0 ? counter -= 1 : 0">-</button>
+```
+
+#### multiple bindings
+hover on desktop vs touch event on mobile:
+http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX#/34
+
+```vue
+<div v-on="
+  click   : onClick,
+  keyup   : onKeyup,
+  keydown : onKeydown
+">
+</div>
+```
+
+#### `v-on` modifiers
+* `@mousemove.stop` is comparable to e.stopPropagation()
+* `@mousemove.prevent` this is like e.preventDefault()
+* `@click.once` - click event will be triggered once
+* `@click.native` - you can listen to native events in the DOM
+
+#### `v-on` [keycodes for events](https://vuejs.org/v2/api/#keyCodes)
+```vue
+Vue.config.keyCodes = {
+  v: 86,
+  f1: 112,
+  // camelCase won`t work
+  mediaPlayPause: 179,
+  // instead you can use kebab-case with double quotation marks
+  "media-play-pause": 179,
+  up: [38, 87]
+}
+
+<input type="text" @keyup.media-play-pause="method">
+```
+
+### 3. Directives - `v-html`
+2259 - http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX#/37
+
+This is a little like `<!- $myvar >` in underscore templates
+
+```vue
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      tacos: `I like <a href="http://www.epicurious.com/recipes/food/views/tacos-al-pastor-242132" target="_blank">Al Pastor</a> tacos`
+    }
+  }
+})
+
+<div id="app">
+  <h3>What is your favorite kind of taco?</h3>
+  <p v-html="tacos"></p>
+</div>
+```
+
+**warning** - cross site scripting warning here. don't use user-gen content
+
+### 3. Directives - `v-text`
+basically like moustache templates. docs prefer the moustache templates
+both lines do same thing:
+```vue
+<p v-text="tacos"></p>
+<p>{{tacos}}</p>
+```
+
+end of video
