@@ -227,3 +227,216 @@ found in
 if you use `props: ['booleanValue']`, you'd use it in html as 
 `<checkbox :boolean-value="booleanValue"></checkbox>`.
 
+## 04 Coponents - 04 Refactoring into a Component
+https://frontendmasters.com/courses/vue/refactoring-into-a-component/
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/18
+
+Comment component in codepen
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/21
+
+### 04-04 lighthouse comment component - 1
+
+in the below `full example code`, pay close attention to:
+```vue
+    <li
+      is="individual-comment"
+      v-for="comment in comments"
+      v-bind:commentpost="comment"
+    ></li>
+```
+
+#### the `is` directive to turn an li into a component
+
+here, `is` is a vue directive that says the `li` is an `individual-comment` component
+I hate how it's called `is`, that's so hard to google
+See [SO vue.js: what's the difference between <component :is=“comp-name”/> and <div :is=“comp-name”/>?](https://stackoverflow.com/questions/50619025/vue-js-whats-the-difference-between-component-is-comp-name-and-div-is)
+* basically, it's part of [HTML's Custom Element spec](https://stackoverflow.com/questions/27434431/what-is-html-is-attribute)
+* it's supported in firefox and chrome, and safari to a limited extent
+* is it required? does vue use it? don't know.
+
+#### _Why do we use kebob case for component names here?
+
+[See Vue v2 style guide: Component name casing in templates](https://vuejs.org/v2/style-guide/#Component-name-casing-in-templates-strongly-recommended)
+* `PascalCase` is a new term for me - that's what they recommend for single file components
+* for DOM templates, they recommend kebob-case
+
+#### `v-bind:commentpost="comment"`
+Here we're binding the `commentpost` variable of the `individual-comment` 
+to the `comment` piece of `data` in the Vue app
+
+#### full example code
+
+```vue
+Vue.component('individual-comment', {
+  template: 
+  `<li> {{ commentpost }} </li>`,
+  props: ['commentpost']
+});
+
+new Vue({
+  el: '#app',
+  data: {
+    newComment: '',
+    comments: [
+      'Looks great Julianne!',
+      'I love the sea',
+      'Where are you at?'
+    ]
+  },
+  methods: {
+    addComment: function () {
+      this.comments.push(this.newComment)
+      this.newComment = ''
+    }
+  }
+});
+
+<div id="app">
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/vue-post-photo.jpg" class="main-photo">
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/vue-main-profile.jpg" class="main-profile">
+  <div class="main-info">
+    <span class="name">Julianne Delfina</span> 
+    <h3>"It's lovely after it rains"</h3>
+  </div>
+  <hr>
+  <ul>
+    <li
+      is="individual-comment"
+      v-for="comment in comments"
+      v-bind:commentpost="comment"
+    ></li>
+  </ul>
+  <input
+    v-model="newComment"
+    v-on:keyup.enter="addComment"
+    placeholder="Add a comment"
+  >
+</div>
+```
+
+### 04-04 lighthouse comment component - 2 - template in DOM
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/23
+
+Uses query selector to reference a component template stored in the DOM:
+
+```vue
+Vue.component('individual-comment', {
+  template: '#comment-template',
+  props: ['commentpost']
+});
+<script type="text/x-template" id="comment-template">
+  <li> 
+    <img class="post-img" :src="commentpost.authorImg" /> 
+    <small>{{ commentpost.author }}</small>
+    <p class="post-comment">"{{ commentpost.text }}"</p>
+  </li>
+</script>
+```
+
+* You could use other selectors, but it makes more sense if there's exactly one
+* `#PetPeeves` I hate how hard it is to understand scope here. Here you have a DOM 
+  template referencing a variable `commentpost` that's part of the app, and we're just 
+  supposed to know it's in global app scope and not in the scope of the component that's 
+  using the template. 
+* `#PetPeeves` - it's very hard to grok what is going on when it replaces the li. We 
+  see the `<li>` is the outermost element of the `#comment-template`, and somehow have to know
+  that the `is` directive on the `<li>` in the bigger template gets applied to the 
+  `<li>` in the smaller template. that's even hard to talk about!
+  The whole point of this feature is to make it so that browsers "don't break" with 
+  custom elements
+  * she says the template is replacing the `innerText`
+
+#### full example code
+
+```vue
+Vue.component('individual-comment', {
+  template: '#comment-template',
+  props: ['commentpost']
+});
+
+new Vue({
+  el: '#app',
+  
+  data: {
+    newComment: '',
+    comments: [
+      { 
+        text: 'Looks great Julianne!',
+        author: 'Robin Rendle',
+        authorImg: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/v-coffee.jpg'
+      },
+      { 
+        text: 'I love the Sea',
+        author: 'Miriam Suzanne',
+        authorImg: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/v-miriam.jpg'
+      },
+      { 
+        text: 'Where are you?',
+        author: 'Geoff Graham',
+        authorImg: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/v-geoff.jpg'
+      }
+    ]
+  },
+  
+  methods: {
+    addComment: function () {
+      const newCommentObj = {
+        text: this.newComment,
+        author: 'Magoo',
+        authorImg: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/v-skull.jpg'
+      };
+      this.comments.push(newCommentObj);
+      this.newComment = '';
+    }
+  }
+});
+
+<div id="app">
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/vue-post-photo.jpg" class="main-photo">
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/vue-main-profile.jpg" class="main-profile">
+  <div class="main-info">
+    <span class="name">Julianne Delfina</span> 
+    <h3>"It's lovely after it rains"</h3>
+  </div>
+  <hr>
+  <ul>
+    <li
+      is="individual-comment"
+      v-for="comment in comments"
+      v-bind:commentpost="comment"
+    ></li>
+  </ul>
+  <input
+    v-model="newComment"
+    v-on:keyup.enter="addComment"
+    placeholder="Add a comment"
+  >
+</div>
+
+<!-- This is the Individual Comment Component -->
+<script type="text/x-template" id="comment-template">
+<li> 
+	<img class="post-img" :src="commentpost.authorImg" /> 
+  <small>{{ commentpost.author }}</small>
+  <p class="post-comment">"{{ commentpost.text }}"</p>
+</li>
+</script>
+
+```
+
+### 04-04 lighthouse comment component - 3 - "Local Component"
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/25
+
+```vue
+const IndividualComment = {
+  template: '#comment-template',
+  props: ['commentpost']
+}
+```
+
+if it's all in the same file as the Vue instance
+this works in codepen
+* `#PetPeeves` why are there so many ways to do it? Vue is like PHP
+
+## 04 Coponents - 05 Communicating Events
+https://frontendmasters.com/courses/vue/communicating-events/
