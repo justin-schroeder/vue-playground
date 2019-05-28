@@ -440,3 +440,4 @@ this works in codepen
 
 ## 04 Coponents - 05 Communicating Events
 https://frontendmasters.com/courses/vue/communicating-events/
+slides: http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/26 
