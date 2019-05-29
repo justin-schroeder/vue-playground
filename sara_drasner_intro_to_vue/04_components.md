@@ -440,4 +440,133 @@ this works in codepen
 
 ## 04 Coponents - 05 Communicating Events
 https://frontendmasters.com/courses/vue/communicating-events/
-slides: http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/26 
+slides: http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/26
+
+we've been passing static values or binding dynamic values so far
+but sometimes we need events
+
+### 04-05 event example - 1
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/27
+
+* open codepen in codepen debug view using the dev tools
+* click button, see warning from vue: 
+  > [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "text"
+* _"props are for parent to child propagation, it's not the other direction"_ 0150
+
+#### 04-05 event example - 1 - full example code
+Here we declare a `child` component that uses the template with id `child`. 
+In that template we have a button whose click event calls the `talkToMe` method on the component.
+In the method, we set `this.text`, which is props. Vue warns against "mutating props" like this.
+Why? because mutations won't propagate up. 
+
+```vue
+Vue.component('child', {
+  props: ['text'],
+  template: '#child',
+  methods: {
+    talkToMe() {
+      this.text = 'forget introductions, I want a taco'
+    }
+  }
+});
+
+var vm = new Vue({
+  el: "#app",
+  data() {
+    return {
+      message: 'hello mr. magoo'
+    }
+  }
+});
+
+<div id="app">
+  <child :text="message"></child>
+</div>
+
+<script type="text/x-template" id="child">
+  <div>
+    <p>{{ text }}</p>
+    <button @click="talkToMe">Let's talk</button>
+  </div>
+</script>
+```
+
+#### instead, use `$emit`
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/28
+
+* use `$emit` to report the activity of the child component to the parent
+* here, `myEvent` is bubbled up from the child, and `parentHandler`
+
+
+```vue
+<my-component @myEvent="parentHandler"></my-component>
+
+methods: {
+  fireEvent() {
+    this.$emit('myEvent', eventValue);
+  }
+}
+```
+
+? is this a DOM Event?
+
+### 04-05 event example - 2 - with event bubbling
+
+Changes "hello mr. magoo" in parent component to "forget introductions, I want a taco"
+
+use `this.$emit('changetext', 'forget introductions, I want a taco')`.
+in the markup, bind the `@changetext` to a handler
+* notice you can put js directly in, and it will create a handler `message = $event`
+  * `#PetPeeve` - this opens up questions about scope and closure, why did they do this?
+
+```vue
+Vue.component('child', {
+  props: ['text'],
+  template: '#child',
+  methods: {
+    talkToMe() {
+      this.$emit('changetext', 'forget introductions, I want a taco')
+    }
+  }
+});
+
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      message: 'hello mr. magoo'
+    }
+  }
+});
+
+<div id="app">
+  <child :text="message" @changetext="message = $event"></child>
+  <pre>{{ $data }}</pre>
+</div>
+
+<script type="text/x-template" id="child">
+  <div>
+    <p>{{ text }}</p>
+    <button @click="talkToMe">Let's talk</button>
+  </div>
+</script>
+```
+
+### 04-05 event example - 3 - bouncing ball
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/32
+0630
+
+this example uses a lot of binding, and uses `:style` inside `<svg`
+but that has nothing to do with the point
+
+she uses `vueThis` as a proxy for `this`, strange
+
+A couple examples here of propagating events to parent & keeping state separate / state local
+
+### 04-05 event example - 4 - backpack
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/37
+
+
+## 04-06 slots
+https://frontendmasters.com/courses/vue/slots/
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/40
