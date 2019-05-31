@@ -613,18 +613,23 @@ codepen: http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/43
   `<slot name="headerinfo"></slot>`, then you use them from the parent component
   as so: `<h1 slot="headerinfo">I will populate the headerinfo slot</h1>`
   
-### [slots - 3 - Wine bottle label designer](http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/47)
+### [slots - 3 - Wine label designer](http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/47)
 
+https://frontendmasters.com/courses/vue/slots/ at 0313
 uses svg
 uses lots of components whose templates are in the html
 * I'm not as familiar with the `components` hash yet
 uses inline click handlers: `<button @click="wineFont ='Alegreya SC'">Alegreya SC</button>`
+* `#PetPeeves` it still seems so ugly that we're mutating everywhere. Most people who have taken 
+  computer science classes prefer immutable updates
 uses v-bind with variables inside of string: `<g :style="{transform: 'translateY(' + labelPlacement + 'px)'}">`
-* `#PetPeeves` how are we supposed to know what Vue supports here? obviously it's able to detect variables inside 
-  strings, but it really makes me wonder how it's implemented under the hood. It's so obscure!
+* `#PetPeeves` how are we supposed to know what Vue supports in these inline expressions?
+  it's able to detect variables inside strings somehow, but it this just 
+  doesn't feel natural in JS, it seems like they must be doing custom regex. 
+  When this fails, I highly doubt it will be an intuitive failure with a great error message.
 
 
-#### example code
+#### slots - 3 - Wine label designer - example code
 
 ```vue
 const app = new Vue({
@@ -659,7 +664,6 @@ const app = new Vue({
     },
   }
 });
-
 
 <div id="app">
   <div class="container">
@@ -799,3 +803,53 @@ const app = new Vue({
   </g>
 </script>
 ```
+
+#### slots - 3 - Wine label designer - code highlights
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/49
+
+##### slots - 3 - wine label designer - `<component :is="selected">`
+I don't know what's going on here - she has a `<component :is="selected">` but 
+nowhere did we create a component named `component`. 
+* is that a vue built-in component? 
+* `#PetPeeves` - how am I supposed to google for this `<component>`? It's a component named component.
+* I searched for "Vue component component" and got to [vue docs for Dynamic & Async Components](https://vuejs.org/v2/guide/components-dynamic-async.html)
+  * that linked to [Component Basics](https://vuejs.org/v2/guide/components.html)
+  * I've seen `Vue.component()` before, where is `<component>`?
+Here is the intro: [Vue Docs - Dynamic Components](https://vuejs.org/v2/guide/components.html#Dynamic-Components)
+* so `<component :is="selected">` uses the contents of the `selected` data key to determine which template to load.
+  it's a little like a switch. 
+* she's declared a lot of components in one by putting them on the Vue instance: 
+  ```vue
+  components: {
+    'appBlack': {
+      template: '#black'
+    },
+    'appWhite': {
+      template: '#white'
+    },
+    'appFlor1': {
+      template: '#flor1'
+    },
+    'appFlor2': {
+      template: '#flor2'
+    },
+    'appFlor3': {
+      template: '#flor3'
+    },
+  }
+  ```
+* this is shorter than doing `Vue.component('appBlack, ...)`, `Vue.component('appWhite', ....)`, ... 
+* here we're switching the top-level component, and using a slot in the templates to be able to pass in 
+  the content. that's a cool combination, though it seems a little obscure since there are no constraints 
+  on the values.
+
+#### slots - 3 - wine label designer - comma expressions in click handlers
+`<button @click="selected ='appBlack', labelColor = '#000000'">Black Label</button>`
+She uses the comma operator in an inline event handler. 
+* `#PetPeeves` - this seems to be another great example of weirdness in the inline expressions in 
+  Vue. If it really is wrapping the contents in a function call, why not use a semicolon?
+
+finished with https://frontendmasters.com/courses/vue/slots/ 
+
+## 04-07 `keep-alive` and dynamic components
+https://frontendmasters.com/courses/vue/keep-alive/
