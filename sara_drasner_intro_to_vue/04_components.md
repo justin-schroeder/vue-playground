@@ -873,3 +873,5 @@ Normally, it recreates the components, but when you use this, it will cache them
 See [Vue Docs - Dynamic & Async Components - `keep-alive`](https://vuejs.org/v2/guide/components-dynamic-async.html)
 * `<keep-alive>` requires components being switched to have names
 
+## 04-08 Challenge 3 - refactoring into a component - DIY
+https://frontendmasters.com/courses/vue/challenge-3-refactoring-into-a-component/
