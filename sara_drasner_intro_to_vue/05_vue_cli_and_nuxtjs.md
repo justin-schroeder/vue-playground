@@ -174,6 +174,34 @@ she mentions at 1123 https://frontendmasters.com/courses/vue/vue-cli-walkthrough
 that the `h => h(App)` in `main.js` is how you'd do functional components
 
 ## 05 - 3 - Vue Snippets
+https://frontendmasters.com/courses/vue/vue-snippets/
+http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/6
+
+`<style scoped>` gives you scoped styles of course
+* she says it's most useful when you have a one off thing
+* interesting, I wouldn't have considered using global styles with scoped styles
+* works with slots
+
+[sarah's article on importing everywhere in styles](https://css-tricks.com/how-to-import-a-sass-file-into-every-vue-component-in-an-app/)
+
+### 05 - 3 - Vue Snippets - 1 - wine example
+https://codepen.io/sdras/pen/BpjQzE
+
+### 05 - 3 - Vue Snippets - 2 - slots and scoped styles
+http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/9
+[wine label github example repo](https://github.com/sdras/vue-wine-label)
+* here's [an example component from the wine label github repo](https://github.com/sdras/vue-wine-label/blob/master/src/components/Black.vue)
+* she's pointing out that the components use slots like in the codepen example 
+* but with the scoped styles, the styles pertain ONLY to the stuff inside
+  * including the items passed in via slots
+* cool, I can see how this could be useful
+* essentially the component is used to style just a certain item differently
+
+end of [05 - 3 - Vue Snippets](https://frontendmasters.com/courses/vue/vue-snippets/)
+
+
+
+
 ## 05 - 4 - Lifecycle Hooks
 ## 05 - 5 - Introducing Nuxt.js
 ## 05 - 6 - Nuxt.js Application Walkthrough
