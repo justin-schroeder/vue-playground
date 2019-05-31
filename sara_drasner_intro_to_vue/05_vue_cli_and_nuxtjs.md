@@ -199,10 +199,166 @@ http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/9
 
 end of [05 - 3 - Vue Snippets](https://frontendmasters.com/courses/vue/vue-snippets/)
 
-
-
-
 ## 05 - 4 - Lifecycle Hooks
+https://frontendmasters.com/courses/vue/lifecycle-hooks/
+http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/10
+
+* these become more important when you start to use Vue CLI
+  where we are bringing components in as we need them
+
+### 05 - 4 - Lifecycle Hooks - definition
+[Gives you a method to trigger something in the component lifecycle](http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/11)
+
+This is the order 
+* `beforeCreate`
+* `created`
+* `beforeMount`
+* `mounted`
+* `beforeUpdate`
+* `updated`
+* `activated`
+* `deactivated`
+* `beforeDestroy`
+* `destroyed`
+
+### 05 - 4 - Lifecycle Hooks - example 1
+0111 - https://frontendmasters.com/courses/vue/lifecycle-hooks/
+codepen - http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/12
+
+```vue
+const Child = {
+  template: '#childarea',
+  beforeCreate() {
+    console.log("beforeCreate!");
+  }, 
+  created() {
+    console.log("created!");
+  }, 
+  beforeMount() {
+    console.log("beforeMount!");
+  }, 
+  // ...
+```
+
+### 05 - 4 - Lifecycle Hooks - further details
+* [@codebeast's article on Lifecycle Methods](https://scotch.io/tutorials/demystifying-vue-lifecycle-methods)
+* Lifecycle hooks auto-bind to the instance, so `this.whatever` is available 
+* don't use arrow funcs, that will mess up vue
+
+### 05 - 4 - Lifecycle Hooks - smartphone audio & animation example
+0400 - https://frontendmasters.com/courses/vue/lifecycle-hooks/
+http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/17
+This example shows a situation where you want something to start when the component is mounted
+for that you'd use a lifecycle hook
+she uses `mounted()` to start the audio: 
+
+```vue
+mounted() {
+  let audio = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/rain.mp3'),
+      tl = new TimelineMax();
+
+  audio.play();
+  tl.add("drops");
+
+  //drops in
+  tl.staggerFromTo("#droplet-groups g path", 0.3, {
+    drawSVG: "0% -10%"
+  }, {
+    drawSVG: "100% 110%",
+    repeat: 3,
+    repeatDelay: 1,
+    ease: Sine.easeIn
+  }, 0.5, "drops");
+  ...
+}
+```
+
+?? she mentioned that lifecycle hooks are more useful with the vue cli, but I don't see what 
+  the two have to do with one another
+
+
+### 05 - 4 - Lifecycle Hooks - question
+question about lifecycle hooks vs computed properties
+`beforeCreate` is when computed
+
 ## 05 - 5 - Introducing Nuxt.js
+https://frontendmasters.com/courses/vue/introducing-nuxt-js/
+http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/19
+
+### 05 - 5 - Introducing Nuxt.js - why
+code splitting, server side rendering, routing with async data, great lighthouse scores
+
+### 05 - 5 - Introducing Nuxt.js - install setup2 wine label example in nuxt
+`$ yarn create nuxt-app <project-name>`
+
+this is [`intro-to-vue/setup2`](`./intro-to-vue/setup2`)
+`yarn` then `yarn dev`
+
+instead of index.html, we have `nuxt.config.js`
+* for some reason we need to write meta information in this way:
+* `#PetPeeves` - once again, another set of conventions to learn.
+  It's like Vue is just all about inventing new conventions.
+  Why don't we just write components in hieroglyphics? 
+  Everything in vue seems unnecessarily arbitrary.
+
+```vue
+module.exports = {
+  /*
+  ** Headers of the page
+  */
+  head: {
+    title: 'starter',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif' }
+    ]
+  },
+  loading: false,
+  /*
+  ** Build configuration
+  */
+  build: {
+    //build code goes here, such as eslint etc
+  }
+}
+```
+
+See `pages/index.vue` for the base component
+
+See `layouts/default.vue` - this is where MainMenu is put at top of page
+
+```vue
+<template>
+  <div>
+    <MainMenu />
+    <nuxt/>
+  </div>
+</template>
+
+<script>
+  import MainMenu from './../components/MainMenu.vue';
+  
+  export default {
+    components: {
+      MainMenu
+    }
+  }
+</script>
+
+<style>
+body, html {
+// ...
+}
+</style>
+}
+```
+
+left off at 0457 on https://frontendmasters.com/courses/vue/nuxt-js-application-walkthrough/
+
 ## 05 - 6 - Nuxt.js Application Walkthrough
 ## 05 - 7 - Challenge 4: Vue Cli
