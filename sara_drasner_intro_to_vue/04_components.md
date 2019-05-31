@@ -875,3 +875,66 @@ See [Vue Docs - Dynamic & Async Components - `keep-alive`](https://vuejs.org/v2/
 
 ## 04-08 Challenge 3 - refactoring into a component - DIY
 https://frontendmasters.com/courses/vue/challenge-3-refactoring-into-a-component/
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/54
+[Exercise Time - Starting Codepen](https://codepen.io/sdras/pen/OgBmYV/)
+[Exercise Time - My Codepen](https://codepen.io/codekiln/pen/EzGaNP)
+
+### 04-08 Challenge 3 - refactoring into a component - DIY - my first solution
+
+```vue
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      locations: [
+        {
+          name: 'moscow',
+          img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/moscow.svg',
+          desc: `Moscow is the capital and most populous city of Russia, with 13.2 million residents within the city limits and 17.8 million within the urban area. Moscow has the status of a Russian federal city.`
+        },
+        {
+          name: 'paris',
+          img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/paris1.svg',
+          desc: `Paris is the capital and most populous city of France. By the 17th century, Paris was one of Europe's major centres of finance, commerce, fashion, science, and the arts, and it retains that position still today.`
+        },
+         {
+          name: 'rome',
+          img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/rome.svg',
+          desc: `Rome's history spans more than 2,500 years. While Roman mythology dates the founding of Rome at around 753 BC, the site has been inhabited for much longer, making it one of the oldest continuously occupied sites in Europe.`
+        },
+         {
+          name: 'paris',
+          img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/paris2.svg',
+          desc: `Paris is the capital and most populous city of France. By the 17th century, Paris was one of Europe's major centres of finance, commerce, fashion, science, and the arts, and it retains that position still today.`
+        },
+      ]
+    };
+  }, 
+  components: {
+    'place': {
+      props: ['name', 'img', 'desc'],
+      template: "#location"
+    }
+  }
+});
+
+<div id="app">
+  <h1>Your Upcoming Destinations</h2>
+  <place v-for="location in locations" 
+         :name="location.name" 
+         :img="location.img" 
+         :desc="location.desc"></place>
+</div>
+
+<script type="text/x-template" id="location">
+  <div class="location-contain">
+    <div class="locations">
+       <div class="place">
+        <img :src="img" width="235" height="300"/>
+        <h2>{{ name }}</h2>
+        <p>{{ desc }}</p>
+      </div>
+    </div>
+  </div>
+</script>
+```
