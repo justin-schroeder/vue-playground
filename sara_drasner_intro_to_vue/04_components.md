@@ -942,3 +942,12 @@ new Vue({
 
 ### 04-08 Challenge 3 - refactoring into a component - sarah's solution
 [Sarah's run through of solution](https://frontendmasters.com/courses/vue/challenge-3-solution/)
+[Sarah's solution in Codepen](https://codepen.io/sdras/pen/owaWwd)
+
+Nothing to add here - she used slots and props, I just used props
+* `#PetPeeves` - The discussion of when to use props vs slots is a 
+  little bit like the discussion of props vs children in react, 
+  but it's more confusing in Vue because you can have multiple named slots.
+  As a result, it's not quite clear when to use props and when to use slots.
+
+ 
