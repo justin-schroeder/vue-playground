@@ -853,3 +853,23 @@ finished with https://frontendmasters.com/courses/vue/slots/
 
 ## 04-07 `keep-alive` and dynamic components
 https://frontendmasters.com/courses/vue/keep-alive/
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/50
+
+wrap a component in keep-alive and make sure it retains the state it was in
+
+```vue
+<keep-alive>
+  <component :is="selected">
+    ...
+  </component>
+</keep-alive>
+```
+
+### 04-07 `<keep-alive>` - 1 - example wine label maker
+http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/52
+
+When switching between the component, it will keep the state "alive"
+Normally, it recreates the components, but when you use this, it will cache them
+See [Vue Docs - Dynamic & Async Components - `keep-alive`](https://vuejs.org/v2/guide/components-dynamic-async.html)
+* `<keep-alive>` requires components being switched to have names
+
