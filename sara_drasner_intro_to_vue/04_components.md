@@ -878,6 +878,7 @@ https://frontendmasters.com/courses/vue/challenge-3-refactoring-into-a-component
 http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/54
 [Exercise Time - Starting Codepen](https://codepen.io/sdras/pen/OgBmYV/)
 [Exercise Time - My Codepen](https://codepen.io/codekiln/pen/EzGaNP)
+[Sarah's run through of solution](https://frontendmasters.com/courses/vue/challenge-3-solution/)
 
 ### 04-08 Challenge 3 - refactoring into a component - DIY - my first solution
 
@@ -938,3 +939,6 @@ new Vue({
   </div>
 </script>
 ```
+
+### 04-08 Challenge 3 - refactoring into a component - sarah's solution
+[Sarah's run through of solution](https://frontendmasters.com/courses/vue/challenge-3-solution/)
