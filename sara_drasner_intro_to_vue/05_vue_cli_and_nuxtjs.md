@@ -20,9 +20,37 @@ http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/1
 `vue init webpack-simple my-project`
 * `webpack-simple` is an alternative to `webpack` apparently
   * `webpack` prompts you for tests etc
-left off at 0341
+I created [`my_walkthroughs`](./my_walkthroughs) folder
+initialized `05_01_intro_vue_cli`
+using yarn
+
+### single file templates 
+http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/2
+
+basic example of structure of single file templates:
+
+```vue
+<template>
+  <div>
+     <!-- Write your HTML with Vue in here -->	
+  </div>
+</template>
+
+<script>
+  export default {
+     // Write your Vue component logic here
+  }
+</script>
+
+<style scoped>
+  /* Write your styles for the component in here */
+</style>
+```
 
 ## 05 - 2 - Vue CLI Walkthrough
+https://frontendmasters.com/courses/vue/vue-cli-walkthrough/
+
+
 ## 05 - 3 - Vue Snippets
 ## 05 - 4 - Lifecycle Hooks
 ## 05 - 5 - Introducing Nuxt.js
