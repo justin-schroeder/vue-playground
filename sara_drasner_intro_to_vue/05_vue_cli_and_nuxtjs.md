@@ -358,7 +358,69 @@ body, html {
 }
 ```
 
-left off at 0457 on https://frontendmasters.com/courses/vue/nuxt-js-application-walkthrough/
-
 ## 05 - 6 - Nuxt.js Application Walkthrough
+left off at 0457 on https://frontendmasters.com/courses/vue/nuxt-js-application-walkthrough/
+http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/19
+
+### 05 - 6 - Nuxt - Example of creating a link using `nuxt-link`:
+
+```vue
+<template>
+  <div class="container">
+    <h1>Welcome!</h1>
+    <p><nuxt-link to="/product">Product page</nuxt-link></p>
+  </div>
+</template>
+ 
+<style>
+  .container {
+    font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding: 60px;
+  }
+</style>
+```
+
+This links to another page: 
+
+```vue
+<template>
+  <div class="container">
+    <h1>This is the product page</h1>
+    <p><nuxt-link to="/">Home page</nuxt-link></p>
+  </div>
+</template>
+```
+
+### 05 - 6 - Nuxt - page transitions example
+http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/30 
+Repo: https://github.com/sdras/nuxt-type
+Demo: https://nuxt-type.now.sh/
+
 ## 05 - 7 - Challenge 4: Vue Cli
+Challenge 4 - https://frontendmasters.com/courses/vue/challenge-4-vue-cli/
+Take your components exercise problem and turn it into an application using vue-cli
+Here's my [components exercise problem](https://codepen.io/codekiln/pen/EzGaNP)
+I'll do it in `my_walkthroughs/05_07_challenge_4` 
+`$> cd my_walkthroughs`
+`$> vue init webpack-simple 05_07_challenge_4`
+
+```
+$> cd 05_07_challenge_4
+$> npm install
+$> npm run dev
+```
+
+I created `components/Place.vue`, used the `.place` as a scoped style
+See `my_walkthroughs/05_07_challenge_4/src/[App.vue, components/Place.vue]`
+I had to review [the vue style guide - component name casing](https://vuejs.org/v2/style-guide/#Component-name-casing-in-templates-strongly-recommended)
+* I named it `Place` in my component name, and in the file name, and when used
+
+### 05 - 7 - question - when to use vue init pwa
+* Vue PWA template has code splitting, it's very different than nuxt though
+* both of them are fast, but `vue init pwa` is nice, but if you need server side rendering
+* she says there is a lot that you lose by going with `vue init pwa`
+
+### 05 - 7 - question - when to use nuxt
+* when perf becomes an issue and has many pages
+* nuxt was incrementing to 1.0 right when this video was created
+
