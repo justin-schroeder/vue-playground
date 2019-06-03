@@ -176,6 +176,8 @@ http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/11
 * Vue adds the class names automatically at the correct time
 * This uses CSS's [`transition`](https://www.w3schools.com/css/css3_transitions.asp) to do the real work
 
+Here are the relevant excerpts from the full code sample above:
+
 ```vue
 <template>
   <transition name="fade">
@@ -199,11 +201,55 @@ http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/11
 ```
 
 ### 06-01 Introducing Animations - modal with transitions 2
-We can't use the transition for some things: _if we wanted to make that background content 
-fade out of view, so that the modal took center stage 
-and the background lost focus?_
+[06-01 Introducing Animations - modal with transitions 2 video - 1000](https://frontendmasters.com/courses/vue/introducing-animations/)  
+[06-01 Introducing Animations - modal with transitions 2 codepen example](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/16)  
 
-We can apply a class
+We can't use the `<transition>` component for some things, for example: 
+_if we wanted to make that background content fade out of view, 
+so that the modal took center stage and the background lost focus_
+
+But we can use a class: 
+
+```vue
+<template>
+  <div v-bind:class="[isShowing ? blurClass : '', bkClass]">
+    <h3>Let's trigger this here modal!</h3>
+    <button @click="toggleShow">
+      <span v-if="isShowing">Hide child</span>
+      <span v-else>Show child</span>
+    </button>
+  </div>
+</template>
+
+<style>
+  .bk {
+    transition: all 0.1s ease-out;
+  }
+  
+  .blur {
+    filter: blur(2px);
+    opacity: 0.4;
+  }
+</style>
+
+<script>
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        isShowing: false,
+        bkClass: 'bk', // here's where the class is set
+        blurClass: 'blur'
+      }
+    },
+    ...
+  });
+</script>
+```
+
+#### 06-01 Introducing Animations - modal with transitions 2 - Questions
+Why didn't she use literal classes? Not sure.
+
 
 ## 06-02 CSS Animation
 
