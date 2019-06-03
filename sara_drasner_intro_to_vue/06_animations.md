@@ -12,7 +12,8 @@ Transitions: taking a thing and interpolating between two of its states (example
 Animations: have multiple states
 
 ### 06-01 Introducing Animations - ex1 - modal
-[06-01 Introducing Animations - ex1 - modal slides](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/6)
+[06-01 Introducing Animations - ex1 - modal slides](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/6)  
+
 We have a modal and it's going to show a child and then show a child button
 Humans aren't accustomed to this - things happen in transitions
 The vue component `<transition name="fade">` is built-in: 
@@ -170,9 +171,39 @@ http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/11
 ```
 
 ### 06-01 Introducing Animations - modal with transitions - codepen - CSS Transitions and Vue Transitions
-* Vue adds the class names automatically at the correct time ... right?
-* This does use CSS's [`transition`](https://www.w3schools.com/css/css3_transitions.asp)
+* The most important part of this is the `<transition>` component and the CSS bindings
+* Note that `<transition name="fade">` translates into `.fade-enter-active, .fade-leave-active`, etc
+* Vue adds the class names automatically at the correct time
+* This uses CSS's [`transition`](https://www.w3schools.com/css/css3_transitions.asp) to do the real work
 
+```vue
+<template>
+  <transition name="fade">
+    <app-child v-if="isShowing" class="modal">
+      <button @click="toggleShow">
+        Close
+      </button>
+    </app-child>
+  </transition>
+</template>
+
+<style>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.25s ease-out;
+  }
+  
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+</style>
+```
+
+### 06-01 Introducing Animations - modal with transitions 2
+We can't use the transition for some things: _if we wanted to make that background content 
+fade out of view, so that the modal took center stage 
+and the background lost focus?_
+
+We can apply a class
 
 ## 06-02 CSS Animation
 
