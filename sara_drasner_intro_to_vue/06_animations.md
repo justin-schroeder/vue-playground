@@ -641,10 +641,116 @@ Note that the `flip` part of the class here comes from the `<transition name="fl
 
 
 ## 06-06 JavaScript Hooks
+[06-06 JavaScript Hooks video](https://frontendmasters.com/courses/vue/javascript-hooks/)  
+[06-06 JavaScript Hooks first slide](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/32)  
 
+* Use JS Hooks when you want to do animation but _not_ use CSS
+* uses your own names: 
+
+```vue
+<transition 
+  @before-enter="beforeEnter"
+  @enter="enter"
+  @after-enter="afterEnter"
+  @enter-cancelled="enterCancelled"
+
+  @before-leave="beforeLeave"
+  @leave="leave"
+  @after-leave="afterLeave"
+  @leave-cancelled="leaveCancelled"
+  :css="false">
+ </transition>
+```
+
+### 06-06 JavaScript Hooks - `v-bind:css="false"`
+* `:css="false"` means `v-bind:css="false"` and it tells Vue to 
+  "ignore CSS" (what does Sarah mean by this?)
+  * she says it's meant to avoid race conditions or collisions
+  * the [`:css="false"`](https://vuejs.org/v2/guide/transitions.html#JavaScript-Hooks) advice
+    comes from the vue docs: _It’s also a good idea to explicitly add v-bind:css="false" for 
+    JavaScript-only transitions so that Vue can skip the CSS detection. This also prevents 
+    CSS rules from accidentally interfering with the transition._
+    * See my SO: [`(VueJS) What exactly does v-bind:css=“false” do, and where is it documented?`](https://stackoverflow.com/questions/56451332/vuejs-what-exactly-does-v-bindcss-false-do-and-where-is-it-documented)
+    * `#PetPeeves` - it just really stinks that Vue invents all these arbitrary HTML-ish constructs
+      and then not only doesn't document them properly, but also makes them so darn hard to google
+      because _they are not javascript_ 
+  * This appears to be a magical, relatively undocumented thing in vue - what does it mean to 
+    skip the CSS detection?
+* reminder `@` means `v-on`
+
+### 06-06 JavaScript Hooks - ex1 basic example
+```vue
+<transition 
+  @enter="enterEl"
+  @leave="leaveEl"
+  :css="false">
+ <!-- put element here-->
+ </transition>
+ 
+ methods: {
+   enterEl(el, done) {
+     //entrance animation
+     done();
+  },
+  leaveEl(el, done) {
+    //exit animation
+    done();
+  },
+}
+```
+
+Note that the methods are passed the element and a done callback.
+* the `el` is the reference for an animation library
+
+### 06-06 JavaScript Hooks - ex2 type here example with dancing words
+[codepen - ex2 type here example with dancing words](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/36)  
+
+She uses library called Greensock to say "from " and "to"
+
+```vue
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      message: 'This is a good place to type things.',
+      load: false
+    }
+  },
+  methods: {
+    beforeEnter(el) {
+      TweenMax.set(el, {
+        transformPerspective: 600,
+        perspective: 300,
+        transformStyle: "preserve-3d",
+        autoAlpha: 1
+      });
+    },
+    enter(el, done) {
+      ...
+      tl.add("drop");
+      for (var i = 0; i < wordCount; i++) {
+        tl.from(split.words[i], 1.5, {
+          z: Math.floor(Math.random() * (1 + 150 - -150) + -150),
+          ease: Bounce.easeOut
+        }, "drop+=0." + (i/ 0.5));
+       ...
+    }
+  }
+});
+```
+
+### 06-06 JavaScript Hooks - passing done to animation libraries
+Several libraries require you send a callback 
+
+```vue
+let split = new SplitText(el, { type: "words" }),
+    wordCount = split.words.length,
+    tl = new TimelineMax({ onComplete: done });
+```
 
 ## 06-07 Connect to Interaction
-
+[Connect to Interaction Video](https://frontendmasters.com/courses/vue/connect-to-interaction/)  
+[Connect to Interaction Slide](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/40)  
 
 ## 06-08 Simple Transition
 
