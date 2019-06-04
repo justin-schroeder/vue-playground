@@ -1,3 +1,39 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [05 Vue CLI and NuxtJS](#05-vue-cli-and-nuxtjs)
+  - [05 - 1 - Introducing Vue CLI](#05---1---introducing-vue-cli)
+    - [why use vue cli?](#why-use-vue-cli)
+    - [using vue-cli](#using-vue-cli)
+    - [single file templates](#single-file-templates)
+    - [note on component naming and single file components](#note-on-component-naming-and-single-file-components)
+  - [05 - 2 - Vue CLI Walkthrough](#05---2---vue-cli-walkthrough)
+    - [bring over the backpack codepen example](#bring-over-the-backpack-codepen-example)
+    - [where to put the `child` component](#where-to-put-the-child-component)
+    - [importing the child in app](#importing-the-child-in-app)
+    - ["functional components"](#functional-components)
+  - [05 - 3 - Vue Snippets](#05---3---vue-snippets)
+    - [05 - 3 - Vue Snippets - 1 - wine example](#05---3---vue-snippets---1---wine-example)
+    - [05 - 3 - Vue Snippets - 2 - slots and scoped styles](#05---3---vue-snippets---2---slots-and-scoped-styles)
+  - [05 - 4 - Lifecycle Hooks](#05---4---lifecycle-hooks)
+    - [05 - 4 - Lifecycle Hooks - definition](#05---4---lifecycle-hooks---definition)
+    - [05 - 4 - Lifecycle Hooks - example 1](#05---4---lifecycle-hooks---example-1)
+    - [05 - 4 - Lifecycle Hooks - further details](#05---4---lifecycle-hooks---further-details)
+    - [05 - 4 - Lifecycle Hooks - smartphone audio & animation example](#05---4---lifecycle-hooks---smartphone-audio--animation-example)
+    - [05 - 4 - Lifecycle Hooks - question](#05---4---lifecycle-hooks---question)
+  - [05 - 5 - Introducing Nuxt.js](#05---5---introducing-nuxtjs)
+    - [05 - 5 - Introducing Nuxt.js - why](#05---5---introducing-nuxtjs---why)
+    - [05 - 5 - Introducing Nuxt.js - install setup2 wine label example in nuxt](#05---5---introducing-nuxtjs---install-setup2-wine-label-example-in-nuxt)
+  - [05 - 6 - Nuxt.js Application Walkthrough](#05---6---nuxtjs-application-walkthrough)
+    - [05 - 6 - Nuxt - Example of creating a link using `nuxt-link`:](#05---6---nuxt---example-of-creating-a-link-using-nuxt-link)
+    - [05 - 6 - Nuxt - page transitions example](#05---6---nuxt---page-transitions-example)
+  - [05 - 7 - Challenge 4: Vue Cli](#05---7---challenge-4-vue-cli)
+    - [05 - 7 - question - when to use vue init pwa](#05---7---question---when-to-use-vue-init-pwa)
+    - [05 - 7 - question - when to use nuxt](#05---7---question---when-to-use-nuxt)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 05 Vue CLI and NuxtJS
 
 [05 Vue CLI and NuxtJS Slides](http://slides.com/sdrasner/intro-to-vue-4?token=Xb4oA4YR#/1)

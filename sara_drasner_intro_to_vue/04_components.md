@@ -1,3 +1,51 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [04 Components](#04-components)
+  - [04 Coponents - 01 Templates](#04-coponents---01-templates)
+    - [don't need a component to use a template](#dont-need-a-component-to-use-a-template)
+  - [04 Coponents - 02 Components Introduction](#04-coponents---02-components-introduction)
+    - [basic component](#basic-component)
+    - [simple example with props](#simple-example-with-props)
+  - [04 Coponents - 03 Props](#04-coponents---03-props)
+    - [04-03 types and validation](#04-03-types-and-validation)
+    - [04-03 props for objects and arrays need defaults expressed as function](#04-03-props-for-objects-and-arrays-need-defaults-expressed-as-function)
+    - [04-03 you need to use v-bind or `:` to dynamically bind props from parent](#04-03-you-need-to-use-v-bind-or--to-dynamically-bind-props-from-parent)
+    - [04-03 each component has isolated scope](#04-03-each-component-has-isolated-scope)
+    - [04-03 camelCasing will be converted automatically from js to html](#04-03-camelcasing-will-be-converted-automatically-from-js-to-html)
+  - [04 Coponents - 04 Refactoring into a Component](#04-coponents---04-refactoring-into-a-component)
+    - [04-04 lighthouse comment component - 1](#04-04-lighthouse-comment-component---1)
+      - [the `is` directive to turn an li into a component](#the-is-directive-to-turn-an-li-into-a-component)
+      - [_Why do we use kebob case for component names here?](#_why-do-we-use-kebob-case-for-component-names-here)
+      - [`v-bind:commentpost="comment"`](#v-bindcommentpostcomment)
+      - [full example code](#full-example-code)
+    - [04-04 lighthouse comment component - 2 - template in DOM](#04-04-lighthouse-comment-component---2---template-in-dom)
+      - [full example code](#full-example-code-1)
+    - [04-04 lighthouse comment component - 3 - "Local Component"](#04-04-lighthouse-comment-component---3---local-component)
+  - [04 Coponents - 05 Communicating Events](#04-coponents---05-communicating-events)
+    - [04-05 event example - 1](#04-05-event-example---1)
+      - [04-05 event example - 1 - full example code](#04-05-event-example---1---full-example-code)
+      - [instead, use `$emit`](#instead-use-emit)
+    - [04-05 event example - 2 - with event bubbling](#04-05-event-example---2---with-event-bubbling)
+    - [04-05 event example - 3 - bouncing ball](#04-05-event-example---3---bouncing-ball)
+    - [04-05 event example - 4 - backpack](#04-05-event-example---4---backpack)
+  - [04-06 slots](#04-06-slots)
+    - [04-06 slots - 1 - basic](#04-06-slots---1---basic)
+    - [slots - 2 - defaults](#slots---2---defaults)
+    - [slots - 3 - Wine label designer](#slots---3---wine-label-designer)
+      - [slots - 3 - Wine label designer - example code](#slots---3---wine-label-designer---example-code)
+      - [slots - 3 - Wine label designer - code highlights](#slots---3---wine-label-designer---code-highlights)
+        - [slots - 3 - wine label designer - `<component :is="selected">`](#slots---3---wine-label-designer---component-isselected)
+      - [slots - 3 - wine label designer - comma expressions in click handlers](#slots---3---wine-label-designer---comma-expressions-in-click-handlers)
+  - [04-07 `keep-alive` and dynamic components](#04-07-keep-alive-and-dynamic-components)
+    - [04-07 `<keep-alive>` - 1 - example wine label maker](#04-07-keep-alive---1---example-wine-label-maker)
+  - [04-08 Challenge 3 - refactoring into a component - DIY](#04-08-challenge-3---refactoring-into-a-component---diy)
+    - [04-08 Challenge 3 - refactoring into a component - DIY - my first solution](#04-08-challenge-3---refactoring-into-a-component---diy---my-first-solution)
+    - [04-08 Challenge 3 - refactoring into a component - sarah's solution](#04-08-challenge-3---refactoring-into-a-component---sarahs-solution)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 04 Components
 
 [04 Components Slides](http://slides.com/sdrasner/intro-to-vue-3?token=LwIVIblm#/1)

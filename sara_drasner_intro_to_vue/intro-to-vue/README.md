@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Introduction to Vue.js Course Materials](#introduction-to-vuejs-course-materials)
+  - [Slides:](#slides)
+  - [Collections:](#collections)
+  - [VueCLI Resources](#vuecli-resources)
+  - [Nuxt Resources](#nuxt-resources)
+  - [Vuex Resources](#vuex-resources)
+  - [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # [Introduction to Vue.js](https://frontendmasters.com/courses/vue/) Course Materials
 
 Starter Materials for the Introduction to Vue.js Course

@@ -1,3 +1,33 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [06 Animations](#06-animations)
+  - [06-01 Introducing Animations](#06-01-introducing-animations)
+    - [06-01 Introducing Animations - ex1 - modal](#06-01-introducing-animations---ex1---modal)
+    - [06-01 Introducing Animations - transition component](#06-01-introducing-animations---transition-component)
+    - [06-01 Introducing Animations - questions about transitions](#06-01-introducing-animations---questions-about-transitions)
+    - [06-01 Introducing Animations - modal with transitions - codepen](#06-01-introducing-animations---modal-with-transitions---codepen)
+    - [06-01 Introducing Animations - modal with transitions - codepen - CSS Transitions and Vue Transitions](#06-01-introducing-animations---modal-with-transitions---codepen---css-transitions-and-vue-transitions)
+    - [06-01 Introducing Animations - modal with transitions 2](#06-01-introducing-animations---modal-with-transitions-2)
+      - [06-01 Introducing Animations - modal with transitions 2 - Questions](#06-01-introducing-animations---modal-with-transitions-2---questions)
+  - [06-02 CSS Animation](#06-02-css-animation)
+    - [06-02 CSS Animation ex1 - simplest](#06-02-css-animation-ex1---simplest)
+    - [06-02 CSS Animation ex2 - bouncing ball](#06-02-css-animation-ex2---bouncing-ball)
+      - [06-02 CSS Animation ex2 - bouncing ball - excerpts](#06-02-css-animation-ex2---bouncing-ball---excerpts)
+      - [hacks to get hardware acceleration](#hacks-to-get-hardware-acceleration)
+      - [personality and life of animation](#personality-and-life-of-animation)
+  - [06-03 Challenge 5: Adding Animation](#06-03-challenge-5-adding-animation)
+  - [06-04 Challenge 5: Solution](#06-04-challenge-5-solution)
+  - [06-05 Transition Modes](#06-05-transition-modes)
+  - [06-06 JavaScript Hooks](#06-06-javascript-hooks)
+  - [06-07 Connect to Interaction](#06-07-connect-to-interaction)
+  - [06-08 Simple Transition](#06-08-simple-transition)
+  - [06-09 Page-Specific Transitions](#06-09-page-specific-transitions)
+  - [06-10 Planning & Fancy Demo](#06-10-planning--fancy-demo)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 06 Animations
 
 [05 Animations Intro](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/1)  

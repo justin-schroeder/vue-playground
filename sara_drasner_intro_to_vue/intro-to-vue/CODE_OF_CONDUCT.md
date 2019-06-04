@@ -1,3 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Code of Conduct](#code-of-conduct)
+  - [1. Purpose](#1-purpose)
+  - [2. Open Source Citizenship](#2-open-source-citizenship)
+  - [3. Expected Behavior](#3-expected-behavior)
+  - [4. Unacceptable Behavior](#4-unacceptable-behavior)
+  - [5. Consequences of Unacceptable Behavior](#5-consequences-of-unacceptable-behavior)
+  - [6. Reporting Guidelines](#6-reporting-guidelines)
+  - [7. Addressing Grievances](#7-addressing-grievances)
+  - [8. Scope](#8-scope)
+  - [9. Contact info](#9-contact-info)
+  - [10. License and attribution](#10-license-and-attribution)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Code of Conduct
 
 ## 1. Purpose
