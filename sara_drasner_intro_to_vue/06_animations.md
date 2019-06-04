@@ -20,6 +20,7 @@
   - [06-03 Challenge 5: Adding Animation](#06-03-challenge-5-adding-animation)
   - [06-04 Challenge 5: Solution](#06-04-challenge-5-solution)
   - [06-05 Transition Modes](#06-05-transition-modes)
+    - [06-05 Transition Modes - ex1 - comic strip replacing](#06-05-transition-modes---ex1---comic-strip-replacing)
   - [06-06 JavaScript Hooks](#06-06-javascript-hooks)
   - [06-07 Connect to Interaction](#06-07-connect-to-interaction)
   - [06-08 Simple Transition](#06-08-simple-transition)
@@ -524,12 +525,119 @@ See [cubic-bezier.com](https://cubic-bezier.com/#.17,.67,.83,.67) for examples
 
 
 ## 06-03 Challenge 5: Adding Animation
+[Challenge 5 Video](https://frontendmasters.com/courses/vue/challenge-5-adding-animation/)  
+[Challenge 5 Codepen Start](https://codepen.io/sdras/pen/pweqaN)  
+[Challenge 5 Codepen - My Fork](https://codepen.io/codekiln/pen/OYqdwd)  
 
+Take these classes, or name them something else, and plug css animations into those two classes
+one for enter, one for exit
+
+Here's the relevant spot in the markup: 
+
+```vue
+<transition
+    name="ballmove"
+    enter-active-class="bouncein"
+    leave-active-class="rollout">
+<!--...-->
+</transition>
+```
+
+From this we know that when the ballmove transition enters the active transition state, 
+it will attach the `bouncein` class.
+
+Key parts I added: 
+
+```vue
+@keyframes bouncein { 
+  1% { @include ballb(-400px); }
+  20%, 40%, 60%, 80%, 95%, 99%, 100% { @include ballb() }
+  30% { @include ballb(-80px); }
+  50% { @include ballb(-40px); }
+  70% { @include ballb(-30px); }
+  90% { @include ballb(-15px); }
+  97% { @include ballb(-10px); }
+}
+
+@keyframes rollout {
+  0% { transform: translate3d( 0, 300px, 0); }
+  100% { transform: translate3d( 1000px, 300px, 0); }
+}
+
+@keyframes ballroll {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(1000deg); }
+}
+
+.ballmove-enter {
+  @include ballb(-400px);
+}
+
+.bouncein {
+  animation: bouncein 0.9s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+}
+
+.rollout { 
+  width: 60px;
+  height: 60px;
+  animation: rollout 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both; 
+  div {
+    animation: ballroll 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both; 
+  }
+}
+```
+
+Key points: 
+* make three animations with the CSS [`keyframes` at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes)
+* make a `<transition name="ballmove" enter-active-class="bouncein" leave-active-class="rollout">` and  make `bouncein` and `rollout` classes
+* in those classes, use the CSS [`animation` shorthand property to reference the keyframes created](https://developer.mozilla.org/en-US/docs/Web/CSS/animation)
+* using the name of the transition use the [Transition Classes mentioned in in the vue docs](https://vuejs.org/v2/guide/transitions.html#Transition-Classes), 
+  for example, if the name of the transition is `ballmove`, you can do `.ballmove-enter`
 
 ## 06-04 Challenge 5: Solution
+[challenge 5 solution video](https://frontendmasters.com/courses/vue/challenge-5-solution/)  
+Usually, when things are entering and exiting, you want 
 
 
-## 06-05 Transition Modes
+## 06-05 Transition Modes  
+[06-05 Transition Modes video](https://frontendmasters.com/courses/vue/transition-modes/)  
+
+* There are a lot of things in vue that just make things easier, 
+  for example `.prevent` to prevent the bubbling
+* transition modes are one of those
+* common case - when something is entering, and another is coming in
+* transition modes let us specify an order for operations
+  * `out-in` - (almost always this one) current element goes out new one goes in.
+  * `in-out` - (rare) current element waits until the new element is done transitioning in to fire
+
+### 06-05 Transition Modes - ex1 - comic strip replacing
+[ex1 - two elements - codepen](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/29)
+
+```vue
+<template>
+  <transition name="flip" mode="out-in">
+    <slot v-if="!isShowing"></slot>
+    <img v-else src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/cartoonvideo14.jpeg" />
+  </transition>
+</template>
+
+<style>
+  .flip-enter-active {
+    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53); //ease-in-quad
+  }
+  
+  .flip-leave-active {
+    transition: all .25s cubic-bezier(0.25, 0.46, 0.45, 0.94); //ease-out-quad
+  }
+  
+  .flip-enter, .flip-leave-to {
+    transform: scaleY(0) translateZ(0);
+    opacity: 0;
+  }
+</style>
+```
+
+Note that the `flip` part of the class here comes from the `<transition name="flip" mode="out-in">`
 
 
 ## 06-06 JavaScript Hooks
