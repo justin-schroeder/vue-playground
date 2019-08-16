@@ -678,6 +678,25 @@ Note that the `flip` part of the class here comes from the `<transition name="fl
     skip the CSS detection?
 * reminder `@` means `v-on`
 
+```vue
+<transition 
+  @before-enter="beforeEnter"
+  @enter="enter"
+  @after-enter="afterEnter"
+  @enter-cancelled="enterCancelled"
+
+  @before-leave="beforeLeave"
+  @leave="leave"
+  @after-leave="afterLeave"
+  @leave-cancelled="leaveCancelled"
+  :css="false">
+ 
+ </transition>
+```
+
+Sara says that this naming convention is to avoid name collisions with js
+* what's an example? 
+
 ### 06-06 JavaScript Hooks - ex1 basic example
 ```vue
 <transition 
@@ -750,9 +769,58 @@ let split = new SplitText(el, { type: "words" }),
 
 ## 06-07 Connect to Interaction
 [Connect to Interaction Video](https://frontendmasters.com/courses/vue/connect-to-interaction/)  
-[Connect to Interaction Slide](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/40)  
+[Connect to Interaction Slide](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/40) 
+
+### 06-07 Connect to Interaction - Wall-E animation
+[Wall-E Codepen](https://codepen.io/sdras/pen/YZBGNp)
+* had to click through to the codepen to see how mouse moves affected it
+
+```vue
+<div id="app" @mousemove="coordinates">
+  <p>Move your mouse or tap</p>
+  <svg id="walle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 139.4 129.4">
+  <defs>
+    <clipPath id="clip-path" transform="translate(-81.8 -924.4)">
+      <circle cx="140.5" cy="978.2" r="4.3" fill="none"/>
+    </clipPath>
+  </defs>
+  ...
+  <g id="Layer_2" data-name="Layer 2">
+    <g class="head" v-bind:class="{isFlipped: flip}">
+  ...
+</div>
+```
+
+The key parts here: 
+* `<g class="head" v-bind:class="{isFlipped: flip}">`
+  * flips the head when the mouse moves to the other side
+* `<div id="app" @mousemove="coordinates">`
+  * `@mousemove="coordinates"` here is equivalent to `v-on:mousemove=coordinates`
+  * `coordinates` is a function that receives the `mousemove` event `e`:
+
+```vue
+coordinates(e) {
+  const audio = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/Whoa.mp3'),
+    walleBox = document.getElementById('walle').getBoundingClientRect(),
+    ...
+
+  this.y = e.clientY / 80 - 2;
+  if (e.clientX > walleCoords) {
+  ...
+
+    this.startArms.progress(1 - (e.clientX / walleCoords)).pause();
+
+  }
+},
+```
+
+Using the `mounted` hook lets you start a loop that always runs.
+
+
 
 ## 06-08 Simple Transition
+[Simple Transition Video](https://frontendmasters.com/courses/vue/simple-transition/)
+[Simple Transition Slides](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/46)
 
 
 ## 06-09 Page-Specific Transitions
