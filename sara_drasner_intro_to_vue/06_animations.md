@@ -22,7 +22,12 @@
   - [06-05 Transition Modes](#06-05-transition-modes)
     - [06-05 Transition Modes - ex1 - comic strip replacing](#06-05-transition-modes---ex1---comic-strip-replacing)
   - [06-06 JavaScript Hooks](#06-06-javascript-hooks)
+    - [06-06 JavaScript Hooks - `v-bind:css="false"`](#06-06-javascript-hooks---v-bindcssfalse)
+    - [06-06 JavaScript Hooks - ex1 basic example](#06-06-javascript-hooks---ex1-basic-example)
+    - [06-06 JavaScript Hooks - ex2 type here example with dancing words](#06-06-javascript-hooks---ex2-type-here-example-with-dancing-words)
+    - [06-06 JavaScript Hooks - passing done to animation libraries](#06-06-javascript-hooks---passing-done-to-animation-libraries)
   - [06-07 Connect to Interaction](#06-07-connect-to-interaction)
+    - [06-07 Connect to Interaction - Wall-E animation](#06-07-connect-to-interaction---wall-e-animation)
   - [06-08 Simple Transition](#06-08-simple-transition)
   - [06-09 Page-Specific Transitions](#06-09-page-specific-transitions)
   - [06-10 Planning & Fancy Demo](#06-10-planning--fancy-demo)
@@ -823,7 +828,10 @@ Using the `mounted` hook lets you start a loop that always runs.
 [Simple Transition Slides](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/46)
 
 
+
 ## 06-09 Page-Specific Transitions
 
 
+
 ## 06-10 Planning & Fancy Demo
+
