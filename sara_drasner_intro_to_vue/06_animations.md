@@ -29,6 +29,7 @@
   - [06-07 Connect to Interaction](#06-07-connect-to-interaction)
     - [06-07 Connect to Interaction - Wall-E animation](#06-07-connect-to-interaction---wall-e-animation)
   - [06-08 Simple Transition](#06-08-simple-transition)
+    - [06-08 Simple Transition - Sliding Page In Nuxt](#06-08-simple-transition---sliding-page-in-nuxt)
   - [06-09 Page-Specific Transitions](#06-09-page-specific-transitions)
   - [06-10 Planning & Fancy Demo](#06-10-planning--fancy-demo)
 
@@ -827,6 +828,71 @@ Using the `mounted` hook lets you start a loop that always runs.
 [Simple Transition Video](https://frontendmasters.com/courses/vue/simple-transition/)
 [Simple Transition Slides](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/46)
 
+### 06-08 Simple Transition - Sliding Page In Nuxt
+* She's going to make a page transition and to do that she will disable Nuxt's default progress bar
+  * in `nuxt.config.js` she set `loading: false` to disable it and added new CSS assets
+  * the [next page will slide in from one side of the screen](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/50)
+* the transition component and how you _don't_ have to use it (?)
+  * I think she's saying that Nuxt has the transition component built into its idea of pages
+* the `page` hook (?), which seems like it's related to the 
+  [`v-enter`, `v-leave` hooks according to this slide](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/48)
+  * In her [new CSS file, she's using `.page-enter-active`, `.page-leave-active`](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/49); 
+  * I assume `page` hook comes from nuxt
+  * ![reminder about how vue transition events work](./assets/vue_transition_docs_2019-08-16.png)
+  * here's the CSS
+    ```css
+      .page-enter-active, .page-leave-active {
+        transition: all .25s ease-out;
+      }
+  
+      .page-enter, .page-leave-active {
+        opacity: 0;
+        transform: scale(0.95);
+        transform-origin: 50% 50%;
+      }
+
+      .page-enter-active {
+        animation: acrossIn .45s ease-out both;
+      } 
+       
+      .page-leave-active {
+        animation: acrossOut .65s ease-in both;
+      } 
+       
+      @keyframes acrossIn {
+        0% {
+          transform: translate3d(-100%, 0, 0);
+        }
+       
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+       
+      @keyframes acrossOut {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+       
+        100% {
+          transform: translate3d(100%, 0, 0);
+        }
+      }
+    ```
+  * section: 
+    ```css
+    .page-enter, .page-leave-active {
+      opacity: 0;
+      transform: scale(0.95);
+      transform-origin: 50% 50%;
+    }
+    ```
+    * when the page begins entering, it is invisible
+    * when the page leaves, it is invisible
+    * `transform: scale(0.95)` - does it shrink?
+    * [`transform-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin)
+    * it seems like this should make the screen move down and to the right???
+    * I don't get this animation ...
 
 
 ## 06-09 Page-Specific Transitions
