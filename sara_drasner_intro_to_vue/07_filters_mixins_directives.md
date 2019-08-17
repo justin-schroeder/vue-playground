@@ -10,7 +10,22 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Filters](#filters)
+  - [07-01 Filters](#07-01-filters)
+    - [07-01 Filters - how to create](#07-01-filters---how-to-create)
+    - [07-01 Filters - example tip calculator filter](#07-01-filters---example-tip-calculator-filter)
+    - [07-01 Filters - purpose](#07-01-filters---purpose)
+    - [07-01 Filters - chaining](#07-01-filters---chaining)
+    - [07-01 Filters - passing arguments](#07-01-filters---passing-arguments)
+    - [07-01 Filters - better to use computed for expensive transformations](#07-01-filters---better-to-use-computed-for-expensive-transformations)
+    - [07-01 Filters - √ takeaways](#07-01-filters---%E2%88%9A-takeaways)
+- [07-02 Mixins](#07-02-mixins)
+  - [07-02 Mixins - Example - Tooltip, Modal](#07-02-mixins---example---tooltip-modal)
+  - [07-02 Mixins - Examples](#07-02-mixins---examples)
+  - [07-02 Mixins - Merging](#07-02-mixins---merging)
+    - [07-02 Mixins - Merging - order of execution & lifecycle methods](#07-02-mixins---merging---order-of-execution--lifecycle-methods)
+    - [07-02 Mixins - Merging - overriding a mixin](#07-02-mixins---merging---overriding-a-mixin)
+  - [07-02 Mixins - Global Mixins](#07-02-mixins---global-mixins)
+- [07-03 Custom Directives](#07-03-custom-directives)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -159,3 +174,138 @@ it's better to use `computed` than `filter` for expensive transformations:
 * use it when you need to reuse a transformation across different data attributes
 
 
+# 07-02 Mixins
+[Mixins Video](https://frontendmasters.com/courses/vue/mixins/)
+[Mixins Slides](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/10)
+
+good for code reuse, are "really powerful"
+
+quote from [Michael Feathers on Twitter in 2010](https://twitter.com/mfeathers/status/29581296216?lang=en)
+> OO makes code understandable by encapsulating moving parts.  
+> FP makes code understandable by minimizing moving parts.
+
+mixins are good for a FP model
+
+> If written correctly, they are pure - 
+> they don't modify or change things outside of the function's scope
+
+## 07-02 Mixins - Example - Tooltip, Modal
+Core functionality is similar - you toggle them on and off
+Extract functionality that is common
+
+```javascript
+const toggle = {
+  data() {
+    return {
+      isShowing: false
+    }
+  },
+  methods: {
+    toggleShow() {
+      this.isShowing = !this.isShowing;
+    }
+  }
+}
+
+const Modal = {
+  template: '#modal',
+  mixins: [toggle],
+  components: {
+    appChild: Child
+  }
+};
+
+const Tooltip = {
+  template: '#tooltip',
+  mixins: [toggle],
+  components: {
+    appChild: Child
+  }
+};
+```
+
+## 07-02 Mixins - Examples
+[Tooltip Modal Codepen](https://codepen.io/sdras/pen/101a5d737b31591e5801c60b666013db)
+
+[mixins - other examples slide](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/17)
+* getting dimensions of the viewport and component
+* gathering specific mousemove events
+* base elements of charts
+
+[mixins Example repo by Paul Pflugradt](https://github.com/paulpflug/vue-mixins)
+
+## 07-02 Mixins - Merging
+Mixins are applied first, component last; component has last say
+
+### 07-02 Mixins - Merging - order of execution & lifecycle methods
+mixins have any of the properties of a vue component including lifecycle hooks
+
+```javascript
+//mixin
+const hi = {
+  mounted() {
+    console.log('hello from mixin!')
+  }
+}
+
+//vue instance or component
+new Vue({
+  el: '#app',
+  mixins: [hi],
+  mounted() {
+    console.log('hello from Vue instance!')
+  }
+});
+
+//Output in console
+//> hello from mixin!
+//> hello from Vue instance!
+```
+
+### 07-02 Mixins - Merging - [overriding a mixin](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/20)
+
+```javascript
+//mixin
+const hi = {
+  methods: {
+    sayHello: function() {
+      console.log('hello from mixin!')
+    }
+  },
+  mounted() {
+    this.sayHello()
+  }
+}
+
+//vue instance or component
+new Vue({
+  el: '#app',
+  mixins: [hi],
+  methods: {
+    sayHello: function() {
+      console.log('hello from Vue instance!')
+    }
+  },
+  mounted() {
+    this.sayHello()
+  }
+})
+
+// Output in console
+//> hello from Vue instance!
+//> hello from Vue instance!
+```
+
+
+## 07-02 Mixins - [Global Mixins](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/21)
+0730
+Warning - never use this. Use with caution; red flags everywhere.
+Maybe use for plugin system
+
+The mixins example in Sara's repo has a global example
+[`./intro-to-vue/mixins-example/README.md`](./intro-to-vue/mixins-example/README.md)
+
+
+# 07-03 Custom Directives
+[Custom Directives Video](https://frontendmasters.com/courses/vue/custom-directives/)
+[Custom Directives Slides](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/24)
