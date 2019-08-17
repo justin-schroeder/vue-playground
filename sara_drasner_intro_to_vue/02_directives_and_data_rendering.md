@@ -1,37 +1,38 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [Intro to Vue 1: Directives & Data Rendering](#intro-to-vue-1-directives--data-rendering)
-  - [3. Directives](#3-directives)
-    - [3. Directives - `v-model`](#3-directives---v-model)
-      - [`v-model` and checkboxes](#v-model-and-checkboxes)
-      - [`v-model` with `v-for` and checkboxes](#v-model-with-v-for-and-checkboxes)
-      - [`v-model` modifiers](#v-model-modifiers)
-    - [3. Directives - `v-if` / `v-show`](#3-directives---v-if--v-show)
-      - [`v-else` & `v-else-if`](#v-else--v-else-if)
-    - [3. Directives - `v-bind`](#3-directives---v-bind)
-      - [`v-bind` example 1 - changing a DOM element's class](#v-bind-example-1---changing-a-dom-elements-class)
-      - [`v-bind` tron perspective example - changing style](#v-bind-tron-perspective-example---changing-style)
-    - [3. Directives - `v-once` & `v-pre`](#3-directives---v-once--v-pre)
-      - [`v-once` will not update once it's rendered](#v-once-will-not-update-once-its-rendered)
-      - [`v-pre` - prints out inner text exactly how it is](#v-pre---prints-out-inner-text-exactly-how-it-is)
-    - [3. Directives - `v-on` or `@`](#3-directives---v-on-or-)
-      - [multiple bindings](#multiple-bindings)
-      - [`v-on` modifiers](#v-on-modifiers)
-      - [`v-on` keycodes for events](#v-on-keycodes-for-events)
-    - [3. Directives - `v-html`](#3-directives---v-html)
-    - [3. Directives - `v-text`](#3-directives---v-text)
-    - [4. Challenge 1: Calculator](#4-challenge-1-calculator)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # [Intro to Vue 1: Directives & Data Rendering](http://slides.com/sdrasner/intro-to-vue-1?token=9-aFNhlX)
 Use password `!vue!`
 
 Videos: https://frontendmasters.com/courses/vue/directives/
 
 [Introduction to Vue Workshop Materials](https://codepen.io/collection/noYZxW/)
+
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [3. Directives](#3-directives)
+  - [3. Directives - `v-model`](#3-directives---v-model)
+    - [`v-model` and checkboxes](#v-model-and-checkboxes)
+    - [`v-model` with `v-for` and checkboxes](#v-model-with-v-for-and-checkboxes)
+    - [`v-model` modifiers](#v-model-modifiers)
+  - [3. Directives - `v-if` / `v-show`](#3-directives---v-if--v-show)
+    - [`v-else` & `v-else-if`](#v-else--v-else-if)
+  - [3. Directives - `v-bind`](#3-directives---v-bind)
+    - [`v-bind` example 1 - changing a DOM element's class](#v-bind-example-1---changing-a-dom-elements-class)
+    - [`v-bind` tron perspective example - changing style](#v-bind-tron-perspective-example---changing-style)
+  - [3. Directives - `v-once` & `v-pre`](#3-directives---v-once--v-pre)
+    - [`v-once` will not update once it's rendered](#v-once-will-not-update-once-its-rendered)
+    - [`v-pre` - prints out inner text exactly how it is](#v-pre---prints-out-inner-text-exactly-how-it-is)
+  - [3. Directives - `v-on` or `@`](#3-directives---v-on-or-)
+    - [multiple bindings](#multiple-bindings)
+    - [`v-on` modifiers](#v-on-modifiers)
+    - [`v-on` keycodes for events](#v-on-keycodes-for-events)
+  - [3. Directives - `v-html`](#3-directives---v-html)
+  - [3. Directives - `v-text`](#3-directives---v-text)
+  - [4. Challenge 1: Calculator](#4-challenge-1-calculator)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 ## 3. Directives
 `v-text`

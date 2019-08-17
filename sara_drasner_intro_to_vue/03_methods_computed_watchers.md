@@ -1,36 +1,36 @@
+# 3. Methods, Computed & Watchers
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [3. Methods, Computed & Watchers](#3-methods-computed--watchers)
-  - [3. Methods, Computed & Watchers - 1 Methods](#3-methods-computed--watchers---1-methods)
-    - [methods intro](#methods-intro)
-      - [styles](#styles)
-  - [3. Methods, Computed & Watchers - 2 Working with Methods](#3-methods-computed--watchers---2-working-with-methods)
-    - [methods in forms](#methods-in-forms)
-    - [methods in tables - netflix data](#methods-in-tables---netflix-data)
-  - [3. Methods, Computed & Watchers - 3 Computed Properties](#3-methods-computed--watchers---3-computed-properties)
-    - [simplest example - "you're a monster"](#simplest-example---youre-a-monster)
-      - [computed](#computed)
-      - [methods](#methods)
-    - [Filtered Data with Methods & Computed Properties](#filtered-data-with-methods--computed-properties)
-  - [3. Methods, Computed & Watchers - 4 Challenge 2: Updating a Blog](#3-methods-computed--watchers---4-challenge-2-updating-a-blog)
-    - [add a new blog post when submitted](#add-a-new-blog-post-when-submitted)
-    - [filter blog posts by label](#filter-blog-posts-by-label)
-    - [2: Updating a Blog - My solution:](#2-updating-a-blog---my-solution)
-    - [2: Updating a Blog - Sarah's solution](#2-updating-a-blog---sarahs-solution)
-  - [3. Methods, Computed & Watchers - 5 Reactive Programming](#3-methods-computed--watchers---5-reactive-programming)
-    - [what is reactive?](#what-is-reactive)
-  - [3. Methods, Computed & Watchers - 6 Watchers](#3-methods-computed--watchers---6-watchers)
-    - [How does Vue use reactivity?](#how-does-vue-use-reactivity)
-    - [watcher pen 1](#watcher-pen-1)
-    - [watcher pen 2 - create the simplest watcher with a counter](#watcher-pen-2---create-the-simplest-watcher-with-a-counter)
-    - [watcher pen 3 - punk beers - Vue watchers + axios to do infinite scroll](#watcher-pen-3---punk-beers---vue-watchers--axios-to-do-infinite-scroll)
-    - [watchers - access to new and old value](#watchers---access-to-new-and-old-value)
+- [3. Methods, Computed & Watchers - 1 Methods](#3-methods-computed--watchers---1-methods)
+  - [methods intro](#methods-intro)
+    - [styles](#styles)
+- [3. Methods, Computed & Watchers - 2 Working with Methods](#3-methods-computed--watchers---2-working-with-methods)
+  - [methods in forms](#methods-in-forms)
+  - [methods in tables - netflix data](#methods-in-tables---netflix-data)
+- [3. Methods, Computed & Watchers - 3 Computed Properties](#3-methods-computed--watchers---3-computed-properties)
+  - [simplest example - "you're a monster"](#simplest-example---youre-a-monster)
+    - [computed](#computed)
+    - [methods](#methods)
+  - [Filtered Data with Methods & Computed Properties](#filtered-data-with-methods--computed-properties)
+- [3. Methods, Computed & Watchers - 4 Challenge 2: Updating a Blog](#3-methods-computed--watchers---4-challenge-2-updating-a-blog)
+  - [add a new blog post when submitted](#add-a-new-blog-post-when-submitted)
+  - [filter blog posts by label](#filter-blog-posts-by-label)
+  - [2: Updating a Blog - My solution:](#2-updating-a-blog---my-solution)
+  - [2: Updating a Blog - Sarah's solution](#2-updating-a-blog---sarahs-solution)
+- [3. Methods, Computed & Watchers - 5 Reactive Programming](#3-methods-computed--watchers---5-reactive-programming)
+  - [what is reactive?](#what-is-reactive)
+- [3. Methods, Computed & Watchers - 6 Watchers](#3-methods-computed--watchers---6-watchers)
+  - [How does Vue use reactivity?](#how-does-vue-use-reactivity)
+  - [watcher pen 1](#watcher-pen-1)
+  - [watcher pen 2 - create the simplest watcher with a counter](#watcher-pen-2---create-the-simplest-watcher-with-a-counter)
+  - [watcher pen 3 - punk beers - Vue watchers + axios to do infinite scroll](#watcher-pen-3---punk-beers---vue-watchers--axios-to-do-infinite-scroll)
+  - [watchers - access to new and old value](#watchers---access-to-new-and-old-value)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# 3. Methods, Computed & Watchers
 http://slides.com/sdrasner/intro-to-vue-2?token=502n2b7V
 
 ## 3. Methods, Computed & Watchers - 1 Methods
