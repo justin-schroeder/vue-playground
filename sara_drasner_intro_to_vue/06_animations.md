@@ -35,6 +35,7 @@
   - [06-09 Page-Specific Transitions - Basic Example](#06-09-page-specific-transitions---basic-example)
   - [06-09 Page Specific Transitions - JS Hooks](#06-09-page-specific-transitions---js-hooks)
 - [06-10 Planning & Fancy Demo](#06-10-planning--fancy-demo)
+  - [Fancy Demo - Typeface Site](#fancy-demo---typeface-site)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -952,4 +953,38 @@ around 2:50 she mentions that Vue has `$refs` and its purpose is similar to reac
 
 
 ## 06-10 Planning & Fancy Demo
+[Planning & Fancy Demo Video](https://frontendmasters.com/courses/vue/planning-fancy-demo/)
+[Planning & Fancy Demo Slides](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/64)
 
+Things that need to stay constant can live outside of pages.
+For example, here, `Navigation` is outside of the pages.
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <Navigation />
+    <nuxt/>
+  </div>
+</template>
+
+<script>
+import Navigation from '~components/Navigation.vue'
+
+export default {
+  components: {
+    Navigation
+  }
+}
+</script>
+```
+
+### Fancy Demo - Typeface Site
+[typeface site demo video link](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/68)
+Here is the actual live URL: https://nuxt-type.now.sh
+
+Demonstrates page transitions
+The mountains have different transitions than the fonts
+* it looked dumb when they all had the same transition
+
+Exercise - we don't do
