@@ -297,7 +297,8 @@ Why didn't she use literal classes? Not sure.
 
 **Transition & CSS Animations are two different things, but we'll use `<transition>` component for both**
 ### 06-02 CSS Animation ex1 - simplest
-I don't understand this simple example, perhaps because I don't understand CSS  Animations very well
+I don't understand this simple example, 
+perhaps because I don't understand CSS  Animations very well
 
 ```vue
 enter-active-class="toasty"
