@@ -1,41 +1,42 @@
+# 06 Animations
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [06 Animations](#06-animations)
-  - [06-01 Introducing Animations](#06-01-introducing-animations)
-    - [06-01 Introducing Animations - ex1 - modal](#06-01-introducing-animations---ex1---modal)
-    - [06-01 Introducing Animations - transition component](#06-01-introducing-animations---transition-component)
-    - [06-01 Introducing Animations - questions about transitions](#06-01-introducing-animations---questions-about-transitions)
-    - [06-01 Introducing Animations - modal with transitions - codepen](#06-01-introducing-animations---modal-with-transitions---codepen)
-    - [06-01 Introducing Animations - modal with transitions - codepen - CSS Transitions and Vue Transitions](#06-01-introducing-animations---modal-with-transitions---codepen---css-transitions-and-vue-transitions)
-    - [06-01 Introducing Animations - modal with transitions 2](#06-01-introducing-animations---modal-with-transitions-2)
-      - [06-01 Introducing Animations - modal with transitions 2 - Questions](#06-01-introducing-animations---modal-with-transitions-2---questions)
-  - [06-02 CSS Animation](#06-02-css-animation)
-    - [06-02 CSS Animation ex1 - simplest](#06-02-css-animation-ex1---simplest)
-    - [06-02 CSS Animation ex2 - bouncing ball](#06-02-css-animation-ex2---bouncing-ball)
-      - [06-02 CSS Animation ex2 - bouncing ball - excerpts](#06-02-css-animation-ex2---bouncing-ball---excerpts)
-      - [hacks to get hardware acceleration](#hacks-to-get-hardware-acceleration)
-      - [personality and life of animation](#personality-and-life-of-animation)
-  - [06-03 Challenge 5: Adding Animation](#06-03-challenge-5-adding-animation)
-  - [06-04 Challenge 5: Solution](#06-04-challenge-5-solution)
-  - [06-05 Transition Modes](#06-05-transition-modes)
-    - [06-05 Transition Modes - ex1 - comic strip replacing](#06-05-transition-modes---ex1---comic-strip-replacing)
-  - [06-06 JavaScript Hooks](#06-06-javascript-hooks)
-    - [06-06 JavaScript Hooks - `v-bind:css="false"`](#06-06-javascript-hooks---v-bindcssfalse)
-    - [06-06 JavaScript Hooks - ex1 basic example](#06-06-javascript-hooks---ex1-basic-example)
-    - [06-06 JavaScript Hooks - ex2 type here example with dancing words](#06-06-javascript-hooks---ex2-type-here-example-with-dancing-words)
-    - [06-06 JavaScript Hooks - passing done to animation libraries](#06-06-javascript-hooks---passing-done-to-animation-libraries)
-  - [06-07 Connect to Interaction](#06-07-connect-to-interaction)
-    - [06-07 Connect to Interaction - Wall-E animation](#06-07-connect-to-interaction---wall-e-animation)
-  - [06-08 Simple Transition](#06-08-simple-transition)
-    - [06-08 Simple Transition - Sliding Page In Nuxt](#06-08-simple-transition---sliding-page-in-nuxt)
-  - [06-09 Page-Specific Transitions](#06-09-page-specific-transitions)
-  - [06-10 Planning & Fancy Demo](#06-10-planning--fancy-demo)
+- [06-01 Introducing Animations](#06-01-introducing-animations)
+  - [06-01 Introducing Animations - ex1 - modal](#06-01-introducing-animations---ex1---modal)
+  - [06-01 Introducing Animations - transition component](#06-01-introducing-animations---transition-component)
+  - [06-01 Introducing Animations - questions about transitions](#06-01-introducing-animations---questions-about-transitions)
+  - [06-01 Introducing Animations - modal with transitions - codepen](#06-01-introducing-animations---modal-with-transitions---codepen)
+  - [06-01 Introducing Animations - modal with transitions - codepen - CSS Transitions and Vue Transitions](#06-01-introducing-animations---modal-with-transitions---codepen---css-transitions-and-vue-transitions)
+  - [06-01 Introducing Animations - modal with transitions 2](#06-01-introducing-animations---modal-with-transitions-2)
+    - [06-01 Introducing Animations - modal with transitions 2 - Questions](#06-01-introducing-animations---modal-with-transitions-2---questions)
+- [06-02 CSS Animation](#06-02-css-animation)
+  - [06-02 CSS Animation ex1 - simplest](#06-02-css-animation-ex1---simplest)
+  - [06-02 CSS Animation ex2 - bouncing ball](#06-02-css-animation-ex2---bouncing-ball)
+    - [06-02 CSS Animation ex2 - bouncing ball - excerpts](#06-02-css-animation-ex2---bouncing-ball---excerpts)
+    - [hacks to get hardware acceleration](#hacks-to-get-hardware-acceleration)
+    - [personality and life of animation](#personality-and-life-of-animation)
+- [06-03 Challenge 5: Adding Animation](#06-03-challenge-5-adding-animation)
+- [06-04 Challenge 5: Solution](#06-04-challenge-5-solution)
+- [06-05 Transition Modes](#06-05-transition-modes)
+  - [06-05 Transition Modes - ex1 - comic strip replacing](#06-05-transition-modes---ex1---comic-strip-replacing)
+- [06-06 JavaScript Hooks](#06-06-javascript-hooks)
+  - [06-06 JavaScript Hooks - `v-bind:css="false"`](#06-06-javascript-hooks---v-bindcssfalse)
+  - [06-06 JavaScript Hooks - ex1 basic example](#06-06-javascript-hooks---ex1-basic-example)
+  - [06-06 JavaScript Hooks - ex2 type here example with dancing words](#06-06-javascript-hooks---ex2-type-here-example-with-dancing-words)
+  - [06-06 JavaScript Hooks - passing done to animation libraries](#06-06-javascript-hooks---passing-done-to-animation-libraries)
+- [06-07 Connect to Interaction](#06-07-connect-to-interaction)
+  - [06-07 Connect to Interaction - Wall-E animation](#06-07-connect-to-interaction---wall-e-animation)
+- [06-08 Simple Transition](#06-08-simple-transition)
+  - [06-08 Simple Transition - Sliding Page In Nuxt](#06-08-simple-transition---sliding-page-in-nuxt)
+- [06-09 Page-Specific Transitions](#06-09-page-specific-transitions)
+  - [06-09 Page-Specific Transitions - Basic Example](#06-09-page-specific-transitions---basic-example)
+  - [06-09 Page Specific Transitions - JS Hooks](#06-09-page-specific-transitions---js-hooks)
+- [06-10 Planning & Fancy Demo](#06-10-planning--fancy-demo)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# 06 Animations
 
 [05 Animations Intro](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/1)  
 password: `!vue!`
@@ -896,7 +897,58 @@ Using the `mounted` hook lets you start a loop that always runs.
 
 
 ## 06-09 Page-Specific Transitions
+[Page-Specific Transitions Video](https://frontendmasters.com/courses/vue/page-specific-transitions/)
+[Page-Specific Transitions Slides](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/52)
 
+* add page-specific transitions in Nuxt by exporting an object with 
+  key `transitions` set to the animation you want
+* library [Animate.css](https://daneden.github.io/animate.css/) is helpful here
+
+### 06-09 Page-Specific Transitions - Basic Example
+[Basic Example - Demo](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/55)
+
+```vue
+<template>
+  <div class="container">
+    <h1>This is the contact page</h1>
+    <p><nuxt-link to="/">Home page</nuxt-link></p>
+  </div>
+</template>
+ 
+<script>
+export default {
+  transition: 'fadeOpacity'
+}
+</script>
+```
+
+After you have this transition set up, hook into it in `main.css` or component scoped styles
+```css
+.fadeOpacity-enter-active, .fadeOpacity-leave-active {
+  transition: opacity .35s ease-out;
+}
+ 
+.fadeOpacity-enter, .fadeOpacity-leave-active {
+  opacity: 0;
+}
+```
+
+### 06-09 Page Specific Transitions - JS Hooks
+[page specific js hooks slides](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/56)
+
+js hooks is "where the good stuff is at in my mind"
+
+[demo of using js hooks - spinning page](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/62)
+
+basic example has `beforeEnter`, `enter`, `leave` hooks
+* inside of those, used [`TweenMax` from `gsap`](https://greensock.com/tweenmax/)
+
+she has [a slide about animating single elements](http://slides.com/sdrasner/intro-to-vue-5?token=5zRhIuNg#/63)
+
+around 2:50 she mentions that Vue has `$refs` and its purpose is similar to react
+* she never has this in her code as far as I can see
+* she mentions that some libraries allow you to access dom node directly
+* see [Vue Docs - Accessing Child Component Instances & Child Elements](https://vuejs.org/v2/guide/components-edge-cases.html#Accessing-Child-Component-Instances-amp-Child-Elements)
 
 
 ## 06-10 Planning & Fancy Demo
