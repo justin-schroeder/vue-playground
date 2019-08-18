@@ -26,6 +26,14 @@
     - [07-02 Mixins - Merging - overriding a mixin](#07-02-mixins---merging---overriding-a-mixin)
   - [07-02 Mixins - Global Mixins](#07-02-mixins---global-mixins)
 - [07-03 Custom Directives](#07-03-custom-directives)
+  - [07-03 Custom Directives - examples of calling directives](#07-03-custom-directives---examples-of-calling-directives)
+    - [Vue Lifecycle Diagram](#vue-lifecycle-diagram)
+  - [07-03 Custom Directives - ex - tack to side of page](#07-03-custom-directives---ex---tack-to-side-of-page)
+    - [07-03 Custom Directives - ex - tack to side of page - basic](#07-03-custom-directives---ex---tack-to-side-of-page---basic)
+    - [07-03 Custom Directives - ex - tack to side of page - with directive args](#07-03-custom-directives---ex---tack-to-side-of-page---with-directive-args)
+    - [07-03 Custom Directives - ex - tack to side of page - with > 1 directive args](#07-03-custom-directives---ex---tack-to-side-of-page---with--1-directive-args)
+  - [07-03 Custom Directives - real example - v-scroll](#07-03-custom-directives---real-example---v-scroll)
+- [07-04 Challenge 6 - Filter](#07-04-challenge-6---filter)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -309,3 +317,150 @@ The mixins example in Sara's repo has a global example
 # 07-03 Custom Directives
 [Custom Directives Video](https://frontendmasters.com/courses/vue/custom-directives/)
 [Custom Directives Slides](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/24)
+
+* if you need something again and again
+
+
+## 07-03 Custom Directives - examples of calling directives
+* `v-example` - no arguments
+* `v-example="value"` - pass value into directive
+  ```vue
+  <div v-if="stateExample">I will show up 
+  if stateExample is true</div>
+  ```
+* `v-example="string"` - pass string into directive
+  ```vue
+  <p v-html="'<strong>this is an example of a string
+   in some text</strong>'"></p>
+  ```
+* `v-example:arg="value"` - pass an arg into directive
+  ```vue
+  <div v-bind:class="someClassObject"></div>
+  ```
+* `v-example:arg.modifier="value"` - pass modifier
+
+see http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/27
+
+### Vue Lifecycle Diagram
+![Vue Lifecycle Diagram](./assets/vue-custom-directives-flat.svg)
+See also https://s3.amazonaws.com/media-p.slid.es/uploads/75854/images/3909041/custom-directives-flat.svg
+
+
+## 07-03 Custom Directives - ex - tack to side of page
+
+### 07-03 Custom Directives - ex - tack to side of page - basic
+* basic idea - stick something X px from top of page, where X is passed in
+* the 2nd arg of the directive is `binding` which contains
+  the arguments to the binding and the value passed to the binding
+* "arguments" here means `:left` in `v-tack:left`
+* "value" here means `70` in `v-tack="70"`
+
+```vue
+<div id="app">
+  <p>Scroll down the page</p>
+  <p v-tack="70">Stick me 70px from the top of the page</p>
+</div>
+
+<script>
+  Vue.directive('tack', {
+    bind(el, binding, vnode) {
+      el.style.position = 'fixed'
+      el.style.top = binding.value + 'px'
+    }
+  });
+</script>
+
+```
+
+### 07-03 Custom Directives - ex - tack to side of page - with directive args
+* the 2nd arg of the directive is `binding` 
+* the `binding.arg` attribute contains the `:left` in `v-tack:left`
+
+```vue
+<p v-tack:left="70">I'll now be offset from the left instead of the top</p>
+<script>
+  Vue.directive('tack', {
+    bind(el, binding, vnode) {
+      el.style.position = 'fixed';
+      const s = (binding.arg == 'left' ? 'left' : 'top');
+      el.style[s] = binding.value + 'px';
+    }
+  });
+</script>
+
+```
+
+### 07-03 Custom Directives - ex - tack to side of page - with > 1 directive args
+* the 2nd arg of the directive is `binding` 
+* `binding.value` attribute contains the val passed to the directive;
+  in `v-tack="{ top: '40', left: '100' }"` the `binding.value` is the object
+* you can then access `binding.value.top` and `binding.value.left`
+
+```vue
+<p v-tack="{ top: '40', left: '100' }">Stick me 40px from the top of the
+page and 100px from the left of the page</p>
+<script>
+  Vue.directive('tack', {
+    bind(el, binding, vnode) {
+      el.style.position = 'fixed';
+      el.style.top = binding.value.top + 'px';
+      el.style.left = binding.value.left + 'px';
+    }
+  }); 
+</script>
+```
+
+
+## 07-03 Custom Directives - real example - v-scroll
+She uses [Waypoints](http://imakewebthings.com/waypoints/) library
+* lets you attach trigger or hook to a scroll event
+* when it gets to a point in the page, fire something 
+  * animation
+  * toggle
+  * etc
+* you can mimic this in vue really easily using custom directives
+* see [codepen for v-scroll here](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/35)
+
+```vue
+<template>
+  <div class="box" v-scroll="handleScroll">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque amet harum aut ab veritatis earum porro praesentium ut corporis. Quasi provident dolorem officia iure fugiat, eius mollitia sequi quisquam.</p>
+  </div>
+</template>
+<script>
+  Vue.directive('scroll', {
+    inserted: function(el, binding) {
+      let f = function(evt) {
+        if (binding.value(evt, el)) {
+          window.removeEventListener('scroll', f);
+        }
+      };
+      window.addEventListener('scroll', f);
+    },
+  });
+  
+  // main app
+  new Vue({
+    el: '#app',
+    methods: {
+     handleScroll: function(evt, el) {
+      if (window.scrollY > 50) {
+        TweenMax.to(el, 1.5, {
+          y: -10,
+          opacity: 1,
+          ease: Sine.easeOut
+        })
+      }
+      return window.scrollY > 100;
+      }
+    }
+  });
+</script>
+```
+
+See [her advanced demo of custom bindings here using d3](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/36)
+
+
+# 07-04 Challenge 6 - Filter
+[Challenge 6 - Filter Video](https://frontendmasters.com/courses/vue/challenge-6-filter/)
+[Challenge 6 - Filter Slide](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/37)
