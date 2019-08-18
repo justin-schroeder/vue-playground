@@ -318,7 +318,7 @@ The mixins example in Sara's repo has a global example
 [Custom Directives Video](https://frontendmasters.com/courses/vue/custom-directives/)
 [Custom Directives Slides](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/24)
 
-* if you need something again and again
+* useful if you need something again and again
 
 
 ## 07-03 Custom Directives - examples of calling directives
@@ -342,8 +342,7 @@ The mixins example in Sara's repo has a global example
 see http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/27
 
 ### Vue Lifecycle Diagram
-![Vue Lifecycle Diagram](./assets/vue-custom-directives-flat.svg)
-See also https://s3.amazonaws.com/media-p.slid.es/uploads/75854/images/3909041/custom-directives-flat.svg
+![Vue Lifecycle Diagram](./assets/vue-custom-directives-flat.svg)  
 
 
 ## 07-03 Custom Directives - ex - tack to side of page
@@ -465,9 +464,17 @@ See [her advanced demo of custom bindings here using d3](http://slides.com/sdras
 [Challenge 6 - Filter Video](https://frontendmasters.com/courses/vue/challenge-6-filter/)
 [Challenge 6 - Filter Slide](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/37)
 [Challenge 6 - Filter / Directives - Source Codepen](https://codepen.io/sdras/pen/LLXLRX)
-[Challenge 6 - Filter / Directives - My Codepen](https://codepen.io/sdras/pen/LLXLRX)
+[Challenge 6 - Filter / Directives - My Codepen](https://codepen.io/codekiln/pen/PoYzBEO)
 * make an ordinal filter to add 1st 2nd to 1, 2 etc
 * make a directive to change the color based on how passed in
 
-I might skip this one for now - 
-TODO: this challenge
+[Challenge 6 - Filter / Directives - Solution Codepen](https://codepen.io/sdras/pen/LLXLRX/)
+* she used `<input v-model.number="num" type="number" min="1" max="10" step="1"/>`
+  * this uses `.number` modifier which changes number to string
+  
+Her directive looked like this: 
+```vue
+Vue.directive('color', function (el, binding) {
+  el.style.color = binding.value
+})
+```
