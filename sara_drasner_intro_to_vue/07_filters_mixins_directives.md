@@ -464,3 +464,10 @@ See [her advanced demo of custom bindings here using d3](http://slides.com/sdras
 # 07-04 Challenge 6 - Filter
 [Challenge 6 - Filter Video](https://frontendmasters.com/courses/vue/challenge-6-filter/)
 [Challenge 6 - Filter Slide](http://slides.com/sdrasner/intro-to-vue-6?token=fcL8qgTg#/37)
+[Challenge 6 - Filter / Directives - Source Codepen](https://codepen.io/sdras/pen/LLXLRX)
+[Challenge 6 - Filter / Directives - My Codepen](https://codepen.io/sdras/pen/LLXLRX)
+* make an ordinal filter to add 1st 2nd to 1, 2 etc
+* make a directive to change the color based on how passed in
+
+I might skip this one for now - 
+TODO: this challenge
