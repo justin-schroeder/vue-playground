@@ -5,15 +5,14 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Vue Reference](#vue-reference)
-  - [Vue Animations](#vue-animations)
-    - [Vue Animations - Transition Classes](#vue-animations---transition-classes)
-      - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue)
-    - [Vue Animations - Transition Modes](#vue-animations---transition-modes)
-      - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue-1)
-  - [Vue Directives](#vue-directives)
-    - [Vue Directives - Custom](#vue-directives---custom)
-      - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue-2)
+- [Vue Animations](#vue-animations)
+  - [Vue Animations - Transition Classes](#vue-animations---transition-classes)
+    - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue)
+  - [Vue Animations - Transition Modes](#vue-animations---transition-modes)
+    - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue-1)
+- [Vue Directives](#vue-directives)
+  - [Vue Directives - Custom](#vue-directives---custom)
+    - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue-2)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
