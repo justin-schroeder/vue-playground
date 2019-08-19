@@ -34,6 +34,10 @@
     - [07-03 Custom Directives - ex - tack to side of page - with > 1 directive args](#07-03-custom-directives---ex---tack-to-side-of-page---with--1-directive-args)
   - [07-03 Custom Directives - real example - v-scroll](#07-03-custom-directives---real-example---v-scroll)
 - [07-04 Challenge 6 - Filter](#07-04-challenge-6---filter)
+- [07-05 Challenge 6 - Filter - Solution](#07-05-challenge-6---filter---solution)
+  - [07-05 Challenge 6 - Filter - Solution - Directives Notes After Working Through](#07-05-challenge-6---filter---solution---directives-notes-after-working-through)
+  - [07-05 Challenge 6 - Filter - Solution - Filter Notes After Working Through](#07-05-challenge-6---filter---solution---filter-notes-after-working-through)
+  - [07-05 Challenge 6 - Filter - Solution - My Solution](#07-05-challenge-6---filter---solution---my-solution)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -468,13 +472,106 @@ See [her advanced demo of custom bindings here using d3](http://slides.com/sdras
 * make an ordinal filter to add 1st 2nd to 1, 2 etc
 * make a directive to change the color based on how passed in
 
+# 07-05 Challenge 6 - Filter - Solution
 [Challenge 6 - Filter / Directives - Solution Codepen](https://codepen.io/sdras/pen/LLXLRX/)
 * she used `<input v-model.number="num" type="number" min="1" max="10" step="1"/>`
   * this uses `.number` modifier which changes number to string
   
 Her directive looked like this: 
 ```vue
-Vue.directive('color', function (el, binding) {
-  el.style.color = binding.value
-})
+  Vue.directive('color', function (el, binding) {
+    el.style.color = binding.value
+  })
 ```
+
+
+## 07-05 Challenge 6 - Filter - Solution - Directives Notes After Working Through
+* I made a [local directive (vue docs)](https://vuejs.org/v2/guide/custom-directive.html) using 
+  the `directives` key in component
+* if you call a custom directive `color`, you will need to call it like 
+  `<my-component v-mycolor="blah"/>` with `v-mycolor`
+* If you make a single function handler for directive, it lets you jack into both 
+* a directive can hook into [`bind`, `inserted` or `update` functions (vue docs)](https://vuejs.org/v2/guide/custom-directive.html#Hook-Functions) 
+* there is a [directive function shorthand (vue docs)](https://vuejs.org/v2/guide/custom-directive.html#Function-Shorthand)
+  where you only add a single function handler and then 
+* √ the directives API is powerful but the documentation is a bit sparse. 
+
+
+## 07-05 Challenge 6 - Filter - Solution - Filter Notes After Working Through
+Declare filters like this: 
+
+```vue
+  filters: {
+    ordinal(num) {
+      return ordinal_suffix_of(num)
+    }
+  },
+``` 
+
+Use filter like this: 
+```vue
+<p>You won <span>{{ num | ordinal }}</span> place!</p>
+```
+
+
+## 07-05 Challenge 6 - Filter - Solution - My Solution
+Here is my solution: [Challenge 6 - Filter / Directives - My Codepen](https://codepen.io/codekiln/pen/PoYzBEO)
+```vue
+<template>
+  <div id="app">
+    <small>Your place here: </small>
+    <input type="number" v-model="num"
+         min="1" max="1000">
+    <div class="won" v-placecolor="num" v-if="num">
+      <h2>Congratulations!</h2>
+      <p>You won <span>{{ num | ordinal }}</span> place!</p>
+    </div>
+  </div>
+</template>
+<script>
+  function ordinal_suffix_of(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+      return i + "st";
+    }
+    if (j == 2 && k != 12) {
+      return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+      return i + "rd";
+    }
+    return i + "th";
+  }
+  
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        num: 2    
+      }
+    },
+    filters: {
+      ordinal(num) {
+        return ordinal_suffix_of(num)
+      }
+    },
+    directives: {
+      'placecolor': function(el, binding) {
+        if (binding.oldValue && binding.value === binding.oldValue) return
+        console.log(binding)
+        if (binding.value == 1) {
+          el.style.backgroundColor = 'red';
+        } else if (binding.value == 2) {
+          el.style.backgroundColor = 'orange';
+        } else if (binding.value == 3) {
+          el.style.backgroundColor = 'lightgreen';
+        } else {
+          el.style.backgroundColor = 'lightblue';
+        }
+      }
+    }
+  });
+</script>
+```
+
