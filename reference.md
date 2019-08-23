@@ -13,6 +13,8 @@
 - [Vue Directives](#vue-directives)
   - [Vue Directives - Custom](#vue-directives---custom)
     - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue-2)
+- [Vuex](#vuex)
+  - [Veux - Map Actions](#veux---map-actions)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -43,3 +45,9 @@ There are two modes, `in-out`, and `out-in`; you'll almost always use `out-in`, 
 #### From Sara Drasner's Intro to Vue
 * [07-03 Custom Directives](./sara_drasner_intro_to_vue/07_filters_mixins_directives.md#07-03-custom-directives)
 * [07-05 Challenge 6 - Filter - Solution - Directives Notes After Working Through](./sara_drasner_intro_to_vue/07_filters_mixins_directives.md#07-05-challenge-6---filter---solution---directives-notes-after-working-through)
+
+## Vuex
+
+### Veux - Map Actions
+* [`mapActions` helper (Vue Docs)](https://vuex.vuejs.org/guide/actions.html#dispatching-actions-in-components)
+* [08-01 Intro to Veux - `mapActions`](./sara_drasner_intro_to_vue/08_veux.md#08-01-intro-to-veux---mapactions)
