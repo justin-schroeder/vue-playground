@@ -268,7 +268,16 @@ She mentions that if we want, we can make `computed` below the
 * the mutation that changes the template number 
 * `computed` has `template()` which returns template number
 
-## 08-04 Veux Challenge 7
+## 08-04 Veux Challenge 7 Problem
 * [`./intro-to-vue/commentform-problem/README.md`](sara_drasner_intro_to_vue/intro-to-vue/commentform-problem)
+* [Veux Challenge 7 Problem Video](https://frontendmasters.com/courses/vue/challenge-7-vuex/)
+
+We don't have a store initially
+Task is to add a store
+We want to make adding comments & updating comments live in store
+
+## 08-05 Veux Challenge 7 Solution
 * [`./intro-to-vue/commentform-solution/README.md`](sara_drasner_intro_to_vue/intro-to-vue/commentform-problem)
-* [Veux Challenge 7 Video](https://frontendmasters.com/courses/vue/challenge-7-vuex/)
+* [Veux Challenge 7 Solution Video](https://frontendmasters.com/courses/vue/challenge-7-solution/)
+
+* make the store file
