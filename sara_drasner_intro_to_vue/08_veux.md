@@ -11,9 +11,10 @@
   - [08-01 Intro to Veux - Basic Abstract Example](#08-01-intro-to-veux---basic-abstract-example)
   - [08-01 Intro to Veux - Additional Parameters](#08-01-intro-to-veux---additional-parameters)
   - [08-01 Intro to Veux - Getters](#08-01-intro-to-veux---getters)
-  - [08-01 Intro to Veux - `veux-example` code](#08-01-intro-to-veux---veux-example-code)
+  - [08-02 Examining a Veux Setup - `veux-example` code](#08-02-examining-a-veux-setup---veux-example-code)
   - [08-01 Intro to Veux - `mapActions`](#08-01-intro-to-veux---mapactions)
-- [08-02 Veux Example Walkthrough - Weather Codepen](#08-02-veux-example-walkthrough---weather-codepen)
+- [08-03 Veux Example Walkthrough - Weather Codepen](#08-03-veux-example-walkthrough---weather-codepen)
+- [08-04 Veux Challenge 7](#08-04-veux-challenge-7)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -194,7 +195,7 @@ new Vue({
 })
 ```
 
-### 08-01 Intro to Veux - `veux-example` code
+### 08-02 Examining a Veux Setup - `veux-example` code
 See [./vuex-example/README.md](./intro-to-vue/vuex-example/README.md)
 See [`Action.vue`](./vuex-example/src/components/Action.vue)
 See [`AdjustState.vue`](./vuex-example/src/components/AdjustState.vue)
@@ -253,10 +254,21 @@ She mentions that if we want, we can make `computed` below the
   data keys change, and data keys are not changing here
 
 
-## 08-02 Veux Example Walkthrough - Weather Codepen
+## 08-03 Veux Example Walkthrough - Weather Codepen
 [Intro to Veux Video](https://frontendmasters.com/courses/vue/vuex-example-walkthrough/)
-[Intro to Veux Slides](http://slides.com/sdrasner/intro-to-vue-7?token=u9qUgRsW#/)
+[Intro to Veux Slides](http://slides.com/sdrasner/intro-to-vue-7?token=u9qUgRsW#/20)
 * password: `!vue!`
 
 [weather example codepen](https://codepen.io/sdras/pen/YNpaoJ?editors=1010)
+* she's using an element `g` - what is it?
+  * one example is the phonebutton
+  * another is the element that shows the weather if `showWeather` is true
+* wrap the components in a transition group
+  * they all fade in and fade out
+* the mutation that changes the template number 
+* `computed` has `template()` which returns template number
 
+## 08-04 Veux Challenge 7
+* [`./intro-to-vue/commentform-problem/README.md`](sara_drasner_intro_to_vue/intro-to-vue/commentform-problem)
+* [`./intro-to-vue/commentform-solution/README.md`](sara_drasner_intro_to_vue/intro-to-vue/commentform-problem)
+* [Veux Challenge 7 Video](https://frontendmasters.com/courses/vue/challenge-7-vuex/)
