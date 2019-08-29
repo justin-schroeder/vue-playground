@@ -281,3 +281,10 @@ We want to make adding comments & updating comments live in store
 * [Veux Challenge 7 Solution Video](https://frontendmasters.com/courses/vue/challenge-7-solution/)
 
 * make the store file
+
+# 09-01 Wrapping Up
+[wrapping up slides]http://slides.com/sdrasner/intro-to-vue-7?token=u9qUgRsW#/25)
+* [Evan You's Book - The Majesty of Vue](https://leanpub.com/vuejs2)
+* [awesome-vue](https://github.com/vuejs/awesome-vue)
+* [her fav vue newsletter](https://news.vuejs.org)
+* [monterail blog](https://www.monterail.com/blog)
