@@ -288,3 +288,11 @@ We want to make adding comments & updating comments live in store
 * [awesome-vue](https://github.com/vuejs/awesome-vue)
 * [her fav vue newsletter](https://news.vuejs.org)
 * [monterail blog](https://www.monterail.com/blog)
+
+## Adoption
+* Alibaba 
+* Weebo
+* Adobe
+* Nespresso
+* GitLab
+
