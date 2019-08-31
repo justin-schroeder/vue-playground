@@ -98,3 +98,7 @@ and it does make sense why that works, because it creates a new scope for each k
 
 But I do not understand why the other solution does not work, because 
 `let` is block scoped, and the block scope should allow a for loop to work here.
+
+## 01-03 Challenge 1: Solution
+[Challenge 1: Solution Video](https://frontendmasters.com/courses/advanced-vue/challenge-1-solution/)
+He doesn't explain anything surprising around what my issue was.
