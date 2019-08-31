@@ -101,4 +101,31 @@ But I do not understand why the other solution does not work, because
 
 ## 01-03 Challenge 1: Solution
 [Challenge 1: Solution Video](https://frontendmasters.com/courses/advanced-vue/challenge-1-solution/)
-He doesn't explain anything surprising around what my issue was.
+He doesn't explain anything surprising around what my issue was in 01-02.
+
+### Intro Challenge 2 - Dependency Tracker
+[Exercise 1.2 - Dep Tracker](./code/1-reactivity/1.2.md)
+- Create a `Dep` class with two methods: `depend` and `notify`.
+  - `depend` means the current code depends on this dependency
+  - `notify` means this dependency has changed
+  - we need to associate a piece of computation (subscriber) with a dependency (publisher)
+- autorun will take update function
+  - when you are in reactive zone you can update dependenciess
+  - we'll call `dep.depnd() ` which adds that dependency into a subscriber list ... 
+    - subscriber list for what?
+
+#### dependency tracker hints
+- js is single threaded, so imagine this:
+  ```javascript
+    let activeUpdate
+    
+    function autorun(update) {
+      function wrappedUpdate() {
+        activeUpdate = wrappedUpdate
+        update()
+        activeUpdate = null
+      }
+    }
+    ```
+  - here, `activeUpdate will null unless it is executing.
+  

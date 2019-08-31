@@ -1,11 +1,40 @@
 <script>
-// a class representing a dependency
-// exposing it on window is necessary for testing
-window.Dep = class Dep {
-  // Implement this!
-}
+  // a class representing a dependency
+  // exposing it on window is necessary for testing
+  window.Dep = class Dep {
 
-function autorun (update) {
-  // Implement this!
-}
+    constructor() {
+      this.subscribers = new Set();
+    }
+
+    // Implement this!
+    depend() {
+      if (activeUpdate) {
+        // register the current active update as a subscriber
+        this.subscribers.add(this);
+        if (!activeUpdate) {
+          this.notify()
+        }
+      }
+    }
+
+    notify() {
+      const that = this;
+      // run all subscriber functions
+      Array.from(this.subscribers).forEach(item => {
+        item.notify()
+      })
+    }
+  }
+
+  let activeUpdate
+
+  function autorun(update) {
+    // Implement this!
+    function wrappedUpdate() {
+      activeUpdate = wrappedUpdate
+      update()
+      activeUpdate = null
+    }
+  }
 </script>
