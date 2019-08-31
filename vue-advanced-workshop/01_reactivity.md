@@ -68,3 +68,33 @@ Objective: write `convert` function
   * run `npm install` 
   * run `npm test -- 1.1` to assert that it is correct
   
+I had a solution that did not work, and I still cannot figure out why: 
+```javascript
+function convert(obj) {
+  for (const key in Object.getOwnPropertyNames(obj)) {
+    let internalValue = obj[key];
+    Object.defineProperty(obj, key, {
+      get() {
+        console.log(`getting key "${key}": ${internalValue}`)
+        return internalValue;
+      },
+      set(newVal) {
+        console.log(`setting key "${key}" to: ${newVal}`)
+        internalValue = newVal;
+      }
+    })
+  }
+}
+```
+
+This ends up producing: 
+```
+  console.error node_modules/jsdom/lib/jsdom/virtual-console.js:29
+    Error: Uncaught [TypeError: Cannot read property '0' of undefined]
+```
+
+The solution that does work is to use `Object.keys().forEach(key => {})`, 
+and it does make sense why that works, because it creates a new scope for each key.
+
+But I do not understand why the other solution does not work, because 
+`let` is block scoped, and the block scope should allow a for loop to work here.
