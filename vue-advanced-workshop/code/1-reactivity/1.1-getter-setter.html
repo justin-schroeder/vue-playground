@@ -1,5 +1,36 @@
 <script>
-function convert (obj) {
-  // Implement this!
-}
+  // this works
+  function convert(obj) {
+    Object.keys(obj).forEach( key => {
+      let val = obj[key];
+      Object.defineProperty(obj, key, {
+        get() {
+          console.log(`getting key "${key}": ${val}`)
+          return val;
+        },
+        set(v) {
+          console.log(`setting key "${key}" to: ${v}`)
+          val = v;
+        }
+      })
+    })
+  }
+
+  // why the heck doesn't this work???? See below
+  // maybe answer is in https://2ality.com/2015/02/es6-scoping.html
+  // function convert(obj) {
+  //   for (const key in Object.getOwnPropertyNames(obj)) {
+  //     let internalValue = obj[key];
+  //     Object.defineProperty(obj, key, {
+  //       get() {
+  //         console.log(`getting key "${key}": ${internalValue}`)
+  //         return internalValue;
+  //       },
+  //       set(newVal) {
+  //         console.log(`setting key "${key}" to: ${newVal}`)
+  //         internalValue = newVal;
+  //       }
+  //     })
+  //   }
+  // }
 </script>

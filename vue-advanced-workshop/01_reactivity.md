@@ -58,7 +58,7 @@ Object.defineProperty(startingObj, myKey, {
 }) 
 ```
  
-### [Exercise 1.1](vue-advanced-workshop/code/1-reactivity/1.1.md)
+### [Exercise 1.1](./code/1-reactivity/1.1.md)
 Objective: write `convert` function
 * it converts incoming argument into getters & setters
 * it should retain the original behavior
@@ -66,5 +66,5 @@ Objective: write `convert` function
 * when you set a value, it should console log it
 * to verify:
   * run `npm install` 
-  * run `npm test -- -t 1.1` to assert that it is correct
+  * run `npm test -- 1.1` to assert that it is correct
   
