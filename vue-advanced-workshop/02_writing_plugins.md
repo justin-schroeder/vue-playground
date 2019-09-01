@@ -8,6 +8,7 @@
 - [02-01 Introducing Writing Plugins](#02-01-introducing-writing-plugins)
 - [02-02 Challenge 4: Writing a Simple Plugin](#02-02-challenge-4-writing-a-simple-plugin)
   - [my notes while solving](#my-notes-while-solving)
+- [02-03 Challenge 4: Simple Plugin Solution](#02-03-challenge-4-simple-plugin-solution)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -50,3 +51,8 @@ key in the component options.
     `that.$options`, etc.
 * I did eventually get it too work, after reading the API docs for 
   [`vm.$watch(exprOrFn, callback, [options]`](https://vuejs.org/v2/api/#vm-watch) 
+
+## 02-03 Challenge 4: Simple Plugin Solution
+[Challenge 4: Simple Plugin Solution Video](https://frontendmasters.com/courses/advanced-vue/challenge-4-solution/)
+* he uses `this.$watch`
+* note, he doesn't switch `this` and `that` like I did - let's try it his way

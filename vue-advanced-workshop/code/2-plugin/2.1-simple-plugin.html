@@ -6,12 +6,11 @@
       Vue.mixin({
         created: function() {
           if (this.$options.hasOwnProperty('rules')) {
-            const that = this;
             Object.keys(this.$options.rules).forEach(key => {
-              if (that.hasOwnProperty(key)) {
-                const {validate, message} = that.$options.rules[key];
-                that.$watch(key, function() {
-                  const val = that[key];
+              if (this.hasOwnProperty(key)) {
+                const {validate, message} = this.$options.rules[key];
+                this.$watch(key, function() {
+                  const val = this[key];
                   if (!validate(val)) {
                     window.console.log(message);
                     return false;
