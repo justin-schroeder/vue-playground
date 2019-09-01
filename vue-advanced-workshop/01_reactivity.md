@@ -1,3 +1,22 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [01 Reactivity](#01-reactivity)
+  - [01-01 Introducing Reactivity](#01-01-introducing-reactivity)
+  - [01-02 Getters & Setters](#01-02-getters--setters)
+    - [01-02 Object.defineProperty](#01-02-objectdefineproperty)
+    - [Exercise 1.1](#exercise-11)
+  - [01-03 Challenge 1: Solution](#01-03-challenge-1-solution)
+    - [Intro Challenge 2 - Dependency Tracker](#intro-challenge-2---dependency-tracker)
+      - [dependency tracker hints](#dependency-tracker-hints)
+  - [01-04 Challenge 2: Dependency Tracker](#01-04-challenge-2-dependency-tracker)
+    - [01-04 Challenge 2: Dependency Tracker - My Description](#01-04-challenge-2-dependency-tracker---my-description)
+  - [01-05 Challenge 3: Mini Observer](#01-05-challenge-3-mini-observer)
+    - [Exercise 1.3](#exercise-13)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 01 Reactivity
 
 ## 01-01 Introducing Reactivity

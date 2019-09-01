@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Vue Advanced Workshop](#vue-advanced-workshop)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+  - [Usage](#usage)
+    - [Switching Between Work and Solution Branches](#switching-between-work-and-solution-branches)
+    - [Saving Your Work](#saving-your-work)
+    - [Automated Tests](#automated-tests)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Vue Advanced Workshop
 
 This is the companion repository to the Vue Advanced Workshop.

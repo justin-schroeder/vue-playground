@@ -4,17 +4,20 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [08-01 Intro to Veux](#08-01-intro-to-veux)
-  - [08-01 Intro to Veux - Why and When?](#08-01-intro-to-veux---why-and-when)
-  - [08-01 Intro to Veux - Basic Setup](#08-01-intro-to-veux---basic-setup)
-  - [08-01 Intro to Veux - Parts of Store](#08-01-intro-to-veux---parts-of-store)
-  - [08-01 Intro to Veux - Basic Abstract Example](#08-01-intro-to-veux---basic-abstract-example)
-  - [08-01 Intro to Veux - Additional Parameters](#08-01-intro-to-veux---additional-parameters)
-  - [08-01 Intro to Veux - Getters](#08-01-intro-to-veux---getters)
-  - [08-02 Examining a Veux Setup - `veux-example` code](#08-02-examining-a-veux-setup---veux-example-code)
-  - [08-01 Intro to Veux - `mapActions`](#08-01-intro-to-veux---mapactions)
-- [08-03 Veux Example Walkthrough - Weather Codepen](#08-03-veux-example-walkthrough---weather-codepen)
-- [08-04 Veux Challenge 7](#08-04-veux-challenge-7)
+  - [08-01 Intro to Veux](#08-01-intro-to-veux)
+    - [08-01 Intro to Veux - Why and When?](#08-01-intro-to-veux---why-and-when)
+    - [08-01 Intro to Veux - Basic Setup](#08-01-intro-to-veux---basic-setup)
+    - [08-01 Intro to Veux - Parts of Store](#08-01-intro-to-veux---parts-of-store)
+    - [08-01 Intro to Veux - Basic Abstract Example](#08-01-intro-to-veux---basic-abstract-example)
+    - [08-01 Intro to Veux - Additional Parameters](#08-01-intro-to-veux---additional-parameters)
+    - [08-01 Intro to Veux - Getters](#08-01-intro-to-veux---getters)
+    - [08-02 Examining a Veux Setup - `veux-example` code](#08-02-examining-a-veux-setup---veux-example-code)
+    - [08-01 Intro to Veux - `mapActions`](#08-01-intro-to-veux---mapactions)
+  - [08-03 Veux Example Walkthrough - Weather Codepen](#08-03-veux-example-walkthrough---weather-codepen)
+  - [08-04 Veux Challenge 7 Problem](#08-04-veux-challenge-7-problem)
+  - [08-05 Veux Challenge 7 Solution](#08-05-veux-challenge-7-solution)
+- [09-01 Wrapping Up](#09-01-wrapping-up)
+  - [Adoption](#adoption)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
