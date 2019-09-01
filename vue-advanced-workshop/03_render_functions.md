@@ -39,3 +39,42 @@ and what is shipped contains that, instead (pure JS)
 * full build with compiler is 30 kb gzipped
 * 20 kb gzipped if shipped without compiler
 
+## 03-02 Virtual DOM
+[VirtualDOM Video](https://frontendmasters.com/courses/advanced-vue/virtual-dom/)
+
+### native vs virtual DOM
+
+#### native vs virtual DOM - creating element
+Actual DOM - `document.createElement(‘div’)`
+Virtual DOM - `vm.$createElement(‘div’)`
+
+#### native vs virtual DOM - console logging
+
+**Actual DOM** - `[object HTMLDivElement]`
+* underlying implementation is kind of heavy / expensive
+* there is cost of translation between 
+
+**Virtual DOM** - `{ tag: ‘div’, data: { attrs: {}, … }, children: [] }`
+* it's just an POJO (cheap)
+* it can have a list of `children` - tree of virtual nodes
+
+Creating 1000 JS objects is cheap
+Creating 1000 DOM Nodes is expensive
+
+Virtual DOM - lightweight JS data format to represent what actual 
+DOM should look like at a given point in time
+
+Virtual DOM _is a way to get around the limitations of native DOM
+so that you can get into a paradigm of composing what you want the 
+DOM to look like_
+
+Virtual DOM _decouples rendering logic from actual DOM - enables 
+rendering capabilities for non-browser environments, 
+e.g. server-side and native mobile rendering._
+
+**Render Function** - a function that returns Virtual DOM
+
+Vue Template Explorer - https://template-explorer.vuejs.org
+
+## 03-03 Putting Everything Together
+[Putting Everything Together Video](https://frontendmasters.com/courses/advanced-vue/putting-everything-together/)
