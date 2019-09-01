@@ -129,3 +129,52 @@ He doesn't explain anything surprising around what my issue was in 01-02.
     ```
   - here, `activeUpdate will null unless it is executing.
   
+## 01-04 Challenge 2: Dependency Tracker
+* make a class `Dep` with `depend` and `notify` each passed no params
+* make a function `autorun`, it is passed a function `update`
+* when inner `update` function executes, our `Dependency` class 
+  can have access to the current `activeUpdate`
+* when we have a "grab" of the current updater function, we will 
+  register that as a dependency
+* `notify` goes through subscribers and invokes them
+* we are registering the `wrappedUpdate` as the `activeUpdate`
+  ... wtf
+* it keeps collecting dependencies
+* this seems like convoluted trickery that's not well-specified
+* it is specified the way someone that tacitly admits they don't 
+  know how to describe it to others
+
+### 01-04 Challenge 2: Dependency Tracker - My Description
+The purpose of this exercise is to create a Pub/Sub class `Dep`, 
+which lets you add functions to call and then later call them. 
+This will be a special purpose Pub/Sub class `Dep` such that 
+after `dep = new Dep()`, when `dep.depend()` is called within 
+a function `foo`, the `dep` instance should store a reference 
+to function `foo` and know how to call it. `dep` then contains 
+a collection of functions that it knows how to call. Then if 
+you call `dep.notify()`, it calls all of the functions.
+
+To test this class we will create a function `autorun(update)`,
+where `update` is a reference to a function. It should behave 
+like this: 
+
+```javascript
+  autorun(() => {
+    dep.depend()
+    window.console.log('updated')
+  })
+  dep.notify()
+  // we see 'updated' in the console log
+  
+  autorun(() => {
+    dep.depend()
+    window.console.log('updated 2')
+  })
+  dep.notify()
+  // we see BOTH 'updated' and 'updated 2' in the console log
+```
+
+
+## 01-05 Challenge 3: Mini Observer
+[Challenge 3 Mini Observer Video](https://frontendmasters.com/courses/advanced-vue/challenge-3-mini-observer/)
+
