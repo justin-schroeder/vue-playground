@@ -145,16 +145,19 @@ He doesn't explain anything surprising around what my issue was in 01-02.
   know how to describe it to others
 
 ### 01-04 Challenge 2: Dependency Tracker - My Description
-The purpose of this exercise is to create a Pub/Sub class `Dep`, 
-which lets you add functions to call and then later call them. 
-This will be a special purpose Pub/Sub class `Dep` such that 
-after `dep = new Dep()`, when `dep.depend()` is called within 
-a function `foo`, the `dep` instance should store a reference 
-to function `foo` and know how to call it. `dep` then contains 
-a collection of functions that it knows how to call. Then if 
-you call `dep.notify()`, it calls all of the functions.
+The purpose of this exercise is to see how write a function such that 
+when it is called, the function that is calling the function is accessed.
 
-To test this class we will create a function `autorun(update)`,
+This exercise creates a Pub/Sub class `Dep`, which lets you add 
+functions to call and then later call them. 
+
+This is a special purpose Pub/Sub class `Dep` that 
+after `dep = new Dep()`, when `dep.depend()` is called within 
+a function `foo`, `dep` should know about `foo`, and each function 
+you call it within is added to a collection of functions. Then if 
+you call `dep.notify()`, it calls all the functions.
+
+To test this class we create a function `autorun(update)`,
 where `update` is a reference to a function. It should behave 
 like this: 
 
@@ -174,7 +177,29 @@ like this:
   // we see BOTH 'updated' and 'updated 2' in the console log
 ```
 
+I'm still not sure why we did this exercise.
+
 
 ## 01-05 Challenge 3: Mini Observer
 [Challenge 3 Mini Observer Video](https://frontendmasters.com/courses/advanced-vue/challenge-3-mini-observer/)
+Put exercise 1.1 and 1.2 together to understand the Vue update system.
+- `convert()` from 1.1 becomes new `observe()`
+- `autorun()` from 1.2 is reused
 
+### [Exercise 1.3](./code/1-reactivity/1.3.md)
+- we want to create an object where when we access properties, 
+  it collects the things that depend on that property, calling 
+  `dep.depends()`
+- when we mutate the property by assigning to it, we call 
+  `dep.notify()` 
+
+It really was as simple as described. [1.3.test.js](./code/1-reactivity/__test__/1.3.test.js)
+* creates a state object with `count: 0`
+* calls `observe` on the state object, which creates getters and setters for each key in state
+* calls `autorun`, passing a lambda which console logs the value of state
+* increments the value of `state.count`
+  * shows that the incremented value of `state.count` is logged when we do that
+
+The way we do that is by renaming `convert()` to `observe()` and making it 
+so that we are creating a new instance of `dep` for every key in the object.
+Pretty clever, though I still don't quite see exactly how this will end up being used.
