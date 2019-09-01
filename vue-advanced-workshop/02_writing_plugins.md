@@ -54,5 +54,16 @@ key in the component options.
 
 ## 02-03 Challenge 4: Simple Plugin Solution
 [Challenge 4: Simple Plugin Solution Video](https://frontendmasters.com/courses/advanced-vue/challenge-4-solution/)
-* he uses `this.$watch`
-* note, he doesn't switch `this` and `that` like I did - let's try it his way
+* he uses `this.$watch` like I did
+* he doesn't switch `this` and `that` like I did - I switched; it works!
+  * `this` scope - the `created` function should have the right this scope, 
+    that makes sense. What doesn't make sense is why `this` is correct 
+    even in the `forEach` handler and the `this.$watch` handler.
+  * I have a feeling that when calling `this.$watch(key, fn)`, the `this`
+    of the fn is the Vue component
+  * it might make sense why  
+* he uses es6 object shorthand methods, I switched mine
+* I removed the return values, since they weren't used
+* Note, when using `this.$watch(key, function foo(val) {...}`,
+  `val` is passed, so you can just do `this.$watch(key, val => {...})`
+  * before, I didn't realize the val was passed 

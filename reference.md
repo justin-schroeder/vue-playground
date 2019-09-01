@@ -25,6 +25,7 @@ See [Vue Docs - How Changes Are Tracked](https://vuejs.org/v2/guide/reactivity.h
 See [`vm.$watch(exprOrFn, callback, [options]`](https://vuejs.org/v2/api/#vm-watch)
   * see [02-02 Challenge 4: Writing a Simple Plugin](vue-advanced-workshop/02_writing_plugins.md#02-02-challenge-4-writing-a-simple-plugin)
     where I used this
+  * Note, `callback` is passed the changed value
 
 ## Vue Animations
 
@@ -44,6 +45,13 @@ There are two modes, `in-out`, and `out-in`; you'll almost always use `out-in`, 
 * See [Transitions > Transition Modes in the vue docs](https://vuejs.org/v2/guide/transitions.html#Transition-Modes)
 * See Sarah Drasner's Replaing Comic Strip Example at [06-05 Transition Modes - ex1 - comic strip replacing](./sara_drasner_intro_to_vue/06_animations.md#06-05-transition-modes---ex1---comic-strip-replacing)
 
+## Vue Data
+[Vue Docs - `data`](https://vuejs.org/v2/api/#data)
+* [_The Vue instance also proxies all the properties found on the data object, 
+so `vm.a` will be equivalent to `vm.$data.a`_](https://vuejs.org/v2/api/#data)
+* properties starting with `_` or `$` will not be proxied on the Vue instance
+* _deep clone - `JSON.parse(JSON.stringify(vm.$data))`
+
 ## Vue Directives
 
 ### Vue Directives - Custom
@@ -60,6 +68,11 @@ There are two modes, `in-out`, and `out-in`; you'll almost always use `out-in`, 
 * [Vue Docs - vm.$options](https://vuejs.org/v2/api/#vm-options)
 
 * See [02-01 Introducing Writing Plugins](02_writing_plugins.md#02-01-introducing-writing-plugins)
+
+## Vue `this`
+
+[_within Vue components, this should always refer to the Vue instance_](https://blog.logrocket.com/cleaning-up-your-vue-js-code-with-es6/)
+* I can't find this documented anywhere
 
 ## Vuex
 
