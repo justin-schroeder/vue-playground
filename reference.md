@@ -5,6 +5,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
+- [Vue Change Detection](#vue-change-detection)
 - [Vue Animations](#vue-animations)
   - [Vue Animations - Transition Classes](#vue-animations---transition-classes)
     - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue)
@@ -19,6 +20,11 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## Vue Change Detection
+See [Vue Docs - How Changes Are Tracked](https://vuejs.org/v2/guide/reactivity.html#How-Changes-Are-Tracked)
+See [`vm.$watch(exprOrFn, callback, [options]`](https://vuejs.org/v2/api/#vm-watch)
+  * see [02-02 Challenge 4: Writing a Simple Plugin](vue-advanced-workshop/02_writing_plugins.md#02-02-challenge-4-writing-a-simple-plugin)
+    where I used this
 
 ## Vue Animations
 
