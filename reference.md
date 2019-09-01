@@ -11,10 +11,13 @@
     - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue)
   - [Vue Animations - Transition Modes](#vue-animations---transition-modes)
     - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue-1)
+- [Vue Data](#vue-data)
 - [Vue Directives](#vue-directives)
   - [Vue Directives - Custom](#vue-directives---custom)
     - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue-2)
 - [Vue Plugins](#vue-plugins)
+- [Vue Size](#vue-size)
+- [Vue `this`](#vue-this)
 - [Vuex](#vuex)
   - [Veux - Map Actions](#veux---map-actions)
 
@@ -68,6 +71,12 @@ so `vm.a` will be equivalent to `vm.$data.a`_](https://vuejs.org/v2/api/#data)
 * [Vue Docs - vm.$options](https://vuejs.org/v2/api/#vm-options)
 
 * See [02-01 Introducing Writing Plugins](02_writing_plugins.md#02-01-introducing-writing-plugins)
+
+## Vue Size
+2 builds for Vue
+* full build with compiler is 30 kb gzipped
+* 20 kb gzipped if shipped without compiler
+* see [03-01 Introducing Render Functions](./vue-advanced-workshop/03_render_functions.md#03-01-introducing-render-functions)
 
 ## Vue `this`
 
