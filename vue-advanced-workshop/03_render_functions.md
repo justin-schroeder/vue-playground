@@ -115,3 +115,50 @@ But:
 
 ## 03-05 Render Function API
 [Render Function API Video](https://frontendmasters.com/courses/advanced-vue/render-function-api/)
+
+```javascript
+export default {
+  render (h) {
+    return h('div', {}, [
+      // ...
+    ])
+  }
+}
+```
+
+There are many different implementations of DOM in js.
+[`hyperscript`](https://github.com/hyperhype/hyperscript) is a library 
+for creating hypertext, and it uses `h` by convention, so Vue follows it.
+
+
+### The `h` function
+Basic Invocation
+`h('div', 'some text)`
+
+Class and style get special treatment because of convenience support
+`h('div', {class: 'foo'}, 'some text')`
+
+Adding children
+`h('div', {...}, [ 'some text', h('span', 'bar')])`
+
+### `h` can directly render a component
+
+```javascript
+import MyComponent from '...'
+
+h(MyComponent, {
+  props: { /*…*/ }
+})
+```
+
+√ is `hyperscript` used directly in Vue?
+* I only saw [one reference to `hyperscript` in the Vue repo here](https://github.com/vuejs/vue/blob/v2.6.10/test/unit/features/ref.spec.js#L55)
+  in the unit tests, testing that `h` can directly render a component
+  * this is a "lesser known feature"  
+
+See [Vue Docs - The Data Object In-Depth](https://vuejs.org/v2/guide/render-function.html#The-Data-Object-In-Depth)
+* contains data printout of a VDOM node 
+
+## 03-06 Challenge 5: Dynamically Render Tags
+[Challenge 5 Video](https://frontendmasters.com/courses/advanced-vue/challenge-5-dynamically-render-tags/)
+
