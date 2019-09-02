@@ -23,6 +23,9 @@
   - [Challenge Description](#challenge-description)
   - [Challenge 6 progress](#challenge-6-progress)
 - [03-09 Challenge 6: Dynamically Render Components - Solution](#03-09-challenge-6-dynamically-render-components---solution)
+- [03-10 Challenge 7: Higher-Order Components](#03-10-challenge-7-higher-order-components)
+- [03-11 Q&A: Higher Order Components](#03-11-qa-higher-order-components)
+- [03-12 Challenge 7: Solution](#03-12-challenge-7-solution)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -419,4 +422,37 @@ It's also hard to get the console logging to appear for some reason.
 
 ## 03-10 Challenge 7: Higher-Order Components
 [Challenge 7: Higher-Order Components Video](https://frontendmasters.com/courses/advanced-vue/challenge-7-higher-order-components/)
+[3.3 description](./code/3-render-function/3.3.md)
+[3.3 implementation](./code/3-render-function/3.3-higher-order-component.html)
+[3.3 test](./code/3-render-function/__test__/3.3.test.js)
 
+Basic setup of the problem: 
+```javascript
+const Avatar = {
+  props: ['src'],
+  template: `<img :src="src">`
+}
+function withAvatarURL (InnerComponent) {
+  // Implement this!
+}
+const SmartAvatar = withAvatarURL(Avatar)
+new Vue({
+  el: '#app',
+  components: { SmartAvatar }
+})
+```
+This is an "enhancer"
+
+It will should take the username, find the avatar url, return 
+
+## 03-11 Q&A: Higher Order Components
+[03-11 Q&A: Higher Order Components Video](https://frontendmasters.com/courses/advanced-vue/q-a-higher-order-components/)
+* benefits of HoC vs mixin is that you don't pollute Avatar component
+* HoC offer more reusability
+  * if that's not a concern, mixins are fine
+* the inner component is more testable when you use HOC because you can test them 
+  separately
+  * better separation of concerns
+
+## 03-12 Challenge 7: Solution
+[03-12 Challenge 7: Solution](https://frontendmasters.com/courses/advanced-vue/challenge-7-solution/)
