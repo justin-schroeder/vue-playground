@@ -521,3 +521,24 @@ The tests are passing here.
 
 ## 03-12 Challenge 7: Solution
 [03-12 Challenge 7: Solution](https://frontendmasters.com/courses/advanced-vue/challenge-7-solution/)
+* we implemented everything mostly the same
+* he called `Avatar` directly, whereas I called `InnerComponent`, but later, he changed it
+* he loads it in the browser to test - that's very useful
+* it's currently unoptimized; it calls it whenever `created` is called
+  * √ why would `created` be called > 1ce? This sounds like a Vue-specific gotcha.
+  * he suggests doing caching in the Avatar
+* he suggests that you could pass `fetchURL`
+
+Someone asks - what is the difference between mounted and created rendering hooks for getting data
+* `created` is called earlier than `mounted`
+* you can only access dom nodes in `mounted`; they are not available in `created`
+
+### Slots - derrived from W3c web components
+08:58
+inside render function, you can do `this.$slots[0]` etc
+there's also `this.$slots.default`
+this is like `children` in react
+
+`this.$attrs` are additional attrs you supply to component (other than props)
+* you can relay them down on the render func
+* pass them through the object 
