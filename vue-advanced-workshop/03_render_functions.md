@@ -5,7 +5,13 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [03-01 Introducing Render Functions](#03-01-introducing-render-functions)
-  - [Initial Render](#initial-render)
+  - [Initial Render Process](#initial-render-process)
+  - [2 different builds of Vue](#2-different-builds-of-vue)
+- [03-02 Virtual DOM](#03-02-virtual-dom)
+  - [native vs virtual DOM](#native-vs-virtual-dom)
+    - [native vs virtual DOM - creating element](#native-vs-virtual-dom---creating-element)
+    - [native vs virtual DOM - console logging](#native-vs-virtual-dom---console-logging)
+- [03-03 Putting Everything Together](#03-03-putting-everything-together)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -78,3 +84,20 @@ Vue Template Explorer - https://template-explorer.vuejs.org
 
 ## 03-03 Putting Everything Together
 [Putting Everything Together Video](https://frontendmasters.com/courses/advanced-vue/putting-everything-together/)
+
+See [Vue Docs - Reactivity - How Changes Are Tracked](https://vuejs.org/v2/guide/reactivity.html#How-Changes-Are-Tracked)
+* ![vue reactivity](./vue-advanced-workshop/assets/vue_reactivity.png)
+
+* when it renders, we collect getters that access data dependencies
+* watchers clean up the data
+* then we generate the render function
+
+Since we have a built-in dependency tree:
+* we never over-render
+* we never have too many components being re-rendered
+* we don't have to do optimizations the way react does 
+  "with more of a top down approach"
+
+But:
+* we do have the overhead of converting everything into getters & setters
+

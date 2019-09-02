@@ -16,6 +16,7 @@
   - [Vue Directives - Custom](#vue-directives---custom)
     - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue-2)
 - [Vue Plugins](#vue-plugins)
+- [Vue Reactivity](#vue-reactivity)
 - [Vue Size](#vue-size)
 - [Vue `this`](#vue-this)
 - [Vuex](#vuex)
@@ -72,6 +73,11 @@ so `vm.a` will be equivalent to `vm.$data.a`_](https://vuejs.org/v2/api/#data)
 
 * See [02-01 Introducing Writing Plugins](02_writing_plugins.md#02-01-introducing-writing-plugins)
 
+## Vue Reactivity
+* [Vue Docs - Reactivity - How Changes Are Tracked](https://vuejs.org/v2/guide/reactivity.html#How-Changes-Are-Tracked)
+  ![vue reactivity](./vue-advanced-workshop/assets/vue_reactivity.png)
+  * see also [Vue Advanced Workshop - 03-03 Putting Everything Together](./vue-advanced-workshop/03_render_functions.md#03-03-putting-everything-together)
+ 
 ## Vue Size
 2 builds for Vue
 * full build with compiler is 30 kb gzipped
