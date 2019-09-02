@@ -1,23 +1,51 @@
 <script src="../node_modules/vue/dist/vue.js"></script>
 
 <div id="app">
-  <example :ok="ok"></example>
+    <example :ok="checked"></example>
 </div>
+<button onclick="toggle()">Toggle</button>
 
 <script>
-const Foo = {
-  // Implement this!
-}
+  var checked = false;
 
-const Bar = {
-  // Implement this!
-}
+  function toggle() {
+    checked = !checked;
+    console.log(`called toggle; checked is now ${checked}`)
+    return checked
+  }
 
-Vue.component('example', {
-  // Implement this!
-})
+  const Foo = {
+    render(h) {
+      return h('div', 'foo')
+    }
+  }
 
-new Vue({
-  el: '#app'
-})
+  const Bar = {
+    render(h) {
+      return h('div', 'bar')
+    }
+  }
+
+  Vue.component('example', {
+    props: {'ok': Boolean},
+    data() {
+      return {ok: this.ok}
+    },
+    render(h) {
+      return h(this.ok ? Foo : Bar)
+    }
+  })
+
+  new Vue({
+    el: '#app',
+    // data() {
+    //   return {checked: Boolean}
+    // },
+    // methods: {
+    //   toggle() {
+    //     this.ok = !this.ok
+    //     return this.ok;
+    //   }
+    // }
+  })
 </script>

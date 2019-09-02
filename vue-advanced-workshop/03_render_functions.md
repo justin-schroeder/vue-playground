@@ -18,6 +18,10 @@
   - [`h` can directly render a component](#h-can-directly-render-a-component)
 - [03-06 Challenge 5: Dynamically Render Tags](#03-06-challenge-5-dynamically-render-tags)
   - [03-06 Challenge 5: Dynamically Render Tags - Progress](#03-06-challenge-5-dynamically-render-tags---progress)
+- [03-07 Challenge 5: Dynamically Render Tags - Solution](#03-07-challenge-5-dynamically-render-tags---solution)
+- [03-08 Challenge 6: Dynamically Render Components](#03-08-challenge-6-dynamically-render-components)
+  - [Challenge Description](#challenge-description)
+  - [Challenge 6 progress](#challenge-6-progress)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -279,3 +283,53 @@ Note how the first param to `createElement` is the name of the tag, which can be
 * main differences between my implementation and his: 
   * he uses the `h` parameter name instead of `createElement`
   * he uses es6 object shorthand for method.
+
+## 03-08 Challenge 6: Dynamically Render Components
+
+### Challenge Description
+[Challenge 6 - Dynamically Render Components - Intro - Video](https://frontendmasters.com/courses/advanced-vue/challenge-6-dynamically-render-components/)
+[3.2 description](./code/3-render-function/3.2.md)
+[3.2 implementation](./code/3-render-function/3.2-render-comp.html)
+[3.2 test](./code/3-render-function/__test__/3.2.test.js)
+
+Create two components, Foo and Bar, which renders `<div>foo</div>` and `<div>bar</div>`.
+Create a component `<example ok='true'/>` which renders Foo and Bar if `ok='false'`. 
+Create a button which toggles between them.
+
+### Challenge 6 progress
+I pretty quickly had a candidate solution, but I had a question about how 
+to create the `<example ok='true'/>` component, since it was clear that `ok` 
+needed to be both `data` and `props`. I looked up the docs & confirmed you need it in quotes:
+
+[Vue Docs - Passing a Boolean Prop](https://vuejs.org/v2/guide/components-props.html#Passing-a-Boolean)
+
+Why do we need a `data` key? I think the sole reason is to be able to 
+toggle between on and off. 
+
+It says _Implement a button in the root component that toggles 
+`<example>` between `Foo` and `Bar` by controlling its `ok` prop_.
+That seems to imply that it should _not_ be in `example`, as the root 
+component is the Vue app, right? 
+
+I tried implementing the button ouside of `example` and ended up getting: 
+```text
+ Expected substring: "<div>bar</div>"
+    Received string:    "<div>foo</div> <button click=\"function boundFn (a) {
+```
+That would imply that somehow the button should not be in there at all..
+
+Let's look at the test. We first assert that the app's innerHTML matches 
+`<div>foo</div>`. Then we click on a button somewhere inside.
+
+How can we assert that the app innerHTML matches that, but there's still 
+a button somewhere? The only way is that the button is outside the 
+`<div id='app'> ...`. 
+
+I did get a warning: 
+```text
+[Vue warn]: The "data" option should be a function that returns a
+per-instance value in component definitions.
+```
+
+I solved that, but kept having problems getting my variable to pass down.
+It's also hard to get the console logging to appear for some reason.

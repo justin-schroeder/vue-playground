@@ -17,6 +17,7 @@
     - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue-2)
 - [Vue Dynamic Components](#vue-dynamic-components)
 - [Vue Plugins](#vue-plugins)
+- [Vue Props](#vue-props)
 - [Vue Reactivity](#vue-reactivity)
 - [Vue Render Functions](#vue-render-functions)
 - [Vue Size](#vue-size)
@@ -78,6 +79,10 @@ so `vm.a` will be equivalent to `vm.$data.a`_](https://vuejs.org/v2/api/#data)
 * [Vue Docs - vm.$options](https://vuejs.org/v2/api/#vm-options)
 
 * See [02-01 Introducing Writing Plugins](02_writing_plugins.md#02-01-introducing-writing-plugins)
+
+## Vue Props
+* [Vue Docs - Passing a Boolean Prop](https://vuejs.org/v2/guide/components-props.html#Passing-a-Boolean)
+* See [#challenge-6-progress](vue-advanced-workshop/03_render_functions.md#challenge-6-progress)
 
 ## Vue Reactivity
 * [Vue Docs - Reactivity - How Changes Are Tracked](https://vuejs.org/v2/guide/reactivity.html#How-Changes-Are-Tracked)
