@@ -7,9 +7,10 @@
 <script>
   Vue.component('example', {
     props: ['tags'],
-    render: function(createElement) {
-      const children = this.$props.tags.map((prop, i) => createElement(prop, null, i))
-      return createElement('div', null, children)
+    render(h) {
+      // we use variable `h` by convention; it stands for hyperscript, which is a nod to `hypertext`
+      const children = this.$props.tags.map((prop, i) => h(prop, null, i))
+      return h('div', null, children)
     }
   })
 

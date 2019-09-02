@@ -276,3 +276,6 @@ Note how the first param to `createElement` is the name of the tag, which can be
 
 ## 03-07 Challenge 5: Dynamically Render Tags - Solution
 [Challenge 5 Solution](https://frontendmasters.com/courses/advanced-vue/challenge-5-solution/)
+* main differences between my implementation and his: 
+  * he uses the `h` parameter name instead of `createElement`
+  * he uses es6 object shorthand for method.
