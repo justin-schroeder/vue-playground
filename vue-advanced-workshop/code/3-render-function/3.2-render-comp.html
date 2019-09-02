@@ -1,19 +1,11 @@
 <script src="../node_modules/vue/dist/vue.js"></script>
 
 <div id="app">
-    <example :ok="checked"></example>
+    <example :ok="ok"></example>
+    <button @click="ok = !ok">toggle</button>
 </div>
-<button onclick="toggle()">Toggle</button>
 
 <script>
-  var checked = false;
-
-  function toggle() {
-    checked = !checked;
-    console.log(`called toggle; checked is now ${checked}`)
-    return checked
-  }
-
   const Foo = {
     render(h) {
       return h('div', 'foo')
@@ -27,10 +19,7 @@
   }
 
   Vue.component('example', {
-    props: {'ok': Boolean},
-    data() {
-      return {ok: this.ok}
-    },
+    props: ['ok'],
     render(h) {
       return h(this.ok ? Foo : Bar)
     }
@@ -38,14 +27,6 @@
 
   new Vue({
     el: '#app',
-    // data() {
-    //   return {checked: Boolean}
-    // },
-    // methods: {
-    //   toggle() {
-    //     this.ok = !this.ok
-    //     return this.ok;
-    //   }
-    // }
+    data: {ok: true}
   })
 </script>

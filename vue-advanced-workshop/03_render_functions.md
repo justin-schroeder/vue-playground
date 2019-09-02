@@ -22,6 +22,7 @@
 - [03-08 Challenge 6: Dynamically Render Components](#03-08-challenge-6-dynamically-render-components)
   - [Challenge Description](#challenge-description)
   - [Challenge 6 progress](#challenge-6-progress)
+- [03-09 Challenge 6: Dynamically Render Components - Solution](#03-09-challenge-6-dynamically-render-components---solution)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -333,3 +334,89 @@ per-instance value in component definitions.
 
 I solved that, but kept having problems getting my variable to pass down.
 It's also hard to get the console logging to appear for some reason.
+
+## 03-09 Challenge 6: Dynamically Render Components - Solution
+[Dynamically Render Components - Solution](https://frontendmasters.com/courses/advanced-vue/challenge-6-solution/)
+
+* He has the button inside of the app, in the root element
+* but for some reason, it didn't show up in the first assertion:
+  ```javascript
+  expect(window.document.getElementById('app').innerHTML).toMatch(
+    `<div>foo</div>`
+  )
+  ```
+* learned that `h` function's 2nd parameter _can_ be the children, somehow
+  ... that's how he's doing it, at any rate, even though the 2nd parameter
+  is supposed to be an object of params.
+  * √ likely that is because it's not an object in 2nd parameter.
+* he has `ok` declared as `data` on the root elem, default to `true`, but 
+  `ok` as a prop for `example`. 
+  * so when we do this: 
+  ```vue
+  <div id="app">
+      <example :ok="ok"></example>
+      <button @click="ok = !ok">toggle</button>
+  </div>
+  ```
+  we end up using ok inside of the `data` key for the app.
+* note that we MUST use [`:ok="ok"` to tell vue that it is javascript](https://vuejs.org/v2/guide/components-props.html#Passing-a-Boolean)
+  * √ another thing I can't stand about Vue - this kind of information is 
+    just more vue-specific stuff that you have to know about and that makes your app 
+    more prone to bugs. Here, if we don't enter `:`, we get a bug, but it's 
+    hard exactly to know that as a PR reviewer.
+* functional component - just add `functional: true`!
+  ```vue
+  <script>
+  const Foo = {
+    functional: true,
+    render(h) {
+      return h('div', 'foo')
+    }
+  }
+  </script>
+  ```
+  * the diff between normal component and instance is that normal component
+    has an instance, whereas functional component doesn't have any backing 
+    instance
+  * functional components are "expanded eagerly", expanded inline inside of 
+    the parent's component.
+  * for performance optimizations when you have leaf nodes / huge list
+    * button, maybe an avatar
+  * we no longer have access to `this`, instead we have `context` in 
+    rendering 
+  *     `functional: true,`
+    `render(h, context) {`
+      // context.props
+      // context.slots
+      // context.children (raw children - really low level concerns)
+      // context.parent - the context of the nearest stateful neighbor
+  * if you use jsx, there's a babel plugin that lets you put jsx in 
+    your render function
+    `babel-vue-functional-plugin-transform`
+    * if you enable that plugin, it's very concise
+* one interesting thing about Vue scope in this example: 
+  ```vue
+  <div id="app">
+      <example :ok="ok"></example>
+      <button @click="ok = !ok">toggle</button>
+  </div>
+  <script>
+  // ...
+  Vue.component('example', {
+    props: ['ok'],
+    render(h) {
+      return h(this.ok ? Foo : Bar)
+    }
+  })
+  new Vue({
+    el: '#app',
+    data: {ok: true}
+  })
+  </script>
+  ```
+  * here, the `data.ok` on the top-level Vue instance can be accessed 
+    within the scope of the `<div id="app">` inside that button.
+
+## 03-10 Challenge 7: Higher-Order Components
+[Challenge 7: Higher-Order Components Video](https://frontendmasters.com/courses/advanced-vue/challenge-7-higher-order-components/)
+

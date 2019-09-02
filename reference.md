@@ -16,6 +16,7 @@
   - [Vue Directives - Custom](#vue-directives---custom)
     - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue-2)
 - [Vue Dynamic Components](#vue-dynamic-components)
+- [Vue Functional Components](#vue-functional-components)
 - [Vue Plugins](#vue-plugins)
 - [Vue Props](#vue-props)
 - [Vue Reactivity](#vue-reactivity)
@@ -71,6 +72,9 @@ so `vm.a` will be equivalent to `vm.$data.a`_](https://vuejs.org/v2/api/#data)
 ## Vue Dynamic Components
 * See [Vue Docs - "dynamic" components `<component is="h1"></component>`](https://vuejs.org/v2/guide/components-dynamic-async.html#keep-alive-with-Dynamic-Components)
 * See [vue-advanced-workshop - 03-06 Challenge 5: Dynamically Render Tags](vue-advanced-workshop/03_render_functions.md#03-06-challenge-5-dynamically-render-tags)
+
+## Vue Functional Components
+* See [03-09 Challenge 6: Dynamically Render Components - Solution](vue-advanced-workshop/03_render_functions.md#03-09-challenge-6-dynamically-render-components---solution)
 
 ## Vue Plugins
 
