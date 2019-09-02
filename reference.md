@@ -15,8 +15,10 @@
 - [Vue Directives](#vue-directives)
   - [Vue Directives - Custom](#vue-directives---custom)
     - [From Sara Drasner's Intro to Vue](#from-sara-drasners-intro-to-vue-2)
+- [Vue Dynamic Components](#vue-dynamic-components)
 - [Vue Plugins](#vue-plugins)
 - [Vue Reactivity](#vue-reactivity)
+- [Vue Render Functions](#vue-render-functions)
 - [Vue Size](#vue-size)
 - [Vue `this`](#vue-this)
 - [Vuex](#vuex)
@@ -65,6 +67,10 @@ so `vm.a` will be equivalent to `vm.$data.a`_](https://vuejs.org/v2/api/#data)
 * [07-03 Custom Directives](./sara_drasner_intro_to_vue/07_filters_mixins_directives.md#07-03-custom-directives)
 * [07-05 Challenge 6 - Filter - Solution - Directives Notes After Working Through](./sara_drasner_intro_to_vue/07_filters_mixins_directives.md#07-05-challenge-6---filter---solution---directives-notes-after-working-through)
 
+## Vue Dynamic Components
+* See [Vue Docs - "dynamic" components `<component is="h1"></component>`](https://vuejs.org/v2/guide/components-dynamic-async.html#keep-alive-with-Dynamic-Components)
+* See [vue-advanced-workshop - 03-06 Challenge 5: Dynamically Render Tags](vue-advanced-workshop/03_render_functions.md#03-06-challenge-5-dynamically-render-tags)
+
 ## Vue Plugins
 
 * [Vue Docs - Plugins](https://vuejs.org/v2/guide/plugins.html)
@@ -78,6 +84,10 @@ so `vm.a` will be equivalent to `vm.$data.a`_](https://vuejs.org/v2/api/#data)
   ![vue reactivity](./vue-advanced-workshop/assets/vue_reactivity.png)
   * see also [Vue Advanced Workshop - 03-03 Putting Everything Together](./vue-advanced-workshop/03_render_functions.md#03-03-putting-everything-together)
  
+## Vue Render Functions
+* [Vue Docs - render functions](https://vuejs.org/v2/guide/render-function.html#createElement-Arguments)
+* See [vue-advanced-workshop - 03-06 Challenge 5: Dynamically Render Tags](vue-advanced-workshop/03_render_functions.md#03-06-challenge-5-dynamically-render-tags)
+
 ## Vue Size
 2 builds for Vue
 * full build with compiler is 30 kb gzipped

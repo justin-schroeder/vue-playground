@@ -17,6 +17,7 @@
   - [The `h` function](#the-h-function)
   - [`h` can directly render a component](#h-can-directly-render-a-component)
 - [03-06 Challenge 5: Dynamically Render Tags](#03-06-challenge-5-dynamically-render-tags)
+  - [03-06 Challenge 5: Dynamically Render Tags - Progress](#03-06-challenge-5-dynamically-render-tags---progress)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -166,4 +167,112 @@ See [Vue Docs - The Data Object In-Depth](https://vuejs.org/v2/guide/render-func
 
 ## 03-06 Challenge 5: Dynamically Render Tags
 [Challenge 5 Video](https://frontendmasters.com/courses/advanced-vue/challenge-5-dynamically-render-tags/)
+[3.1 description](./code/3-render-function/3.1.md)
+[3.1 implementation](./code/3-render-function/3.1-render-tags.html)
+[3.1 test](./code/3-render-function/__test__/3.1.test.js)
 
+implement `example`:
+``` html
+<example :tags="['h1', 'h2', 'h3']"></example>
+```
+
+such that this produces:
+``` html
+<div>
+  <h1>0</h1>
+  <h2>1</h2>
+  <h3>2</h3>
+</div>
+```
+
+See [Vue Docs - "dynamic" components `<component is="h1"></component>`](https://vuejs.org/v2/guide/components-dynamic-async.html#keep-alive-with-Dynamic-Components)
+* intention is to switch between components instead of "real" tags though
+
+> [if Vue didn't provide this API, there's no way to dynamically swich 
+> between components](./transcripts/14-challenge-5-dynamically-render-tags.md#000154)
+> an interesting disadvantage of the template, is that we have to come up with a 
+> lot of these syntax APIs, in order to solve some use cases.
+
+### 03-06 Challenge 5: Dynamically Render Tags - Progress
+In this example: 
+
+``` html
+<example :tags="['h1', 'h2', 'h3']"></example>
+```
+
+we have `v-bind:tags="['h1', 'h2', 'h3']"`. This means that if we had a 
+`data` prop with `tags`, it would reactively bind `['h1', 'h2', 'h3']`
+to it.
+
+The output should look like this: 
+``` html
+<div>
+  <h1>0</h1>
+  <h2>1</h2>
+  <h3>2</h3>
+</div>
+```
+
+So first, we need to create a wrapper div. My first naive impementation: 
+
+```vue
+<div id="app">
+    <example :tags="['h1', 'h2', 'h3']"></example>
+</div>
+
+<script>
+  Vue.component('example', {
+    render: function(createElement) {
+      return createElement('div', null, [
+        createElement('h1', null, 0),
+        createElement('h1', null, 1),
+        createElement('h1', null, 2),
+      ])
+    }
+  })
+
+  new Vue({el: '#app'})
+</script>
+```
+
+This ends up with error: 
+```text
+console.error node_modules/jsdom/lib/jsdom/virtual-console.js:29
+    Error: Uncaught [Error: expect(received).toMatch(expected)
+    
+    Expected substring: "<div><h1>0</h1><h2>1</h2><h3>2</h3></div>"
+    Received string:    "<div tags=\"h1,h2,h3\"><h1>0</h1><h1>1</h1><h1>2</h1></div>"]
+
+```
+So this is interesting - it's pretty close, it just left the `tags` key in, 
+and we're expected to not include that. 
+
+Ok, I had to iterate, but I figured this out. 
+The key was that `<example :tags="['h1', 'h2', 'h3']"></example>` was implying props.
+I still find it hard to know exactly what `:blah` is referring to.
+Props don't normally need the colon in front, as far as I know. 
+
+Here's the basic solution: 
+```Vue
+<div id="app">
+    <example :tags="['h1', 'h2', 'h3']"></example>
+</div>
+
+<script>
+  Vue.component('example', {
+    props: ['tags'],
+    render: function(createElement) {
+      const children = this.$props.tags.map((prop, i) => createElement(prop, null, i))
+      return createElement('div', null, children)
+    }
+  })
+
+  new Vue({el: '#app'})
+</script>
+```
+
+Note how the first param to `createElement` is the name of the tag, which can be dynamic.
+
+
+## 03-07 Challenge 5: Dynamically Render Tags - Solution
+[Challenge 5 Solution](https://frontendmasters.com/courses/advanced-vue/challenge-5-solution/)

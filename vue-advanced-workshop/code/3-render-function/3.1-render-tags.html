@@ -1,13 +1,17 @@
 <script src="../node_modules/vue/dist/vue.js"></script>
 
 <div id="app">
-  <example :tags="['h1', 'h2', 'h3']"></example>
+    <example :tags="['h1', 'h2', 'h3']"></example>
 </div>
 
 <script>
-Vue.component('example', {
-  // Implement this!
-})
+  Vue.component('example', {
+    props: ['tags'],
+    render: function(createElement) {
+      const children = this.$props.tags.map((prop, i) => createElement(prop, null, i))
+      return createElement('div', null, children)
+    }
+  })
 
-new Vue({ el: '#app' })
+  new Vue({el: '#app'})
 </script>

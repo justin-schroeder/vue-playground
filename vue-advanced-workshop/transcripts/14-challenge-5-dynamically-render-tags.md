@@ -1,23 +1,40 @@
-[00:00:00]
+# 03-06 Challenge 5: Dynamically Render Tags Transcript
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [[00:00:00]](#000000)
+- [[00:00:22]](#000022)
+- [[00:00:58]](#000058)
+- [[00:01:30]](#000130)
+- [[00:01:54]](#000154)
+- [[00:02:15]](#000215)
+- [[00:02:31]](#000231)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+## [00:00:00]
 >> Evan: So we talked enough about render functions. Time to get our hands dirty and do some exercises. So 3.1 says implement the example component which given the following usage, so obviously it takes a tags prompt. And the tags prompt takes an array. An array of h1, h2, h3.
 
-[00:00:22]
+## [00:00:22]
 Array of strings, tag names, right? And then this component, when it's rendered, it should produce the following markup. It should just render these tags and inside each tag it should be the index of that element and the array. So imagine how to do this in templates, right? How would you do this in templates?
 
-[00:00:58]
+## [00:00:58]
 
 >> Evan: Right? So by default we don't really have a construct that allows you to, say, dynamically render this tag here using this data source, right? So in Vue we have this construct called component is. This is the closest thing to it. Because component is just an abstract placeholder, what it really renders is determined by this is.
 
-[00:01:30]
+## [00:01:30]
 So if you do component is="h1" this works as well, right? But the original intention of this API is really it's just to allow you to dynamically switch between components instead of rendering real tags.
 >> Evan: And you are only able to do this with templates because we've provided this API to you, right?
 
-[00:01:54]
+## [00:01:54]
 So the important thing to note here is, if we didn't provide this API, then there's no way for you to achieve what you're trying to do here with just templates. So we come to an interesting disadvantage of the template, is that we have to come up with a lot of these syntax APIs, in order to solve some use cases.
 
-[00:02:15]
+## [00:02:15]
 But when you run into a case that it's not supported by the template, the only thing you can do is really go and open the feature request on GitHub and wait for us to implement it. Which is not optimal if your manager is waiting for the app to ship in the next week or something, right?
 
-[00:02:31]
+## [00:02:31]
 But with render functions, we can just solve that with JavaScript. So the exercise really is implement this example component with render functions that achieve this goal. And you can look up the render function usage in the docs or from the slides, and let's work on this for ten minutes.
 
