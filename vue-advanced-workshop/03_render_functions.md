@@ -24,6 +24,7 @@
   - [Challenge 6 progress](#challenge-6-progress)
 - [03-09 Challenge 6: Dynamically Render Components - Solution](#03-09-challenge-6-dynamically-render-components---solution)
 - [03-10 Challenge 7: Higher-Order Components](#03-10-challenge-7-higher-order-components)
+  - [03-10 Challenge 7 - HoC - Working Through It](#03-10-challenge-7---hoc---working-through-it)
 - [03-11 Q&A: Higher Order Components](#03-11-qa-higher-order-components)
 - [03-12 Challenge 7: Solution](#03-12-challenge-7-solution)
 
@@ -443,7 +444,71 @@ new Vue({
 ```
 This is an "enhancer"
 
-It will should take the username, find the avatar url, return 
+### 03-10 Challenge 7 - HoC - Working Through It
+
+How do we get access to the username? We are passing the `Avatar` object, 
+not a real component.
+
+I need to know about the `new Vue({components: { SmartAvatar }})` syntax.
+* See [Vue Docs - Components - Local Registration](https://vuejs.org/v2/guide/components-registration.html#Local-Registration)
+  * this lets you define your components as plain JavaScript objects
+  * ok, so that means that my enhancer can return a POJO
+
+how can I make it so that when a username is provided, it ended up recalculating the Avatar?
+* `computed`
+* `created` lifecycle hook
+
+this is kind of tricky; I think that I need to be able to use a render func 
+Here's my first try: 
+
+```vue
+<div id="app">
+  <smart-avatar username="vuejs"></smart-avatar>
+</div>
+
+<script>
+// mock API
+function fetchURL (username, cb) {
+  setTimeout(() => {
+    // hard coded, bonus: exercise: make it fetch from gravatar!
+    cb('https://avatars3.githubusercontent.com/u/6128107?v=4&s=200')
+  }, 500)
+}
+
+const Avatar = {
+  props: ['src'],
+  template: `<img :src="src">`
+}
+
+function withAvatarURL (InnerComponent) {
+  return {
+    props: ['username'],
+    data() {
+      return {
+        avatarUrl: 'http://via.placeholder.com/200x200'
+      }
+    },
+    created() {
+      fetchURL(this.$props.username, url => {
+        this.avatarUrl = url
+      })
+    },
+    render(h) {
+      return h(InnerComponent, {props: {src: this.avatarUrl}})
+    }
+  }
+}
+
+const SmartAvatar = withAvatarURL(Avatar)
+
+new Vue({
+  el: '#app',
+  components: { SmartAvatar }
+})
+</script>
+```
+
+The tests are passing here. 
 
 ## 03-11 Q&A: Higher Order Components
 [03-11 Q&A: Higher Order Components Video](https://frontendmasters.com/courses/advanced-vue/q-a-higher-order-components/)
