@@ -101,3 +101,17 @@ Since we have a built-in dependency tree:
 But:
 * we do have the overhead of converting everything into getters & setters
 
+## 03-04 JSX vs. Templates
+[JSX vs. Templates Video](https://frontendmasters.com/courses/advanced-vue/jsx-vs-templates/)
+* both templates and render functions are a way to 
+* templates are a more constrained form of expression
+* JSX is more dynamic. As long as you can write in code, you can do it.
+  * that gets rid of the need to invent a rich syntax
+* templates are parseable by any html parser
+* the static nature of templates "leads itself to optimizations"
+  that "you can't with JSX"
+* you can "drop down" to the render function layer when you need
+  the flexibility
+
+## 03-05 Render Function API
+[Render Function API Video](https://frontendmasters.com/courses/advanced-vue/render-function-api/)
