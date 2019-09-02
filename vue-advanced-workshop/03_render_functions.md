@@ -12,6 +12,11 @@
     - [native vs virtual DOM - creating element](#native-vs-virtual-dom---creating-element)
     - [native vs virtual DOM - console logging](#native-vs-virtual-dom---console-logging)
 - [03-03 Putting Everything Together](#03-03-putting-everything-together)
+- [03-04 JSX vs. Templates](#03-04-jsx-vs-templates)
+- [03-05 Render Function API](#03-05-render-function-api)
+  - [The `h` function](#the-h-function)
+  - [`h` can directly render a component](#h-can-directly-render-a-component)
+- [03-06 Challenge 5: Dynamically Render Tags](#03-06-challenge-5-dynamically-render-tags)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
