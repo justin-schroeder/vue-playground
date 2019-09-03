@@ -9,8 +9,10 @@
   - [Veux](#veux)
 - [04-02 Challenge 8: Passing Props](#04-02-challenge-8-passing-props)
   - [Description](#description)
-  - [Challenge 8: Passing Props Completion](#challenge-8-passing-props-completion)
+  - [04-02 Challenge 8: Passing Props Completion](#04-02-challenge-8-passing-props-completion)
 - [04-03 Challenge 8: Passing Props Solution](#04-03-challenge-8-passing-props-solution)
+- [04-04 Challenge 9: Shared Object](#04-04-challenge-9-shared-object)
+  - [04-04 Challenge 9: Shared Object - Completion](#04-04-challenge-9-shared-object---completion)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -48,3 +50,26 @@ Tests are passing
 
 ## 04-03 Challenge 8: Passing Props Solution
 [Challenge 8: Passing Props Solution Video](https://frontendmasters.com/courses/advanced-vue/challenge-8-solution/)
+* he uses inline component with a template literal
+```vue
+<script>
+new Vue({
+  data() {
+    return {
+      count: 0
+    }
+  },
+  components: {
+    Counter: {
+      props: ['count'],
+      template: `<div>{{ count }}</div>`
+    }
+  },
+  el: '#app',
+})
+</script>
+```
+
+I didn't think of that because I haven't seen template directly declared before 
+and because when I've seen the `components` hash, the components have been broken out.
+That's pretty convenient. 
