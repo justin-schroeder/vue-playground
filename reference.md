@@ -109,6 +109,7 @@ so `vm.a` will be equivalent to `vm.$data.a`_](https://vuejs.org/v2/api/#data)
 * I can't find this documented anywhere
 
 ## Vuex
+[Vue Docs: Veux](https://vuex.vuejs.org/guide/)
 
 ### Veux - Map Actions
 * [`mapActions` helper (Vue Docs)](https://vuex.vuejs.org/guide/actions.html#dispatching-actions-in-components)

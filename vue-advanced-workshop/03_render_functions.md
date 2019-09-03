@@ -27,6 +27,7 @@
   - [03-10 Challenge 7 - HoC - Working Through It](#03-10-challenge-7---hoc---working-through-it)
 - [03-11 Q&A: Higher Order Components](#03-11-qa-higher-order-components)
 - [03-12 Challenge 7: Solution](#03-12-challenge-7-solution)
+  - [Slots - derrived from W3c web components](#slots---derrived-from-w3c-web-components)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
