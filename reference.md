@@ -106,6 +106,14 @@ this is easy for small components.
 * [Vue Docs - render functions](https://vuejs.org/v2/guide/render-function.html#createElement-Arguments)
 * See [vue-advanced-workshop - 03-06 Challenge 5: Dynamically Render Tags](vue-advanced-workshop/03_render_functions.md#03-06-challenge-5-dynamically-render-tags)
 
+## Vue Slots
+
+### Vue Slots - Real World Examples
+From [Vue Docs - Slots - Other Examples](https://vuejs.org/v2/guide/components-slots.html#Other-Examples)
+* [Vue Virtual Scroller](https://github.com/Akryum/vue-virtual-scroller)
+* [Vue Promised](https://github.com/posva/vue-promised)
+* [Portal Vue](https://github.com/LinusBorg/portal-vue)
+
 ## Vue Size
 2 builds for Vue
 * full build with compiler is 30 kb gzipped
