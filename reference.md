@@ -85,6 +85,9 @@ You can declare components you want to use inside the `components` hash;
 this is easy for small components.
 * See [04-03 Challenge 8: Passing Props Solution](vue-advanced-workshop/04_state_management.md#04-03-challenge-8-passing-props-solution)
 
+## Vue Graphql
+[Gridsome](https://gridsome.org)
+
 ## Vue Plugins
 
 * [Vue Docs - Plugins](https://vuejs.org/v2/guide/plugins.html)
