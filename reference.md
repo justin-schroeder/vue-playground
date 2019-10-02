@@ -100,6 +100,11 @@ this is easy for small components.
 * [Vue Docs - Passing a Boolean Prop](https://vuejs.org/v2/guide/components-props.html#Passing-a-Boolean)
 * See [#challenge-6-progress](vue-advanced-workshop/03_render_functions.md#challenge-6-progress)
 
+### Vue Props - `v-bind` a whole item
+* https://twitter.com/calebporzio/status/1034846966730158080
+* https://www.carlcassar.com/prop-destructuring-in-vue-js
+* https://vuejs.org/v2/guide/components-props.html#Passing-the-Properties-of-an-Object
+
 ## Vue Reactivity
 * [Vue Docs - Reactivity - How Changes Are Tracked](https://vuejs.org/v2/guide/reactivity.html#How-Changes-Are-Tracked)
   ![vue reactivity](./vue-advanced-workshop/assets/vue_reactivity.png)
