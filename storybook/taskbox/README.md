@@ -42,3 +42,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 Presentational Components - they only render from props and do not internally access or mutate state
 Container Components - they access the state of the application and return Presentational Components mostly
+
+## Addons
+https://www.learnstorybook.com/intro-to-storybook/vue/en/using-addons/
+* great point = we can have QA change parameters to see different UI states (huge text)

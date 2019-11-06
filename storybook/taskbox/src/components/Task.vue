@@ -6,6 +6,7 @@
         :checked="isChecked"
         :disabled="true"
         name="checked"
+        style="text-overflow: ellipsis;"
       />
       <span class="checkbox-custom" @click="$emit('archiveTask', task.id)" />
     </label>
