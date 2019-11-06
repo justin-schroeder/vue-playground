@@ -8,7 +8,7 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -c .storybook -s public -o storybook-static"
   },
   "dependencies": {
     "@storybook/addon-knobs": "^5.2.5",
