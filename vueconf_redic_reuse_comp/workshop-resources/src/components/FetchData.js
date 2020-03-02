@@ -16,7 +16,7 @@ export default {
   watch: {
     url: {
       handler() {
-        setTimeout(this.fetch, this.delay);
+        this.fetch()
       },
       immediate: true
     }

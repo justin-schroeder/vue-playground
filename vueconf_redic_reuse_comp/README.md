@@ -346,3 +346,6 @@ examples: https://tarektouati.github.io/vue-use-web/functions/window-size.html#s
 * we want to recreate `MousePos` behavior using props
   * render function that passes result 
 * another idea - creating counter
+
+## going over
+usually composition API and renderless components can replace one another

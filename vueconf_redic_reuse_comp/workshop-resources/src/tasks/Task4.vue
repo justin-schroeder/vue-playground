@@ -28,7 +28,7 @@
         Mouse position from Composition-API is: {{ mouseX }}, {{ mouseY }}
       </div>
       <!-- TASK BEGINS HERE -->
-      <input v-model="breed" class="input" type="text">
+      <!--<input v-model="breed" class="input" type="text">
       <FetchData :url="url">
         <template #loading>
           <PulseLoader/>
@@ -47,11 +47,11 @@
             <AppButton @click="refresh">Refresh!</AppButton>
           </div>
         </template>
-      </FetchData>
+      </FetchData>-->
       <!-- TASK ENDS HERE -->
 
       <!-- ADVANCED TASK USAGE -->
-      <!-- <PulseLoader v-if="isPending"/>
+       <PulseLoader v-if="isPending"/>
       <template v-if="error">
         <div>
           {{ error }}
@@ -64,14 +64,14 @@
           <img :src="data.message" class="result-image">
           <AppButton @click="refresh">Refresh!</AppButton>
         </div>
-      </template> -->
+      </template>
     </div>
   </div>
 </template>
 
 <script>
 import { ref, computed } from '@vue/composition-api'
-import FetchData from '@/components/FetchData'
+// import FetchData from '@/components/FetchData'
 import useFetchData from '@/composables/useFetchData'
 import PulseLoader from 'vue-spinner/src/PulseLoader'
 import WithMousePos from '@/components/MousePos'
@@ -79,24 +79,39 @@ import useMousePos from '@/composables/useMousePos'
 
 export default {
   components: {
-    FetchData,
+    // FetchData,
     PulseLoader,
     WithMousePos
   },
-  setup () {
-    const { x, y } = useMousePos()
-    return { mouseX: x, mouseY: y }
-  },
-  data () {
+  setup() {
+    const breed = ref('collie/border')
+    const url = computed(() => `https://dog.ceo/api/breed/${breed.value}/images/random`)
+
+    const {
+      data,
+      error,
+      refresh,
+      isPending
+    } = useFetchData(url)
+
     return {
-      breed: 'collie/border'
+      breed,
+      data,
+      error,
+      refresh,
+      isPending
     }
   },
-  computed: {
-    url () {
-      return `https://dog.ceo/api/breed/${this.breed}/images/random`
-    }
-  }
+  // data () {
+  //   return {
+  //     breed: 'collie/border'
+  //   }
+  // },
+  // computed: {
+  //   url () {
+  //     return `https://dog.ceo/api/breed/${this.breed}/images/random`
+  //   }
+  // }
 }
 </script>
 
