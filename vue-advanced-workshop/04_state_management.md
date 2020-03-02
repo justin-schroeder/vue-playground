@@ -73,3 +73,61 @@ new Vue({
 I didn't think of that because I haven't seen template directly declared before 
 and because when I've seen the `components` hash, the components have been broken out.
 That's pretty convenient. 
+
+## 04-04 Challenge 9: Shared Object
+[Challenge 9: Shared  Object Video](https:// frontendmasters.com/courses/advanced-vue/challenge-8-passing-props/)
+[Challenge 9: Shared  Object Transcript](./transcripts/24-challenge-9-shared-object.txt)
+[Challenge 9: Shared  Object Code](./code/4-state-management/4.2-shared-object.html)
+[Challenge 9: Shared  Object Test](./code/4-state-management/__test__/4.2.test.js)
+* template is basically same as last challenge
+* we are not passing props
+* child components will share same state
+* hint: we can use a shared object as our same piece of state
+* common warning in vue: _data must be a function_
+  * in this particular case, we _want_ them to have the same state
+
+###  04-04 Challenge 9: Shared Object - Completion
+* I had a theory about what would work from his hint, 
+  but it didn't solve the test. 
+* I made `data = {count: 0}` and referenced it both in child components 
+  and parent component.
+* I tried it with the button's `inc` handler as both a method of 
+  root app and as a function outside of the scope. 
+
+Incorrect output:
+```
+ Expected substring: "<div>0</div> <div>0</div> <div>0</div>"
+    Received string:    "<div></div> <div></div> <div></div> <button>increment</button>"
+```
+
+It's not rendering `count` at all, which is surprising to me.
+
+My `Counter` is just: 
+```javascript
+const Counter = {
+  data,
+  template: `<div>{{ count }}</div>`
+}
+```
+
+When I try to log out the `data` prop, I get `undefined`!
+```javascript
+const Counter = {
+  data: data,
+  created() {
+    console.log(this.data)
+  },
+  template: `<div>{{ count }}</div>`
+}
+
+// undefined
+```
+
+## 04-05 Challenge 9: Shared Object Solution
+[Challenge 9: Shared  Object Video](https://frontendmasters.com/courses/advanced-vue/challenge-9-solution/)
+[Challenge 9: Shared  Object Transcript](./transcripts/25-challenge-9-solution.txt)
+[Challenge 9: Shared  Object Code](./code/4-state-management/4.2-shared-object.html)
+[Challenge 9: Shared  Object Test](./code/4-state-management/__test__/4.2.test.js)
+
+* he suggests making Counter use render func
+* he mentions that if you don't make a `data`

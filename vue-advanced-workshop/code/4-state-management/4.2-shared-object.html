@@ -11,13 +11,31 @@
 // create a counter component (that doesn't take any props)
 // all instances of it should share the same count state
 // and a button that increments all counters at the same time
+let state = {
+  count: 0
+}
 
 const Counter = {
-  // Implement this!
+  data: function() {
+    return state
+  },
+  created() {
+    console.log(this.data)
+  },
+  template: `<div>{{ count }}</div>`
+  render(h) {
+    return h('div', this.count)
+  }
 }
 
 new Vue({
   el: '#app',
-  // Implement this!
+  data,
+  components: {
+    Counter
+  },
+  methods: {
+    inc: data.count++
+  }
 })
 </script>
