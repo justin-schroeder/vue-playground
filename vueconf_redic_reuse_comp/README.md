@@ -160,3 +160,4 @@ here, example of dynamic importing of component using `<Component :is>` - s113
   * go with jsx because that will be supported with vue 3 too
   * you want to rely on plugin for vue cli - jsx will just work
 
+# workshop repo task #2
