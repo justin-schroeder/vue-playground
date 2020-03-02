@@ -340,3 +340,9 @@ examples: https://tarektouati.github.io/vue-use-web/functions/window-size.html#s
 * that's a reactive thing!
 
 # task 4 - renderless provider component
+* use `FetchData.js`
+  * empty right now
+* either renderless component in fetch data or in component api
+* we want to recreate `MousePos` behavior using props
+  * render function that passes result 
+* another idea - creating counter
