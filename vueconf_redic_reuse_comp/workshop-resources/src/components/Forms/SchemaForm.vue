@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     update (property, value) {
+      // console.log(property, value)
       this.$emit('input', {
         ...this.value,
         [property]: value

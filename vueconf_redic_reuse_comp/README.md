@@ -524,4 +524,39 @@ _Think about actions as shared, global methods_
 
 You can just use mutations to apply change
 
-# 
+* Yonas Hassan is using storybook
+
+## modules
+enterprise boilerplate standard modules example
+* https://github.com/chrisvfritz/vue-enterprise-boilerplate/blob/master/src/state/modules/index.js
+
+# problem - Manage data deep in the component tree without mutating it
+never mutate props
+ANSWER: Schema Generated Form
+
+## task 5 Schema Generated Form
+See `SCHEMA` in `Task5`
+
+### Task Description
+# Higher-Order Components
+A function that accepts a component as an argument and returns a 
+modified version of that component.
+
+```vue
+function WithMessage (Component) {
+    // code
+    return ModifiedComponent
+}
+```
+
+### Higher-Order Components
+It can also wrap an existing Component within a different component (using slots) or a custom template.
+```vue
+function WithMessage (Component) {
+    const ModifiedComponent = ({ props }) => <div>
+    <Component { ...props } />
+    With added message { props.message }
+    </div>
+     return ModifiedComponent
+}
+```
