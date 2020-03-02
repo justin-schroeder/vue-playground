@@ -217,3 +217,107 @@ which we "cannot recommend enough"
 * then Result can be used by ResultImage
   
 # task 3
+done - this was pretty easy. 
+polymorphic news
+
+* there's a pretty large project: 
+* Real life code example
+  * https://github.com/CodePilotai/codepilot/blob/master/src/ renderer/components/search-results-item-issue.vue
+  * https://github.com/CodePilotai/codepilot/blob/master/src/ renderer/components/search-results-item.vue
+    * uses vuex and rxjs
+  * ...and other files starting with “search-result-item-”
+  * what is [`v-on="$listeners"`](https://vuedose.tips/tips/adaptive-components-using-v-bind-and-v-on/)
+  * "so much more powerful than doing mixins"
+    * you wouldn't be able to do mixins that make use of base template
+    * this avoids tons of ifs
+      * you would need tons of units tests for each of them
+
+# problem - how to pass data and methods deep into the component tree
+Solution: provide/inject
+* https://vuejs.org/v2/api/#provide-inject
+* useful when vuex isn't an option???
+* this is similar to react context
+
+## Provide/Inject
+```vue
+export default {
+  provide () {
+    return {
+      width: this.width, // will stay reactive
+      key: ‘name’, // won’t be reactive
+      fetchMore: this.fetchMore // methods can be passed
+} },
+  data() {
+    return {
+      width: null,
+    }
+}, methods: {
+    fetchMore () {
+// ...
+}
+} }
+```
+
+### Cons
+* Besides observable objects defined in data, _other properties are not reactive_
+* Example: computed properties **won’t** update
+* Pretty clumsy usage, due to some properties staying reactive, where other don’t
+* Requires complicated setup to make other properties reactive
+* Better suited for **plugins and component libraries** rather than regular applications
+
+### Q&A
+* good for drag and drop tree builder
+* don't use provide/inject - avoid it, because you can't associate the provide with inject
+  * you might use it in a specialized library
+* in Vue 3 - provide / inject gets major upgrade because it's reactive and has fewer footguns
+  * it might become more popular
+
+# PROBLEM - what if you want to expose data methods but NOT UI
+* why not mixins? 
+## “Provider” components
+```vue
+<ApolloQuery
+  :query="require('../graphql/HelloWorld.gql')"
+  :variables="{ name }"
+>
+<template v-slot="{ result: { loading, error, data } }">
+  <!-- Loading -->
+  <div v-if="loading" class="loading apollo">Loading...</div>
+  <!-- Error -->
+  <div v-else-if="error" class="error apollo">An error occured</div>
+  <!-- Result -->
+  <div v-else-if="data" class="result apollo">{{ data.hello }}</div>
+</template>
+</ApolloQuery>
+```
+
+This pattern is called "renderless components"
+
+### Design Pattern - Renderless Components
+
+```vue
+export default {
+    data () {
+        return {
+            x: 0,
+            y: 0
+        }
+    },
+    render () {
+        return this.$scopedSlots.default({ x: this.x, y: this.y })
+    },
+    mounted () {
+        window.addEventListener('mousemove', this.handleMouseMove)
+    },
+    beforeDestroy () {
+    },
+    window.removeEventListener('mousemove', this.handleMouseMove)
+    methods: {
+        handleMouseMove (e) {
+        this.x = e.x
+        this.y = e.y
+        }
+    }
+}
+```
+
