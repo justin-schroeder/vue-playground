@@ -161,4 +161,59 @@ here, example of dynamic importing of component using `<Component :is>` - s113
   * you want to rely on plugin for vue cli - jsx will just work
 
 # workshop repo task #2
+
 ## notes from live coding
+I didn't get that SFC version
+
+# Pro Tip - SFC Code Block Order
+Script top, template middle, style bottom
+This if from Chris Fritz
+
+## flat structure
+* also from chris fritz
+* src/components/Dashboard.unit.js
+* src/components/Dashboard.vue
+* src/components/DashboardHeader.vue
+
+state management would be outside this
+Facebook is using flat file structure
+
+## component organization
+### flat makes refactoring easier
+### flat makes finding files easier
+* don't use index.js over and over
+  * only if it's super specific
+
+# pro tip - register base components globally
+## Chris Frit's enterprise boilerplate 
+which we "cannot recommend enough"
+* requireComponent function 
+* excellent `requireComponent` idea
+* slide 146
+
+# how to share same functionality across components
+## mixins
+
+### mixin as a function
+* if you would like to pass a property and configure it
+
+## only use mixins when
+* you need to share component logic between multiple components
+* unless you can extract the shared logic to a component
+* (you most likely can extract the shared logic)
+
+## mixins cons
+* property name clashes
+* can't share template fragments
+* gets harder to track where things are coming from once there are more mixins
+  * if you want to change the mixin functionality and it depends on the template, you can't use this easily
+* keeping track of where data is coming from when you have many mixins
+
+## mixins alternatives - if you use composition over inheritance
+* example: ResultFile has Result with slots: 
+  * Name slot
+  * Meta slot
+  * Content slot
+* then Result can be used by ResultImage
+  
+# task 3

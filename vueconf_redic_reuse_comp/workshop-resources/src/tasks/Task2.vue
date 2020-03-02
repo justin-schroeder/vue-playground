@@ -56,6 +56,9 @@
   import AppModal from '@/components/AppModal'
   import ConfirmationModal from '@/components/ConfirmationModal'
 
+  // const ConfirmationModal2 = ({props, listeners}) => <AppModal onClose={listeners.close}>
+  //   </AppModal>;
+
   export default {
     components: {
       AppModal,
