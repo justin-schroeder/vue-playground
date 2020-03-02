@@ -6,6 +6,8 @@
 - Ben Hong: [GitHub](https://www.github.com/bencodezen) / [Twitter](https://twitter.com/bencodezen)
 
 *repo*: https://github.com/ridiculously-reusable-components/workshop-resources
+PDF - https://github.com/ridiculously-reusable-components/workshop-resources/raw/master/slides/reusable-components%20frontend-con.pdf
+
 
 ## props
 ### example 1 - button composition
@@ -77,3 +79,84 @@ Tasks:
    Let it accept an array of options and the selected value.
 2. Expose a default slot for showing the current value
 3. Expose an option slot for modifying how the option list would look like.
+
+### key takeaways
+* the key items: implement `AppSelect.vue` 
+* the tooltip is unaware it is being used by the dropdown
+* `<template v-slot:content="{setIsOpen}">` allows you to pull `setIsOpen`
+  from `AppDropdown.vue` using the `content` slot, even though 
+  
+### q - how do you go about testing slots?
+a: _you don't have to test what goes inside the slot because it's not a concern of your component_
+
+## best practices
+* avoid single word components (don't avoid html5 spec if they should ever add anything)
+* use prefix - `AppButton`, `AppModal`, `BaseDropdown`
+* if you have single component - singleton, make it `ThePrefixedName.vue`
+* tightly coupled / related components
+  * prefix your component with whatever it's coupled to: 
+    * `TodoList.vue` - `TodoListItem.vue` name implies that it should be used in `TodoList.vue`
+    * `TodoListItemName.vue` is another example
+
+### best practices - component methods 
+* don't assume you know where event will be called
+  * don't - `onInput`
+  * do - `updateUserName`
+* avoid `button @click="onClick"`
+
+### best practices - prefer destructuring over mult args
+
+# problem - how to dynamically switch components based on data - use <Component :is="...">
+here, example of dynamic importing of component using `<Component :is>` - s113
+* example - he was on Politico
+  * rather than have front-end have v-ifs, pass in component
+* `import('./components/AnalogClock')` returns a promise and by default vue will just *wait for the promise*
+* google "lazy loading vue" for how to make this work
+* async vue.js components at vueschool.io
+  * https://vueschool.io/articles/vuejs-tutorials/async-vuejs-components/
+* example: 
+  ```javascript
+  return () => import(`./components/lazy/${this.compName}`)
+  ```
+  _everything in `/lazy` will be turned into a chunk
+
+## pros for `Component :is`
+
+# design pattern - vendor components wrapper
+* Ben's favorite pattern
+* wrap your components! 
+* great example, share with EE - https://github.com/ridiculously-reusable-components/workshop-resources/blob/master/slides/reusable-components%20frontend-con.pdf
+  * slide 117 Chris Fritz
+
+# Design Pattern - Transparent Components
+* review this one
+
+
+# Design - presentational vs container components
+* recommendation - don't prematurely optimize
+* _once the components get big enough, then consider this_
+* NOTE: I couldn't find the slides here - it's not in any of the slides I've been looking at
+
+# Design Pattern - Functional Components
+* Save the composition as a component
+  * example - a submit button
+  * cons - it may be unnecessary to create a new component
+* solution to this is functional components
+  * it's usually just a wrapper; "save it for later"
+  * they don't really have much logic in them
+
+* In vue 3 they go away? 
+* the important thing is `<template functional>`
+  * it just replaces itself in the parent component
+  * it's faster
+  * there is "no instance"
+  * it is rerendered _whenever the parent is rendered_
+* remember to forward props
+* vue CLI supports jsx
+* it no longer passes the vue instance
+  * this is usually when you have 1000s of vue instances on the page (vue 2 prob)
+  * in vue 3 removes this problem
+  * functional components stay in vue 3
+  * go with jsx because that will be supported with vue 3 too
+  * you want to rely on plugin for vue cli - jsx will just work
+
