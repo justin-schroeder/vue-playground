@@ -12,6 +12,9 @@ export default {
       y: 0
     }
   },
+  render() {
+    return this.$scopedSlots.default()
+  },
   methods: {
     handleMouseMove (e) {
       this.x = e.x

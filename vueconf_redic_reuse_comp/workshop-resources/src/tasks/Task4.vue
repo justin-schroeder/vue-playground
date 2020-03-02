@@ -70,9 +70,9 @@
 </template>
 
 <script>
-// import { ref, computed } from '@vue/composition-api'
+import { ref, computed } from '@vue/composition-api'
 import FetchData from '@/components/FetchData'
-// import useFetchData from '@/composables/useFetchData'
+import useFetchData from '@/composables/useFetchData'
 import PulseLoader from 'vue-spinner/src/PulseLoader'
 import WithMousePos from '@/components/MousePos'
 import useMousePos from '@/composables/useMousePos'

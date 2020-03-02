@@ -321,3 +321,22 @@ export default {
 }
 ```
 
+# CompositionAPI
+`@vue/composition-api`
+vue 2.6 compatible
+
+`ref` is a way to create a reactive value
+`reactive` is a way to create reactive objects
+  * it's safer to use `ref` because if you spread the object, it will break
+  * in Damien's team, they try to stick to references
+
+## CompositionAPI callbacks `unMounted` and `onUnmounted`
+cool, you can also return the function `handleMouseMove`
+* then you can use reactivity outside, without access to the vars
+* sort of OOPish
+* you can split your functionality between smaller composition functions
+* there is a very nice introduction on the vue-composition-api-rfc.netlify.com
+examples: https://tarektouati.github.io/vue-use-web/functions/window-size.html#state
+* that's a reactive thing!
+
+# task 4 - renderless provider component
