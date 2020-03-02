@@ -453,6 +453,75 @@ the compilation is still on the webpack side
 * Data shared between components that might not be in direct parent-child relation
 * Data that you want to keep between router views (for example lists of records fetched from the API)
 * Route params are more important though (as a source of truth)
+  * a bad practice of vuex is a single source of truth
+    * vuex-persistence then get lost when you refresh
+    * if you are doing search query with different params to filter
+      * instead of putting inside vuex, put inside router
+      * sometimes, use the router instead of vuex
 * Any kind of global state
 * Examples: login status, user information, global notifications
 * Anything if you feel it will make managing it simpler
+
+## Tips for using Vuex - What data NOT to put into Vuex?
+* User Interface variables
+  * Examples: isDropdownOpen, isInputFocused, isModalVisible
+* Forms data.
+* Validation results.
+* Single records from the API
+  * Think: currentlyViewedProduct
+  
+## Tips for using Vuex - Do I need to always use a getter to return a simple fragment of state?
+Answer: NO
+
+Feel free to access state directly: 
+
+* `this.$store.state.usersList`
+
+If you create a getter in the store, it's kind of assumed that it's going to be reused.
+
+Use computed properties to return computed state
+```vue
+      activeUsersList () {
+        return this.$store.state.usersList.filter(
+          user => user.isActive
+        )
+      }
+```
+
+He uses example from "meltano" repo
+`getHasInstalledPluginsOfType` from https://meltano.com/
+* ben hong's example
+
+## Tips for using Vuex - Do I need to always create an action to call a mutation?
+Answer: **NO**
+
+Feel free to directly commit mutations inside components
+
+```vue
+this.$store.commit('UPDATE_USER', { id, name, isActive }) Or use the mapMutations helper
+               methods: {
+                 ...mapMutations({
+                   updateUser: 'UPDATE_USER'
+                 })
+// methods
+}
+```
+
+Commentary: 
+* when you use mapMutations
+  * when you use dispatch, you know you are using an action
+* **NEVER** use string interpolations inside actions: 
+  ```vue
+  this.$store.commit(`${action}_USER`, { id, name, isActive }) Or use the mapMutations helper
+  ```
+  * just give it a simple string
+
+## Tips for using Vuex
+_Think about actions as shared, global methods_
+ * _ that connect with a remote API_
+ * _and only affect data stored in Vuex_
+*If there is no asynchronous part, just use a mutation.*
+
+You can just use mutations to apply change
+
+# 
