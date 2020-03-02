@@ -349,3 +349,110 @@ examples: https://tarektouati.github.io/vue-use-web/functions/window-size.html#s
 
 ## going over
 usually composition API and renderless components can replace one another
+
+# CSS
+## global styles
+* Depending on when styles load, if you have global styles
+* you can have 
+* if you visit one root that loads one global styles, then you visit a different 
+  root 
+  
+* if you want to use global styles, you want to do it at the top level
+* once it loads, even if you change it the styles still change in the html
+* be careful of global styles
+
+## inline styles
+```vue
+<template>
+  <p :style=“`color: ${themeColor}`">
+    This should be red
+  </p>
+</template>
+```
+
+## scoped styles
+```vue
+<template>
+  <p class="red">
+    This should be red
+  </p>
+</template>
+<style scoped>
+    .red {
+        color: red;
+    }
+    .bold {
+        font-weight: bold;
+    }
+</style>
+```
+
+* gotchas - things having to do with children
+  * similar to what we want but not quite
+  
+## CSS modules
+```vue
+<template>
+  <p :class="$style.red">
+    This should be red
+  </p>
+</template>
+<style module>
+    .red {
+        color: red;
+    }
+    .bold {
+        font-weight: bold;
+    }
+</style>
+```
+* this "just works" out of the box
+* it's "truly unique"
+* new syntax: `$style.red`
+  * `$` is a global vue property
+    * `$listeners`
+    * `$options`
+  * `$style` is a global instance
+
+Q: scope vs style
+* specificity of 2 vs 1 ???
+
+You can pass style.red as a prop using 
+
+Q: "You've got v-deep on scoped style"
+this is a build step; there's no special 
+
+build-sass lets you export variables, then you can access those variables inside of 
+your components
+
+if you want to use css variables, and you can use defaults that come from the styles
+_the code pilot repository showed formerly uses css modules and supports sass with exposing variables_
+  *  https://github.com/CodePilotai/codepilot/blob/master/src/
+  
+the compilation is still on the webpack side
+* "it might look like dynamic class but it's very static"
+
+# When to refactor your components
+
+## Data Driven Refactoring
+
+### Signs you need more components
+* When your components are hard to understand
+* You feel a fragment of a component could use its own state
+* Hard to describe what what the component is actually responsible for
+
+### Components and how to find them?
+* Look for similar visual designs
+* Look for repeating interface fragments * Look for multiple/mixed responsibilities * Look for complicated data paths
+* Look for v-for loops
+* Look for large components
+
+# Components + Vuex
+
+## What data to put into Vuex?
+* Data shared between components that might not be in direct parent-child relation
+* Data that you want to keep between router views (for example lists of records fetched from the API)
+* Route params are more important though (as a source of truth)
+* Any kind of global state
+* Examples: login status, user information, global notifications
+* Anything if you feel it will make managing it simpler
