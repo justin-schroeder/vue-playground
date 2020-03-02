@@ -560,3 +560,36 @@ function WithMessage (Component) {
      return ModifiedComponent
 }
 ```
+
+# review
+
+## PART 1
+* Introductions
+* Component Basics
+* Props
+* Slots
+* Named Slots
+* Scoped Slots
+* Task #1
+* v-bind=“{...}” || v-on=“{...}”
+
+## PART 2
+* Container vs Presentational Paradigm * Best Practices: Naming
+* <Component :is=“...” />
+* Vendor Component Wrapper
+* Transparent Components * Functional Components * Task #2
+
+## PART 3
+* Task #3
+* Mixins
+* Pro Tip: Organization * EventBus
+* Provide / Inject
+* Provider
+* Composition API
+* Task #4
+
+## PART 4
+* When to Refactor
+* Managing Styles
+* Vuex + Components
+* Higher Order Components * Task #5
