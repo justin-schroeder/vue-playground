@@ -53,14 +53,14 @@
       </div>
 
       <!-- DESIRED USE PATTERN -->
-      <!-- <div class="feed">
+      <div class="feed">
         <Component
           v-for="news of newsFeed"
           :key="news.id"
           :is="getNewsTypeComponent(news.type)"
           :news="news"
         />
-      </div> -->
+      </div>
 
       <!-- TASK ENDS HERE -->
     </div>

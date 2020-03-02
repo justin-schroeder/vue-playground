@@ -5,7 +5,8 @@
     </slot>
 
     <h3 class="title">{{ news.title }}</h3>
-    <small>{{ news.date }}</small>
+
+      <small>{{ news.date }}</small>
 
     <slot/>
   </div>
