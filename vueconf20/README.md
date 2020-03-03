@@ -2,71 +2,28 @@
 
 ## Schedule 
 
-0900 Evan You - Opening Keynote with Evan - 30 min
-0940 Eduardo - Get the most out of Vue Router - 30 min
-1010 Break 1.0 - 30 min
-1040 Natalia Tepluhina - All you need is <s>love</s> Apollo Client - 30 min
-1110 Jamena McInteer - The State of CSS in Vue - 30 min
+0900 - Evan You - Opening Keynote with Evan - 30 min
+0940 - Eduardo - Get the most out of Vue Router - 30 min
+1010 - Break 1.0 - 30 min
 
-1140
-Debbie O'Brien
-Debbie O'Brien
-30 min
-Static is the new dynamic with Nuxt.js
+1040 - Natalia Tepluhina - All you need is <s>love</s> Apollo Client - 30 min
+1110 - Jamena McInteer - The State of CSS in Vue - 30 min
+1140 - Debbie O'Brien - Static is the new dynamic with Nuxt.js - 30 min
 
-1210
+1210 - Lunch 1.0 - 1 hour
+1310 - Lightning Talks 1.0 - 1 hour
 
-1 hour
-Lunch 1.0
+1410 - Break 1.1 - 30 min
+1440 - John Leider - Vuetify v2+ - 30 min
+1510 - Maria Lamardo - Content Loading That Isn't Broken - 30 min
+1540 - Bart Ledoux - Documenting components made easy - 30 min
 
-1310
+1610 - Break 1.3 - 30 min
+1640 - Jack Koppa - *TypeScript & Vue @ Politico* - 30 min
+1710 - Oscar Spencer - *Unconventional Vue—Vue as a Backend Framework* - 30 min
 
-1 hour
-Lightning Talks 1.0
+1800 - Conference Reception - 1 hr 30 min
 
-1410
-
-30 min
-Break 1.1
-
-1440
-John Leider
-John Leider
-30 min
-Vuetify v2+
-
-1510
-Maria Lamardo
-Maria Lamardo
-30 min
-Content Loading That Isn't Broken
-
-1540
-Bart Ledoux
-Bart Ledoux
-30 min
-Documenting components made easy
-
-1610
-
-30 min
-Break 1.3
-1640
-Jack Koppa
-Jack Koppa
-30 min
-TypeScript & Vue @ Politico
-
-1710
-Oscar Spencer
-Oscar Spencer
-30 min
-Unconventional Vue—Vue as a Backend Framework
-
-1800
-
-1 hr 30 min
-Conference Reception
 
 ## 01 Evan You's Keynote
 
