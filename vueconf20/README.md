@@ -11,7 +11,7 @@ Location: Austin Convention Center
 
 1040 - Natalia Tepluhina - All you need is <s>love</s> Apollo Client - 30 min
 1110 - Jamena McInteer - The State of CSS in Vue - 30 min
-1140 - Debbie O'Brien - Static is the new dynamic with Nuxt.js - 30 min
+1140 - Alex Kyriakidis - 05 Vue 3 - 30 min
 
 1210 - Lunch 1.0 - 1 hour
 1310 - Lightning Talks 1.0 - 1 hour
@@ -126,21 +126,21 @@ Here are her slides on speakerdeck - https://speakerdeck.com/ntepluhina/
 Probably rather similar - [Wrapping REST API calls with Apollo Client: 'do-it-yourself' approach](https://dev.to/n_tepluhina/wrapping-rest-api-calls-with-apollo-client-do-it-yourself-approach-4i3p)
 [All you need is <s>love</s> Apollo Client - presentation repo](https://github.com/NataliaTepluhina/apollo-presentation)
 
-## CSS in Vue - 1110 - Jamena McInteer - The State of CSS in Vue - 30 min
+## 04 CSS in Vue - 1110 - Jamena McInteer - The State of CSS in Vue - 30 min
 Jamena McInteer - https://twitter.com/jamenamcinteer
 * [github repo for The State of CSS in Vue](https://bit.ly/32vrUtz)
 
-### CSS in Vue - Scoped Styles
+### 04 CSS in Vue - Scoped Styles
 basic point: use CSS Modules instead of scoped styles (just like they mentioned in ridiculously reusable components)
 * example class name - `ComponentName__example__9dPv`
 * [ability to push variables from scss into vue](https://docs.google.com/presentation/d/1GvGim9C5vhf3GqP_icXfJqEFdVqH7pL1FBF_FXFd-oA/edit#slide=id.g7e894b1f9a_0_73)
 
-### CSS in Vue - Inline Styles
+### 04 CSS in Vue - Inline Styles
 * Vue has dynamic `:style` attribute (use sparingly)
   * very high specificity
   * don't support media queries
 
-### CSS in Vue - Methodologies
+### 04 CSS in Vue - Methodologies
 * BEM
 
 ### CSS in Vue - UI Frameworks
@@ -151,3 +151,48 @@ basic point: use CSS Modules instead of scoped styles (just like they mentioned 
   * you end up with html that has a lot of classes rather than 
   * to change colors, [you needed to add support for scss and use style lang="scss"](https://docs.google.com/presentation/d/1GvGim9C5vhf3GqP_icXfJqEFdVqH7pL1FBF_FXFd-oA/edit#slide=id.g7e894b1f9a_0_219)
 * she has [Random Corgi Images TailwindCSS]
+
+## 05 Vue 3 - Alex Kyriakidis
+`@hootlex`
+from Amsterdam
+
+### 05 Vue 3 - portals
+* Teleport item in DOM from one place to another
+* needs target to send it to: `<div id="portal-target />`
+    ```vue
+    <Portal target="#portal-target">
+      whatever goes in here will wind up in <div id="portal-target />
+    </Portal>
+    ```
+* use cases
+  * modals, notifications, popups
+  * sidebar, menu, footer
+* you can use today `portal-vue` with plugin
+
+### 05 Vue 3 - multiple root nodes
+You don't need wrapper div
+
+### 05 Vue 3 - v-model changes
+`<MyComponent v-model:email="emailModel" v-model:user="userModel"/>`
+
+### 05 Vue 3 - CompositionAPI
+Composition API
+* benefits
+  * flexibility
+* drawbacks
+  * 
+  
+### 05 Vue 3 - Suspense
+```vue
+<Suspense>
+  <!-- fallback here --> 
+</Suspense>
+```
+
+### 05 Vue 3 - Filters Removed
+* in Vue 3 filters are going to be removed
+```vue
+<div> {{ amount | dollars }} </div><!-- not possible in Vue3 -->
+```
+* Instead, pass an argument. 
+
