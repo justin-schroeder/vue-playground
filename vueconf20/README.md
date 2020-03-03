@@ -231,4 +231,86 @@ They used vue-hackernews-2.0 at first
 * it uses graphql, apollo, express
 
 Then they went to nuxt
+
+## 07 - John Leider - Vuetify v2+ - 30 min
+https://docs.google.com/presentation/d/13dt0RmiQyulnLcfkj7OokLDG3Oe-R1SXkwwNZ6SmZYU/edit
+* a11y WCAG / Section 508 supported 
+
+### 07 - Vuetify v2+
+* they have a person who is a pro on it
+
+### 07 - Vuetify v2+ vuetify loader
+it's a webpack loader
+that makes it so you can modify the variables for scss
+* + flexibility
+* - 
+
+### 07 - Vuetify v2+ what if you don't want Material Design?
+* Google [Material Studies](material.io/design/material-studies)
+* you can download a theme with a file
+* this lets you modify the look of an application in a way recommended by them
+
+### 07 - Vuetify v2+ - deferred loading - progressive images
+this uses "intersection observer" API
+
+### 07 - Vuetify v2+ - tooling
+github.com/vuetifyjs/vue-cli-plugins
+* storybook
+* eslint config
+* theme presets
+* cli-plugin
+* vuetify-loader
+
+### 07 - Vuetify v2+ - extras
+* tree shaking
 * 
+
+### 07 - Vuetify v2+ - vue cli presets
+one button / call lets you do this:
+Base => Basic App => 1.) Vuetify Plugin, 2.) Eslint Config, 3.) Eslint Plugin
+Essential extends base => Vuetify CLI
+
+Vue Cli lets you tap into system to see what plugins are installed
+
+### 07 - Vuetify v2+ - 3.0 Updates - composition Api, replace mixins with effects, improve component structure
+notion.vuetifyjs.com - upgrade plan
+https://docs.google.com/presentation/d/13dt0RmiQyulnLcfkj7OokLDG3Oe-R1SXkwwNZ6SmZYU/edit#slide=id.g7d97fdd011_3_64
+
+#### 07 - Vuetify v2+ - 3.0 Updates - effects
+working in tandem with vue
+
+## 08 - Maria Lamardo - What is Web Accessibility?
+@MariaLamardo
+Front End Engineer at Pendo / Speaker /
+Vue Vixens Worldwide Events Manager / Vue Community Partner/ Community Organizer / BCABA / Devs@RTP Founder
+North Carolina, USAJoined February 2019
+https://github.com/mlama007
+
+### 08 What is Web Accessibility? - ARIA 
+Marcy Sutton & Fable Tech Labs - 
+* ["What we learned from user testing of accessible client-side routing techniques with Fable Tech Labs"](https://www.gatsbyjs.org/blog/2019-07-11-user-testing-accessible-client-routing/)
+
+### 08 What is Web Accessibility? - demo matching game
+https://github.com/mlama007/Vue-Memory-Game
+she demos the routing
+* when you go to a new route, it doesn't list it as a page
+* it's broken, let's fix it
+COOL idea
+* Create “Broken Games” as a way to teach how to make things accessibility (via Maria Lamardo’s talk on Tue)
+
+added `role="status"`
+
+### 08 What is Web Accessibility? - ARIA-current
+* `aria-current="page"`
+NVDA => Firefox
+JAWS => Internet Explorer
+VoiceOver => Safari
+
+### 08 What is Web Accessibility? - tabindex
+* tabindex="0" makes it focusable by keyboard in normal order
+* tabindex="1" or positive numbers => Focusable via keyboard; jumps order (avoid)
+* tabindex="-1" lets you focus it with a ref
+
+### 08 What is Web Accessibility? - tabindex
+* chrome devtool - nerde focus
+* chrome devtools => accessibility => accessible name
