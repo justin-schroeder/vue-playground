@@ -149,4 +149,19 @@ He has lots of detailed slides about the inconsistencies
 ### 02 Vue Router - how to push an item on history
 * the correct way is to use `router.push({ name: 'MovieDetail', params: { name: 'The Witch' } })`
   * he does it for you
-  
+
+## 03 Apollo Client  - 1040 - Natalia Tepluhina - All you need is <s>love</s> Apollo Client - 30 min
+Natalia Tepluhina - All you need is <s>love</s> Apollo Client - 30 min
+
+She will be at meetup today - Tuesday, 3 March 2020 - Special VueConf Meet n Greet with the Vue Core Team!
+* https://twitter.com/N_Tepluhina/status/1234864676879597568
+* https://www.meetup.com/en-AU/The-Austin-Vue-js-Meetup/events/zjrklrybcfbwb/
+* Proof Technologies - 200 E 6th St #310 · Austin, tx
+* The Proof office is on the north side of 6th street between B.D Rileys Pub and Friends bar. When you see a sign that says “Hannig Row", you're here! There will also be a sidewalk sign that says "Vue ATX" right outside the door.
+
+She has storybook article - [Integrating Storyblok into existing Vue project 2018](https://itnext.io/integrating-storyblok-into-existing-vue-project-a5ad4b320cc1)
+
+Here are her slides on speakerdeck - https://speakerdeck.com/ntepluhina/ 
+
+Probably rather similar - [Wrapping REST API calls with Apollo Client: 'do-it-yourself' approach](https://dev.to/n_tepluhina/wrapping-rest-api-calls-with-apollo-client-do-it-yourself-approach-4i3p)
+[All you need is <s>love</s> Apollo Client - presentation repo](https://github.com/NataliaTepluhina/apollo-presentation)
