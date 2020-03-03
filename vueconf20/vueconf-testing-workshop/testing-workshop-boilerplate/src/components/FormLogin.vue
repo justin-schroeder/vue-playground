@@ -110,6 +110,11 @@ export default {
 
       return Promise.reject('Invalid form')
     }
-  }
+  },
+  // created(){
+  //   if(this.$route.query.email) {
+  //     this.form.email = this.$route.query.email
+  //   }
+  // }
 }
 </script>

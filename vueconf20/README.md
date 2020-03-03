@@ -1,4 +1,72 @@
-# Vueconf '20 Notes
+# Vueconf '20 Day 1
+
+## Schedule 
+
+0900 Evan You - Opening Keynote with Evan - 30 min
+0940 Eduardo - Get the most out of Vue Router - 30 min
+1010 Break 1.0 - 30 min
+1040 Natalia Tepluhina - All you need is <s>love</s> Apollo Client - 30 min
+1110 Jamena McInteer - The State of CSS in Vue - 30 min
+
+1140
+Debbie O'Brien
+Debbie O'Brien
+30 min
+Static is the new dynamic with Nuxt.js
+
+1210
+
+1 hour
+Lunch 1.0
+
+1310
+
+1 hour
+Lightning Talks 1.0
+
+1410
+
+30 min
+Break 1.1
+
+1440
+John Leider
+John Leider
+30 min
+Vuetify v2+
+
+1510
+Maria Lamardo
+Maria Lamardo
+30 min
+Content Loading That Isn't Broken
+
+1540
+Bart Ledoux
+Bart Ledoux
+30 min
+Documenting components made easy
+
+1610
+
+30 min
+Break 1.3
+1640
+Jack Koppa
+Jack Koppa
+30 min
+TypeScript & Vue @ Politico
+
+1710
+Oscar Spencer
+Oscar Spencer
+30 min
+Unconventional Vue—Vue as a Backend Framework
+
+1800
+
+1 hr 30 min
+Conference Reception
 
 ## 01 Evan You's Keynote
 
@@ -31,11 +99,12 @@ There is a new strategy that is more efficient than in Vue 2.
 * √ what is "hydration"?
   * _Hydration refers to the client-side process during which Vue takes over 
     the static HTML sent by the server and turns it into dynamic DOM that can 
-    react to client-side data changes._ - 
+    react to client-side data changes._ --> https://ssr.vuejs.org/guide/hydration.html
   
 
 ##### SSR Next Features
 * Suspense support
+  * see [React's "what is suspense"](https://reactjs.org/docs/concurrent-mode-suspense.html#what-is-suspense-exactly)
 
 #### Vue Rewrite - Vuex 4
 * about how to leverage composition api
@@ -47,3 +116,37 @@ There is a new strategy that is more efficient than in Vue 2.
 #### Vue Rewrite - 2.X 
 * There will be 2.7 which will be LTS 18 months support
 
+## 02 Vue Router - Eduardo San Martin Morote
+[`@posva` on twitter](https://twitter.com/posva) and github
+https://esm.dev/
+He's from Paris
+
+### 02 Vue Router - dynamic routing
+* add and remove routes after the router is running
+* current router can add routes but not remove it
+* why can't we remove them? 
+  * routes are tested in a certain order
+  * the history (`mode: history`) needs to be supported
+  * the matcher
+
+### 02 Vue Router - dynamic routing - matcher
+`/home` => `/^\/home$/i`
+`/movies/:id` => `/^\/movies\/([^\/]+)`
+* this ends up blocking new url `/movies/new` from being added
+* solution is to use points to weight the different 
+* https://github.com/vuejs/rfcs/pull/122 <-- the RFC for weighted routing
+
+### 02 Vue Router - dynamic routing - history
+* you pass in the history handler you want
+  * advantage: "now it's tree shakable"
+* `history.pushState(data, title, url)`  
+* `history.replaceState(data, title, url)`  
+
+### 02 Vue Router - URLSearchParams is broken
+URL encoding is inconsistent with [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
+He has lots of detailed slides about the inconsistencies
+
+### 02 Vue Router - how to push an item on history
+* the correct way is to use `router.push({ name: 'MovieDetail', params: { name: 'The Witch' } })`
+  * he does it for you
+  
