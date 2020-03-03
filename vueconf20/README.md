@@ -19,7 +19,7 @@ Location: Austin Convention Center
 1410 - Break 1.1 - 30 min
 1440 - John Leider - Vuetify v2+ - 30 min
 1510 - Maria Lamardo - Content Loading That Isn't Broken - 30 min
-1540 - Bart Ledoux - Documenting components made easy - 30 min
+1540 - Bart Ledoux - Documenting components made easy Styleguideist - 30 min
 
 1610 - Break 1.3 - 30 min
 1640 - Jack Koppa - *TypeScript & Vue @ Politico* - 30 min
@@ -314,3 +314,52 @@ VoiceOver => Safari
 ### 08 What is Web Accessibility? - tabindex
 * chrome devtool - nerde focus
 * chrome devtools => accessibility => accessible name
+
+## 09 Bart Ledoux - Vue Styleguidist - Documenting components made easy - 30 min
+@ElevateBart
+Slides Repo - DocEz - https://github.com/elevatebart/DocEz
+https://www.linkedin.com/in/bartledoux/en
+https://github.com/elevatebart
+* helps maintain storybook
+* a blerd is a creature from mandelorian
+* we do not want to tame components before we use them
+
+plan: storybook & vue-styleguideist with demos
+dominic the designer gives designs to sara
+sara the []
+you get the components in "pure isolation"
+* they are "protected"
+
+`vue add storybook` works if you use vue cli
+added DocEz folder as subfolder of vueconf
+closeOnClick with datepicker from Bulma - 
+* lets you iterate quickly and experiment with a component
+
+Storybook pro / con
+* con - vue devtools needs to open iframe in new tab
+  * why doesn't vue devtools work in iframe? 
+
+Styleguidist builds documentation website using introspection
+* it's a zero config thing
+* if you want to document your props, use JS doc of props
+* VERY COOL - generates single page apps
+
+Getting Started page lets you add context in markdown
+See [ButtonDoc.md](./DocEz/ButtonDoc.md)
+
+`<docs>` block in markdown
+* MDX lets you render component in the markdown - ButtonDoc <docs> with ```vue ```
+* lets you document the slots - see MyButton.vue
+
+Disadvantage
+* position=fixed shows 
+
+Storybook Docs
+* a fusion of storybook and styleguideist 
+  * allows you **to import your stories** that you are happy with inside of your documentation
+
+styleguidist
+* how does it work? vue components in react website
+* they are working to make Vue to MDX to vuepress `vue-docgen-cli`
+
+## 10 
