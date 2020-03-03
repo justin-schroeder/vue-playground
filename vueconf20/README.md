@@ -279,6 +279,11 @@ https://docs.google.com/presentation/d/13dt0RmiQyulnLcfkj7OokLDG3Oe-R1SXkwwNZ6Sm
 #### 07 - Vuetify v2+ - 3.0 Updates - effects
 working in tandem with vue
 
+Try customization: 
+`vue create my-app --preset vuetifyjs/vue-cli-preset-vuetify`
+via https://docs.google.com/presentation/d/13dt0RmiQyulnLcfkj7OokLDG3Oe-R1SXkwwNZ6SmZYU/edit#slide=id.g7d97fdd011_3_115
+
+
 ## 08 - Maria Lamardo - What is Web Accessibility?
 @MariaLamardo
 Front End Engineer at Pendo / Speaker /
@@ -362,4 +367,32 @@ styleguidist
 * how does it work? vue components in react website
 * they are working to make Vue to MDX to vuepress `vue-docgen-cli`
 
-## 10 
+## 10 - Jack Koppa - *TypeScript & Vue @ Politico* - 30 min
+https://www.linkedin.com/in/jackkoppa
+
+### 10 - First TypeScript Probs with Vue
+1. no type hints in VSCode for Vue 2
+2. didn't get assistance for understandig intent of developer
+3. catch errs before deploying
+
+### 10 - TypeScript in Vue starts
+* `<script lang="ts">`
+* `Vue.extend`
+* what is the "shape" of states? F12 on 
+
+"enforcing data shape"
+tough if you are retrofitting
+
+politico - they have 18 front end devs and 9 repos now
+
+tips:
+as you ramp up, start adding people on PRs
+rotate people on and off of typescript projects
+
+tools;
+VTI - vetur.experimental.templateInterpolationService: true in typescript config
+codegen tools - openapi, swagger, graphql
+mixins - don't use them in typescript
+* use `extends` instead in vue 2
+Vuex is a pain
+* mapGetters, mapActions, etc is a pain
