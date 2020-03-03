@@ -196,3 +196,39 @@ Composition API
 ```
 * Instead, pass an argument. 
 
+
+## 06 Lightning Talks 1.0 - 1 hour
+
+### 06 Lightning Talks 1.0 - Gridsome
+jg@dialogs.com
+
+### 06 Lightning Talks 1.0 - Gridsome - Peter Keirm migrating a large legacy app to vue bloomberg
+* [Peter Keirm LinkedIn](https://www.linkedin.com/in/peterkeirn/)
+* first thing was to migrate a library of core components
+  * make sure you come up with a standard way to integrate with backend
+  * especially if you deploy front end separately from back end
+* Set High Standards
+  * Documentation
+  * Gatekeeping & knowledge distribution
+* Make it Fun: Fix Your Problems
+  * CSS Guardrails
+  
+### 06 Lightning Talks 1.0 - Austin Gil - Communicating between Components
+@stegosource full stack @revealbio; author of `Vuetensils`
+
+* scoped slots
+  * loading states, error
+  * have a component that abstracts and compartmentalizes the status of ajax requests
+* event bus
+
+### 06 Lightning Talks 1.0 - Austin Story @austio36 - doximity - Nuxt migration
+Springfield, MO
+https://www.linkedin.com/in/rubyprogramming/
+
+They used vue-hackernews-2.0 at first
+* it does ssr
+* it's no longer maintained 
+* it uses graphql, apollo, express
+
+Then they went to nuxt
+* 
