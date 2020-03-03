@@ -1,6 +1,9 @@
 # Vueconf '20 Day 1
 
 ## Schedule 
+Date: March 3, 2020
+Time: 7:30AM to 7:00PM
+Location: Austin Convention Center
 
 0900 - Evan You - Opening Keynote with Evan - 30 min
 0940 - Eduardo - Get the most out of Vue Router - 30 min
@@ -122,3 +125,29 @@ Here are her slides on speakerdeck - https://speakerdeck.com/ntepluhina/
 
 Probably rather similar - [Wrapping REST API calls with Apollo Client: 'do-it-yourself' approach](https://dev.to/n_tepluhina/wrapping-rest-api-calls-with-apollo-client-do-it-yourself-approach-4i3p)
 [All you need is <s>love</s> Apollo Client - presentation repo](https://github.com/NataliaTepluhina/apollo-presentation)
+
+## CSS in Vue - 1110 - Jamena McInteer - The State of CSS in Vue - 30 min
+Jamena McInteer - https://twitter.com/jamenamcinteer
+* [github repo for The State of CSS in Vue](https://bit.ly/32vrUtz)
+
+### CSS in Vue - Scoped Styles
+basic point: use CSS Modules instead of scoped styles (just like they mentioned in ridiculously reusable components)
+* example class name - `ComponentName__example__9dPv`
+* [ability to push variables from scss into vue](https://docs.google.com/presentation/d/1GvGim9C5vhf3GqP_icXfJqEFdVqH7pL1FBF_FXFd-oA/edit#slide=id.g7e894b1f9a_0_73)
+
+### CSS in Vue - Inline Styles
+* Vue has dynamic `:style` attribute (use sparingly)
+  * very high specificity
+  * don't support media queries
+
+### CSS in Vue - Methodologies
+* BEM
+
+### CSS in Vue - UI Frameworks
+* things like Vuetify
+* she has ["random corgi images" demo app in repo here](https://github.com/jamenamcinteer/the-state-of-css-in-vue/tree/master/example-projects/vuetify)
+* she has [Random Corgi Images Buefy (Bulma + Vue) demo example](https://github.com/jamenamcinteer/the-state-of-css-in-vue/tree/master/example-projects/buefy)
+  * lightweight, fewer components
+  * you end up with html that has a lot of classes rather than 
+  * to change colors, [you needed to add support for scss and use style lang="scss"](https://docs.google.com/presentation/d/1GvGim9C5vhf3GqP_icXfJqEFdVqH7pL1FBF_FXFd-oA/edit#slide=id.g7e894b1f9a_0_219)
+* she has [Random Corgi Images TailwindCSS]
