@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Component Documentation made Easy</title>
+    <meta name="description" content="Slides" />
+    <link rel="stylesheet" href="./node_modules/reveal.js/css/reveal.css" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/reveal.js/css/theme/black.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/prismjs/themes/prism-okaidia.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css"
+    />
+    <link rel="stylesheet" href="./theme.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section id="splash">
+          <aside class="notes">
+            Hello everyone, and welcome to "component documentation made
+            easy".<br />
+            My name is Bart and I'm a Design Tech Lead in Chicago.<br />
+            [click] <br />
+
+            A bit about me: <br />
+            - I help organize the Chicago VueJs meetup<br />
+            - I am pretty active on Vue Land, the VueJs official Discord server
+            <br />
+            - I help maintain the Vue side of Storybook<br />
+            - I actively maintain a library called Vue-Styleguidist.<br />
+            Enough about about me! I would like to know a little about you.
+            <br />[click] <br />
+          </aside>
+          <div
+            class="sl-block"
+            style="width: 800px; left: 72px; top: 0px; height: auto;"
+          >
+            <div
+              class="fragment fade-out"
+              style="z-index: 10; text-align: left;"
+              data-fragment-index="1"
+            >
+              <h1>Component</h1>
+              <h1>Documentation</h1>
+              <h1>made easy</h1>
+            </div>
+            <div class="fragment avatar-splash" data-fragment-index="1">
+              <p style="width:400px;margin:0 50px;">
+                @ElevateBart<br />Discord, Twitter, Github
+              </p>
+              <img
+                src="img/avatarsq.jpg"
+                style="margin:0;border-radius: 50%;"
+              />
+              <img
+                src="img/VueLogo.png"
+                style="position:absolute;bottom:-2vh;right:-2vh;width:10vh;background: transparent;"
+              />
+            </div>
+            <div class="fragment fade-in presentation" data-fragment-index="1">
+              <p style="top:50px;left:0;">
+                <img src="img/chicago.png" style="width:90px;" />
+                VueJs Chicago Meetup
+              </p>
+              <p style="top:50px;right:0;">
+                Storybook
+                <img src="img/storybook.png" />
+              </p>
+              <p style="bottom:0;left:0;">
+                <img src="img/styleguidist.png" />
+                Vue-Styleguidist
+              </p>
+              <p style="bottom:0;right:0;">
+                Alligator
+                <img src="img/alligator.svg" />
+              </p>
+            </div>
+          </div>
+        </section>
+        <section id="characters">
+          <aside class="notes">
+            Raise your hand if you are a designer <br />
+            [click] <br />
+            By show of hands again, who is writing the the code for a Design
+            System or a component library?<br />
+            [click] <br />
+            And who uses components of a component library in their code.
+            <br />
+            vuetify or bootstrap-vue count as well.
+            <br />
+            [click] <br />
+            Dominic, Sarah and Phil are going to personify each of those three
+            roles. If your persona is on the screen it means that this is
+            specially interresting to you<br />
+            [click]<br />
+            Here is a visual aid to remember who is who?<br />
+            <br />
+            So, you might be asking, why is documentation so important that
+            someone would write a talk about it. Well, not all talks are about
+            saving the world. <br />
+            Just kidding. Documentation is important because no one wants to be
+            handed off a "blurrg".
+            <br />
+            [click]
+          </aside>
+          <div class="dominic">
+            <img
+              class="fragment"
+              src="img/2x/dominic.png"
+              data-fragment-index="4"
+            />
+            <div class="character-bio">
+              <!-- prettier-ignore -->
+              <h2 class="fragment" data-fragment-index="4">
+                <span class="fragment letter" data-fragment-index="5">D</span>ominic
+              </h2>
+              <!-- prettier-ignore -->
+              <h3>
+                💅 <span class="fragment letter" data-fragment-index="5">D</span>esigner 💅
+              </h3>
+            </div>
+          </div>
+          <div class="sarah">
+            <img
+              class="fragment"
+              src="img/2x/sarah.png"
+              data-fragment-index="4"
+            />
+            <div class="character-bio">
+              <!-- prettier-ignore -->
+              <h2 class="fragment" data-fragment-index="4">
+                <span class="fragment letter" data-fragment-index="5">S</span>arah
+              </h2>
+              <!-- prettier-ignore -->
+              <h3 class="fragment" data-fragment-index="2">
+                🛠 Design <span class="fragment letter" data-fragment-index="5">S</span>ystem Engineer 🛠
+              </h3>
+            </div>
+          </div>
+          <div class="phil">
+            <img
+              class="fragment"
+              src="img/2x/phil.png"
+              data-fragment-index="4"
+            />
+            <div class="character-bio">
+              <!-- prettier-ignore -->
+              <h2 class="fragment" data-fragment-index="4">
+                <span class="fragment letter" data-fragment-index="5">P</span>hil
+              </h2>
+              <!-- prettier-ignore -->
+              <h3 class="fragment" data-fragment-index="3">
+                🚀 Final <span class="fragment letter" data-fragment-index="5">P</span>roduct Developer  🚀
+              </h3>
+            </div>
+          </div>
+        </section>
+        <section id="blurrg">
+          <aside class="notes">
+            [click]<br />
+            Here, in the first episode of the Mandalorian, Mando gets one
+            vehicle to go through the Badlands:<br />
+            A beast named a blurrg.<br />
+            This wild animal throws him almost instantly off his back. Touching
+            scene that show Mando as vulnerable. great show if you have not seen
+            it yet... <br />
+            Nobody wants to have to tame the components before they can use
+            them. What interrests me more in this scene is what Mando says just
+            afterwards:<br />
+            [click]<br />
+            Uh! I don't have time for this! Don't you have a land speeder or a
+            speeder bike I can hire? We all are in the same situation when
+            consuming components. We want the speeder bike, not the blurrg... I
+            know how they are cute... But we do not have the proper helmet when
+            we code.<br />
+            [click]<br />
+            In this case, it often takes more time to write the documentation
+            than to tame the components.<br />
+            Sarah still wants to do her job right. She still needs to document
+            the components. And she is a smart Engineer.<br />
+            What do we do when we have a repetitive task?<br />
+            What are our computers best feature?<br />
+            What can computers do well that we usually can't?<br />
+          </aside>
+          <img
+            class="fragment sarah-blurrg"
+            data-fragment-index="3"
+            src="img/2x/sarah_sad.png"
+            style="width:200px"
+          />
+          <div class="fragment fade-out" data-fragment-index="3">
+            <img src="img/blurrg.jpg" />
+          </div>
+          <p class="fragment" data-fragment-index="2">
+            Oh! I don't have time for this<span
+              class="fragment either"
+              data-fragment-index="3"
+              style="color:rgb(255, 92, 92);"
+            >
+              either</span
+            >!
+          </p>
+        </section>
+        <section id="automation">
+          <aside class="notes">
+            And more specifically
+          </aside>
+
+          <img style="width: 750px;" src="img/automation.gif" />
+          <h2>Automation !!</h2>
+        </section>
+        <section id="toc">
+          <aside class="notes">The documentation automation libraries</aside>
+          <div>
+            <h2>Tools of the trade</h2>
+            <ol>
+              <li>
+                Storybook<img src="img/storybook.png" />
+                <span class="fragment" data-fragment-index="1">
+                  + Live Coding
+                </span>
+              </li>
+              <li>
+                Vue-Styleguidist<img src="img/styleguidist.png" />
+                <span class="fragment" data-fragment-index="1">
+                  + Live Coding
+                </span>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="sarah-dominic">
+          <aside class="notes">
+            Automation! And more specifically automating example automation.<br />
+            Examples are very often what we look for in a documentation.<br />
+            [click]<br />
+            Our first documentation issue is a problem that Sarah and Dominic
+            have<br />
+            [click]<br />
+            Dominic has asked Sarah to enhance the existing Button. He asked her
+            to add new available colors for it.<br />
+            He sends her a Sketch file and expects a component to check.<br />
+            [click]<br />
+            Does he have to wait until the component is implemented to check
+            what it is going to look like?
+          </aside>
+          <div class="designer-exchange">
+            <img src="img/2x/dominic.png" class="char-large" />
+            <h2
+              class="fragment"
+              data-fragment-index="3"
+              style="position: absolute;
+              width: 100px;
+              font-size: 100pt;
+              top: 50px;
+              left: 50%;
+              margin-left: -40px;"
+            >
+              ?
+            </h2>
+            <svg
+              class="fragment"
+              style="position:absolute; width: 150px;vertical-align:top;margin-top:200px; transform:rotate(180deg);"
+              data-fragment-index="3"
+              viewBox="6.226 8.846 214.585 55.872"
+              width="214.585"
+              height="55.872"
+            >
+              <path
+                style="stroke: #8dd792;fill: none; stroke-width: 11px;"
+                d="M 6.226 47.266 C 45.087 -0.389 136.418 -8.34 187.911 49.889"
+              ></path>
+              <path
+                d="M 65.347 106.098 L 102.127 148.823 L 43.279 148.823 L 65.347 106.098 Z"
+                style="fill: #8dd792;"
+                transform="matrix(-0.996221, 0.086854, 0.086854, 0.996221, 251.000198, -92.413025)"
+              ></path>
+            </svg>
+            <span class="fragment fade-out" data-fragment-index="3">
+              <img
+                class="fragment"
+                data-fragment-index="2"
+                src="img/sketch.png"
+                style="position:absolute; margin-bottom:50px;width: 150px;"
+              />
+              <svg
+                class="fragment"
+                style="width: 150px;vertical-align:top;margin-top:200px"
+                data-fragment-index="2"
+                viewBox="6.226 8.846 214.585 55.872"
+                width="214.585"
+                height="55.872"
+              >
+                <path
+                  style="stroke: #8dd792;fill: none; stroke-width: 11px;"
+                  d="M 6.226 47.266 C 45.087 -0.389 136.418 -8.34 187.911 49.889"
+                ></path>
+                <path
+                  d="M 65.347 106.098 L 102.127 148.823 L 43.279 148.823 L 65.347 106.098 Z"
+                  style="fill: #8dd792;"
+                  transform="matrix(-0.996221, 0.086854, 0.086854, 0.996221, 251.000198, -92.413025)"
+                ></path>
+              </svg>
+            </span>
+
+            <img src="img/2x/sarah.png" class="char-large" />
+          </div>
+        </section>
+        <section>
+          <section id="sb">
+            <aside class="notes">
+              Introducing your first documentation tool: Storybook.<br />
+              Who here has never used storybook? Never heard of it?<br />
+              It's a tool to showcase components in isolation.<br />
+              [click]<br />
+            </aside>
+            <h2>Storybook</h2>
+            <img
+              src="img/storybook.png"
+              style="width:400px;display: block;margin:20px auto;"
+            />
+            <code>vue add storybook</code>
+          </section>
+          <section id="sb-screen">
+            <aside class="notes">
+              Barebones what you get when running vue add storybook<br />
+              Left: The list of all examples written by Sarah for the Button<br />
+              Center: An isolated iframe with the rendered selected example<br />
+              Bottom: A Knob to change the content of the button<br />
+              Now how did Sarah write those examples in isolation?<br />
+            </aside>
+            <div class="screenshot-wrapper">
+              <div class="fragment">
+                <div class="fragment">
+                  <div class="fragment"></div>
+                </div>
+              </div>
+              <img src="img/sb-screen.png" />
+            </div>
+            <img src="img/2x/dominic.png" class="who-it-is-for" />
+          </section>
+          <section id="sb-code">
+            <aside class="notes">
+              She wrote a stories file.<br />
+              Import your component<br />
+              Export some meta in default<br />
+              Export a story, a use case for your component<br />
+              (no knobs?) <br />
+              [demo]
+            </aside>
+            <h2 style="margin:30px 0;">
+              Button.stories.js
+              <img src="img/storybook.png" />
+            </h2>
+            <pre><code data-trim data-noescape class="language-jsx">
+              import MyButton from "./MyButton.vue";
+              import { action } from "@storybook/addon-actions";
+
+              export default {
+                component: MyButton,
+                title: "Button"
+              };
+
+              export const withJSX = () => 
+                &lt;MyButton onClick={action("clicked")}&gt;Click Me&lt;/MyButton&gt;
+            </code></pre>
+            <img src="img/2x/sarah.png" class="who-it-is-for" />
+          </section>
+          <section id="sb-procontra">
+            <aside class="notes">
+              Super fast, let's review the ups and downs.<br />
+              <ul>
+                <li>5.7M/month react</li>
+                <li>400K/month VueJs</li>
+                <li>[click]trusted by them</li>
+              </ul>
+            </aside>
+            <h2>
+              Storybook
+              <img src="img/storybook.png" />
+            </h2>
+            <div class="pro-contra">
+              <div class="pro">
+                <h3>Cool !</h3>
+                <ul>
+                  <li>Very Popular</li>
+                  <li>Isolation</li>
+                  <li>Slick Design</li>
+                  <li>Knobs & other Addons</li>
+                  <li>Backed by Chromatic QA</li>
+                </ul>
+                <img src="img/ChromaticQALogo.png" />
+              </div>
+              <div class="contra">
+                <h3>Not so cool</h3>
+                <ul>
+                  <li>JSX is not HTML</li>
+                  <li>ReactJs</li>
+                  <li>Vue Dev Tools needs detach</li>
+                  <img src="img/React.png" />
+                </ul>
+              </div>
+            </div>
+            <div class="fragment fade-out" data-fragment-index="2">
+              <div class="fragment fade-in logos" data-fragment-index="1">
+                <img src="img/sb-logos.png" />
+              </div>
+            </div>
+            <img src="img/2x/sarah.png" class="who-it-is-for" />
+          </section>
+        </section>
+        <section id="sarah-phil">
+          <aside class="notes">
+            Dominic is satisfied with what Sarah showed.<br />
+            Now Phil looks at storybook since his only source of docs<br />
+            He needs some explainations
+          </aside>
+          <span>🛠</span>
+          <img src="img/2x/sarah.png" class="char-large" />
+          <svg
+            class="fragment"
+            style="width: 150px;vertical-align:top;margin-top:200px;"
+            data-fragment-index="3"
+            viewBox="6.226 8.846 214.585 55.872"
+            width="214.585"
+            height="55.872"
+          >
+            <path
+              style="stroke: #8dd792;fill: none; stroke-width: 11px;"
+              d="M 6.226 47.266 C 45.087 -0.389 136.418 -8.34 187.911 49.889"
+            ></path>
+            <path
+              d="M 65.347 106.098 L 102.127 148.823 L 43.279 148.823 L 65.347 106.098 Z"
+              style="fill: #8dd792;"
+              transform="matrix(-0.996221, 0.086854, 0.086854, 0.996221, 251.000198, -92.413025)"
+            ></path>
+          </svg>
+          <img src="img/2x/phil.png" class="char-large" />
+          <span>🚀</span>
+        </section>
+        <section>
+          <section id="vsg">
+            <h2>Vue Styleguidist</h2>
+            <img
+              src="img/styleguidist.png"
+              style="width:400px;display: block;margin:20px auto;"
+            />
+            <code>vue add styleguidist</code>
+          </section>
+          <section id="vsg-screen">
+            <div class="screenshot-wrapper">
+              <div class="fragment">
+                <div class="fragment">
+                  <div class="fragment"></div>
+                </div>
+              </div>
+              <img src="img/vsg-screen2.png" />
+            </div>
+            <img src="img/2x/phil.png" class="who-it-is-for" />
+          </section>
+          <section id="vsg-code">
+            <h2>MyButton.vue<img src="img/styleguidist.png" /></h2>
+            <pre><code class="language-html">
+              &lt;template&gt;
+                &lt;button :style="`background-color:${color}`" &gt;<div class="fragment slotComment" data-fragment-index="2">    &lt;!-- @slot text of the button --&gt;</div>    &lt;slot /&gt;
+                &lt;/button&gt;
+              &lt;/template&gt;
+
+              &lt;script&gt;
+              export default {
+                props: {<div class="fragment propComment" data-fragment-index="1">    /**
+                   * Set the background color of the button
+                   * @values blue, red, green
+                   */</div>    color: {
+                    type: String,
+                    default: "blue"
+                  }
+                }
+              }
+              &lt;/script&gt;
+            </code></pre>
+            <img src="img/2x/sarah.png" class="who-it-is-for" />
+          </section>
+          <section id="vsg-procontra">
+            <h2>Vue Styleguidist<img src="img/styleguidist.png" /></h2>
+            <div class="pro-contra">
+              <div class="pro">
+                <h3>Cool !</h3>
+                <ul>
+                  <li>Automated Props</li>
+                  <li>Default Examples</li>
+                  <li>Documentation in Code</li>
+                  <li>Live Editor</li>
+                  <li>Free Markdown pages</li>
+                  <li>Theming</li>
+                </ul>
+              </div>
+              <div class="contra">
+                <h3>Not so cool</h3>
+                <ul>
+                  <li>JSDoc is Verbose</li>
+                  <li><code>position: fixed</code></li>
+                  <li>Still in ReactJs</li>
+                  <img src="img/React.png" />
+                </ul>
+              </div>
+            </div>
+            <img src="img/2x/sarah.png" class="who-it-is-for" />
+            <img src="img/2x/dominic.png" class="who-it-is-for" />
+          </section>
+        </section>
+        <section id="future">
+          <h1>...Made Easy</h1>
+        </section>
+        <section id="sb-docs">
+          <h2>Storybook Docs <img src="img/storybook.png" /></h2>
+          <div>
+            <img
+              src="img/sb-docs.svg"
+              style="width: 200px;padding:10px; background-color:rgb(0, 121, 255);border-radius:10px;"
+            />
+            <ul>
+              <li>Free Text Pages</li>
+              <li>Stories in MDX Files</li>
+              <li>Props and slots detection</li>
+              <li>Theming</li>
+            </ul>
+          </div>
+          <img src="img/2x/dominic.png" class="who-it-is-for" />
+        </section>
+        <section id="vsg-cli">
+          <h2>vue-docgen-cli<img src="img/styleguidist.png" /></h2>
+          <div class="container-cli">
+            <div>
+              <img
+                src="img/VueLogo.png"
+                class="fragment docgen-effect slide-left chain-logo"
+                data-fragment-index="1"
+              />
+              <img
+                src="img/Pipe.svg"
+                class="pipe-glyph fragment docgen-effect slide-left"
+                data-fragment-index="1"
+              />
+              <img
+                src="img/React.png"
+                class="fragment docgen-effect slide-down chain-logo"
+                data-fragment-index="1"
+              />
+              <img
+                src="img/Pipe.svg"
+                class="pipe-glyph fragment docgen-effect slide-right"
+                data-fragment-index="1"
+              />
+              <img
+                src="img/styleguidist.png"
+                class="fragment docgen-effect slide-right chain-logo"
+                data-fragment-index="1"
+              />
+            </div>
+            <div
+              class="cli-schema fragment slide-in-down"
+              data-fragment-index="1"
+            >
+              <img
+                src="img/md.svg"
+                style="height:100px;padding:15px;border-radius:30px;background:#FFFFFF;"
+                class="chain-logo"
+              />
+              <img src="img/Pipe.svg" class="pipe-glyph" />
+              <img src="img/nuxt.svg" class="chain-logo" />
+            </div>
+          </div>
+          <img src="img/2x/phil.png" class="who-it-is-for" />
+          <img src="img/2x/sarah.png" class="who-it-is-for" />
+          <img src="img/2x/dominic.png" class="who-it-is-for" />
+        </section>
+        <section id="conclusion">
+          <aside class="notes">Automate your docs, you must</aside>
+          <img src="img/baby-yoda.png" />
+          <h2 class="fragment">This is the way</h2>
+        </section>
+        <section id="thanks">
+          <h4>QR Code: Slides & Demo</h4>
+          <img src="img/Repo_Link.svg" style="width:200px;" />
+          <h1>Thank you</h1>
+          <div>
+            <p>@ElevateBart<br />Discord, Twitter, Github</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="./node_modules/reveal.js/js/reveal.js"></script>
+    <script src="./node_modules/reveal.js/plugin/notes/notes.js"></script>
+    <script src="./node_modules/prismjs/prism.js"></script>
+    <script src="./node_modules/prismjs/components/prism-jsx.min.js"></script>
+    <script src="./node_modules/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    <script src="./node_modules/prismjs/plugins/line-highlight/prism-line-highlight.min.js"></script>
+    <script src="./node_modules/prismjs/plugins/keep-markup/prism-keep-markup.min.js"></script>
+    <script>
+      Prism.plugins.NormalizeWhitespace.setDefaults({
+        // "break-lines": 80,
+        // indent: 2,
+        // "remove-initial-line-feed": false,
+        // "tabs-to-spaces": 4,
+        // "spaces-to-tabs": 4,
+        "remove-trailing": true,
+        "remove-indent": true,
+        "left-trim": true,
+        "right-trim": true
+      });
+    </script>
+
+    <script>
+      Reveal.initialize({
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true
+      });
+    </script>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "./node_modules/reveal.js/css/print/pdf.css"
+        : "./node_modules/reveal.js/css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </body>
+</html>
