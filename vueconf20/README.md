@@ -486,3 +486,36 @@ mixins: [
 ### reactive references let you watch changes
 
 ### Vue Mastery - reactivity course contains this
+
+## 02 - Damian Dulisz - Validations in the Composition Age
+* `@vuejs`  Core Team
+* Curator of `http://news.vuejs.org` (`@VueNewsletter`)
+* creator of `vue-multiselect.js.org` and `Vuelidate.js.org`
+* Lead Engineer - `@coursedoginc` - pedagogy scheduling
+* Wrocław, Polskad
+
+### 02 - Damian Dulisz - Vuelidate - Probs
+* no lazy validation support
+* no built-in support for err messages
+* mediocre support for async-validators
+* hard to share validation results between components from child to parent
+
+### 02 - Damian Dulisz - Vuelidate - v2.0
+
+### 02 - Damian Dulisz - Vuelidate - `@vuelidate/validators`
+* you can import just the validator that you need
+
+### 02 - Damian Dulisz - Vuelidate - Schema Based Validation
+`FormVueLatte` - lightweight schema generated forms
+he's intergrating with that using a plugin
+
+### 02 - Damian Dulisz - Vuelidate - composition api
+* he imports a setup function from another component, 
+* then in the setup function of this component, maps over plugins, and passes in the og setup func
+* creates kind of a higher order component
+* `witherrorsComponent
+
+`
+### 02 - Damian Dulisz - Vuelidate - FormVueLatte plugin
+* plugin system enabling new integrations - COOL
+* they will create a parser for 
