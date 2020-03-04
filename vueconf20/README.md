@@ -817,3 +817,57 @@ Vue.use(VueLazyload, {
 
 ```
 This is using contentful image api
+
+### 07 - Vue as Compiler
+https://www.henryzoo.com/
+15:00 - 07 - Henry Zhu - Vue as Compiler
+
+#### 07 - Vue as Compiler - intro
+* how do we know what we know
+* the dragon book
+* we know more than we can _tell_ => Michael Polyani
+* `lebab` => reverse compiler project that compiles node modules if they don't output es6
+* babel translator
+* _Metaphors We Live By_ book
+* _time is money_
+* _understanding as compiling_ - let's generate some Ideas, I can't parse what you're seeing 
+* knowledge is insight
+* _Seeing Like A State_ --James C. Scott
+* learning X to go ... what?
+* computer is a bicycle for a mind
+* backwards brain bicycle on youtube
+* Justin Falcone - you think in the way of the creators
+  * the way you think about the world is affected by your context - your framework
+* insight (eureka) is akin to conversion
+* like a joke, the moment where you get it
+*  who is behind the code that we use?
+* what happens when we defer our responsibility to tools or other people? 
+* Benjamin Aldes Wurgaft - The Distance from our Food - article
+  * distance can breed ignorance of ecosystems
+* results, docs, apis, types are just maps of the actual thing
+  * alfred korzybski
+* all non trivial abstractions are leaky
+* 100% test coverage will have bugs, standards, top companies, open source projects ... they will all have bugs
+* what can we gain by doing things ourselves ... should we gain from not relying on abstractions?
+  * should we trust people?
+* what is best & learning from doubt
+* marshall mcluhan - _Understanding Media_ book
+  * illusion of being limitless, of getting rid of time and space
+* one view - "Technology is neither good nor bad; neither is it neutral"
+* "all models are wrong, but some are useful"
+* "Programming as Theory Building" => Nauer, c. 1985
+  * we think it's about producing text
+  * we think
+* "how to talk about books you haven't read"
+* technologies are extensions of our physical body - marshal mcluhan
+* "indwelling" - from personal knowledge by michael polanyi
+* Dan Wang - think of tech as a living product which has to be practiced for 
+  knoweldge even to be maintained at its current level ... at the 
+  Ise Grand Shrine, they rebuild it after taking it down again and again
+* program death - when people no longer understand it
+* jane jacobs - _The Death and Life of Great American Cities_
+  * _revival of a program is the rebuilding of its theory by a new programmer team_ 
+* programmers are not substitutable "resources"
+* what are we dealing with? `know-that` vs `know-how`
+* Douglas A. Hall - _The Cat & the Toaster_ - "Living System Ministry in a Technological Age"
+  * 
