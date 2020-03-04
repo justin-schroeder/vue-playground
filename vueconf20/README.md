@@ -445,6 +445,7 @@ Location: Austin Convention Center
 11:30 - 04 - Alexander Lichter - SEO in a Vue.js world - aka 04 nuxt seo
 12:00 - Lunch 2.0
 13:00 - 05 - Lightning Talks 2.0
+ * nuxt and netlify cms
 14:00 - Break 2.1
 14:30 - Sean O'Donohue - Launching a New Design System on an Existing Site with Zero Downtime
 15:00 - Henry Zhu - Vue as Compiler
@@ -608,3 +609,81 @@ Founder of Developmint,
 ### 04 - nuxt seo - sitemap
 * nuxt has sitemap module. catches all static urls, dynamic ones can be provided
 
+### 05 - Lightning Talks 2.0
+
+#### 05.1 - Lightning Talks 2.0 - nuxt and netlify cms
+https://awake-template.netlify.com/
+@danielkelly_io
+
+#### 05.2 - Lightning Talks 2.0 - optimization
+* lazy loading
+  * things that aren't visible initially
+  * change from import to `const DaisyProfile = () => import(/* webpackChunkName: 'dogs' */ '@/components/daisy`
+* lazy loading content
+  * tabs
+  * modals
+  * sidebars
+* we can lazy load routes
+* `vue.config.js`
+  * you can split out vue as a separate chunk
+  * if vendors chunk is too big, splitting out 
+https://github.com/kb-coder/lazydemo
+
+#### 05.3 - Lightning Talks 2.0 - Rolf Haug - keyboard shortcuts
+`@rahaug`
+oslo norway
+http://slides.com/rah/application-shortcuts-express/live
+Repository: https://github.com/vueschool/application-shortcuts
+Vue Global Events library by damien and edwardo - does lots of stuff like this
+
+##### renderless component
+* does not render its own html
+* use `render()` function that is empty or returning null
+* Component API we are going to create 
+  * `<event-listener event="" "... />`
+  * make a prop to receive
+  * great example of reacting to events
+  * there is an example repository
+    * network events demo
+      * great example - warning, you have lost your internet connection
+        * great for autosave
+        * he's using space to pause video and play again as a global shortcut
+        * he's using a ref to access the video element
+        * the problem is that it doesn't feel like proper vue code        
+* search demo
+  * you have a feature available at all times, like a search modal with ctrl f
+  * cmd f or ctrl f: `@keydown.meta.70` ... 
+* table row demo using keyboard shortcut to bring up modal 
+   
+#### 05.4 - Lightning Talks 2.0 - Vue Snowpack
+[demo repo for Vue Snowpack](https://github.com/mgdodge/vue-snowpack-demo)
+Mike Dodge
+let's vue like it's 1999
+utah
+`@webdevdodge` - Vivant Smart Home
+
+* JavaScript Modules have 88% support around the world
+* https://www.pika.dev/
+  * snowpack - upload no
+  * npm catalog that is curated for modules that are ES6 modules ready
+  * cdn 
+* the big win here: 
+  * eliminate the build process
+  * 
+
+#### 05.5 - Lightning Talks 2.0 - 
+Ashley McKemie
+BigCompany - Bloomberg
+
+building ecommerce storefronts with bigcommerce and vue
+BigCommerce is an Austin-based company - SAAS
+like shopify?
+it's a storefront api powered by graphql, using any place whether it's wordpress plugin
+she's a technical product manager
+power a headless storefront with nuxt starter app
+* http://developer.bigcommerce.com/sandbox/vue
+  * her demo - I signed up with codekiln dev space
+* https://docs.storefrontui.io/
+  * they have storybook
+* Your store url: codekiln.mybigcommerce.com
+* https://codekiln.mybigcommerce.com/?showStore=yes&ctk=03a38fac-7e20-4480-88f7-24a56c9b1097
