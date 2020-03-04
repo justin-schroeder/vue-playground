@@ -201,8 +201,9 @@ Composition API
 
 ### 06 Lightning Talks 1.0 - Gridsome
 jg@dialogs.com
+Storyblok plugin - https://gridsome.org/plugins/gridsome-source-storyblok
 
-### 06 Lightning Talks 1.0 - Gridsome - Peter Keirm migrating a large legacy app to vue bloomberg
+### 06 Lightning Talks 1.0 - Bloomberg - Peter Keirm migrating a large legacy app to vue bloomberg
 * [Peter Keirm LinkedIn](https://www.linkedin.com/in/peterkeirn/)
 * first thing was to migrate a library of core components
   * make sure you come up with a standard way to integrate with backend
@@ -441,7 +442,7 @@ Location: Austin Convention Center
 10:00 - 02 - Damian Dulisz - Validations in the Composition Age
 10:30 - Break 2.0
 11:00 - 03 - Jaime Jones - Demystifying the Vue Lifecycle and other pieces of the Vue instance
-11:30 - 04 - Alexander Lichter - SEO in a Vue.js world - aka 04 nuxt
+11:30 - 04 - Alexander Lichter - SEO in a Vue.js world - aka 04 nuxt seo
 12:00 - Lunch 2.0
 13:00 - 05 - Lightning Talks 2.0
 14:00 - Break 2.1
@@ -553,5 +554,57 @@ This is for Vue 2
 ### 03 - Vue Lifecycle - `ref`
 * if you have a parent container that references a `ref`, it won't get updates
 
-## 04 - nuxt
-Alexander Lichter, part of core team for nuxt
+## 04 - nuxt seo - Alexander Lichter, part of core team for nuxt
+Founder of Developmint, 
+* `@nuxt_js` core member
+`blog.lichter.io` & https://www.lichter.io/
+[04 - nuxt slides](http://slides.com/mannil/seo-in-a-vuejs-world-vueconf-us-2020#/)
+
+### 04 - nuxt seo - three pillars
+* On-page
+  * Content
+  * UX
+  * Keywords
+  * meta tags
+* Off-page
+  * link building
+  * citations
+  * social media
+  * authority
+* Technical
+  * page speed
+  * security
+  * broken links
+
+### 04 - nuxt seo - js 
+* yahoo, bing, google does JS now
+
+### 04 - nuxt seo - if not spa
+* SSR
+  * on the fly
+  * at build time - jamstack - 
+    * nuxt, vuepress, gridsome
+     
+### 04 - nuxt seo - google search console
+
+### 04 - nuxt seo - `vue-meta`
+* like `react-helmet`
+
+### 04 - nuxt seo - mobile is what google indexes
+
+### 04 - nuxt seo - text compression
+
+### 04 - nuxt seo - broken links & redirects
+* lots of broken links from / to your page really hurt seo
+* use `ahrefs` to detect broken links
+
+### 04 - nuxt seo - canonical links
+* `<link rel="canonical"` is the prererred version of the page
+* avoid duplicate content in SEO
+* you should have it on every page
+* great for trailing slash enforcement - it should be regular
+* there's a way to do in nuxt, of course
+
+### 04 - nuxt seo - sitemap
+* nuxt has sitemap module. catches all static urls, dynamic ones can be provided
+
