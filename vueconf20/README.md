@@ -441,7 +441,7 @@ Location: Austin Convention Center
 10:00 - 02 - Damian Dulisz - Validations in the Composition Age
 10:30 - Break 2.0
 11:00 - 03 - Jaime Jones - Demystifying the Vue Lifecycle and other pieces of the Vue instance
-11:30 - 04 - Alexander Lichter - SEO in a Vue.js world
+11:30 - 04 - Alexander Lichter - SEO in a Vue.js world - aka 04 nuxt
 12:00 - Lunch 2.0
 13:00 - 05 - Lightning Talks 2.0
 14:00 - Break 2.1
@@ -519,3 +519,39 @@ he's intergrating with that using a plugin
 ### 02 - Damian Dulisz - Vuelidate - FormVueLatte plugin
 * plugin system enabling new integrations - COOL
 * they will create a parser for 
+
+## 03 - Jaime Jones - Demystifying the Vue Lifecycle and other pieces of the Vue instance - aka Vue Lifecycle
+`@gameof_freckles` - Jaime Jones
+* [Slides for Demystifying the Vue Lifecycle by Jaime Jones](http://gitpitch.com/jaime-lynn/demystifying-the-vue-lifecycle)
+
+### 03 - Vue Lifecycle - overview
+This is for Vue 2
+
+### 03 - Vue Lifecycle - mounted
+* better for setting up libraries that need DOM to be ready - like chart options
+* not great for getting data
+* if do data manipulation in `created`, it's a safer way to go
+  * child component watchers might end up having problems if it's in `mounted`
+
+### 03 - Vue Lifecycle - errorCaptured
+* this is like error boundaries in react
+
+### 03 - Vue Lifecycle - keepAlive components
+* used with `<keep-alive><Component :is="myComp"/></keep-alive>` - this keeps 
+* they have unique lifecycle hooks: 
+  * `activated` is when it comes out of a cached state
+  * `deactivated` is when it is cached
+  
+### 03 - Vue Lifecycle - `nextTick`
+* returns a promise which returns when you get to the next update cycle
+  * for example, scroll into view upon an error
+
+### 03 - Vue Lifecycle - `v-for` and `:key`
+* problems when you add items to the beginning of the array and reuse the index
+* key lets you find out which items are new
+
+### 03 - Vue Lifecycle - `ref`
+* if you have a parent container that references a `ref`, it won't get updates
+
+## 04 - nuxt
+Alexander Lichter, part of core team for nuxt
