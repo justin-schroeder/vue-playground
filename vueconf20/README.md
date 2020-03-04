@@ -396,3 +396,36 @@ mixins - don't use them in typescript
 * use `extends` instead in vue 2
 Vuex is a pain
 * mapGetters, mapActions, etc is a pain
+
+## 11 - Oscar Spencer - *Unconventional Vue—Vue as a Backend Framework* - 30 min
+@oscar_spen
+@tidelift
+@grain_lang
+Boston, MA
+https://www.linkedin.com/in/oscarspen/
+
+### 11 - Vue Backend - Observability
+Vue looks at all properties and calls object.define property
+he explains the basics of the Evan You reactivity demo
+
+### 11 - Vue Backend - Observability Limits
+* all values must be registered ahead of time - major limitation
+* we can use `Vue.set` to add new nested properties, but not at the root level - that's not fun
+* Vue 2.6 gives `Vue.observable`
+
+### 11 - Vue Backend - A Vuex-like State Store
+* it's going to react to what you're going to do, you don't need explicit mutations
+* using render function 
+
+### 11 - Vue Backend - Reactivity in Vue 3
+* has a completely standalone reactivity module that can be used anywhere
+* Made possible by [ES6 Proxy object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+* you create a `new Proxy` and that proxy intercepts it and creates a dependency for the watcher
+```js
+import { reactive, effect } from '@vue/reactivity'
+const counter = reactive({ num: 0 })
+... 
+```
+#### 11 - Vue Backend - Reactivity in Vue 3 - implications 2
+* we can see what keys change on the object
+  * runs every time a property is added or deleted from an object
