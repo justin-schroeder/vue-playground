@@ -447,11 +447,11 @@ Location: Austin Convention Center
 13:00 - 05 - Lightning Talks 2.0
  * nuxt and netlify cms
 14:00 - Break 2.1
-14:30 - Sean O'Donohue - Launching a New Design System on an Existing Site with Zero Downtime
-15:00 - Henry Zhu - Vue as Compiler
+14:30 - 06 - Sean O'Donohue - Launching a New Design System on an Existing Site with Zero Downtime
+15:00 - 07 - Henry Zhu - Vue as Compiler
 15:30 - Break 2.3 - Adam Jahr - Authentication from Scratch in Vue
-16:30 - Alex Kyriakidis - What you'll love in Vue 3
-17:00 - Close and Mega Raffle - Prizes
+16:30 - 08 - Alex Kyriakidis - What you'll love in Vue 3
+17:00 - 09 - Close and Mega Raffle - Prizes
 19:30 - Conference After Party
 
 
@@ -687,3 +687,133 @@ power a headless storefront with nuxt starter app
   * they have storybook
 * Your store url: codekiln.mybigcommerce.com
 * https://codekiln.mybigcommerce.com/?showStore=yes&ctk=03a38fac-7e20-4480-88f7-24a56c9b1097
+
+### 06 - Sean O'Donohue - Design System
+... on an Existing Site with Zero Downtime
+slides: https://docs.google.com/presentation/d/1TyjjoU_i7v2QG5H6xR6PsV712fZYbhsqAsoGApIbpHY/edit#slide=id.p
+
+THINKFUL - their company - https://www.thinkful.com/about/
+Cecy - also at thinkful
+
+#### 06 - Design System - Tools
+* Nuxt
+  * They mention that RAM is a pain in development
+* Zeplin => https://docs.google.com/presentation/d/1TyjjoU_i7v2QG5H6xR6PsV712fZYbhsqAsoGApIbpHY/edit#slide=id.g7d58a2eb4f_0_56
+
+#### 06 - Design System - Feature Flagging vs Feature Branching
+* https://docs.google.com/presentation/d/1TyjjoU_i7v2QG5H6xR6PsV712fZYbhsqAsoGApIbpHY/edit#slide=id.g7d58a2eb4f_0_71
+* Feature Flagging - Pros
+  * More risk of messing up production site during dev.
+  * Less risk at launch, more cleanup after launch.
+* Feature Flagging - Cons
+  * requires setting up feature flagging in templates, etc
+* Feature Branching - Pros
+  * Only requires setup of source control.
+  * Less risk of messing up existing site before launch.
+* Feature Branching - Cons
+  * Not testable in production environment.
+  * More risk at launch.
+
+_They went with Feature Flagging_
+* Feature Flag - they used keyword parameters, e.g. `?ft=cool-feature`
+* Eric Elliot's "feature flagging" library - vanilla js
+```vue
+<template>
+   <div v-if=”newNav” />
+</template>
+<script>
+    const releasedFlags = [‘new-nav’];
+     // ...
+     data: function() {
+        return { newNav: false }
+     },
+    
+     beforeCreate () {
+       this.$features.init(releasedFlags)
+     },
+    
+     mounted () {
+       this.coolFeature = 
+    this.$features.active(‘new-nav’)
+     }
+</script>
+
+```
+
+##### Feature Flags in Styles
+```vue
+<template>
+   <div class=”nav-component” />
+</template>
+
+
+<style lang=”less” scoped>
+.nav-component {
+ background-color: green;
+
+ .ft-new-feature & {
+     background-color: purple;
+ }
+}
+</style>
+```
+
+##### Feature Flags help deployment
+They added a single string to config file 
+one pr with all the places to change the flags
+
+#### 06 - Design System - CSS Variables
+
+```vue
+<script>
+export default {
+ props: {
+   courseColor: {
+     //
+   }
+ },
+ //... 
+ computed: {
+   cssProps () {
+     return {
+      '--course-color': this.courseColor
+     }
+   }
+ }
+}
+</script>
+
+```
+
+```vue
+<template>
+ <div :style="cssProps">
+   <!-- content -->
+ </div>
+</template>
+
+```
+
+#### 06 - Design System - Netlify 
+They used a feature flag 
+
+#### 06 - Design System - Webperf
+```vue
+Vue.use(VueLazyload, {
+   webp (listener, options) {
+     if (options.supportWebp) {
+       listener.src += '?fm=webp&q=35'
+     }
+   }
+ }
+Vue.use(VueLazyload, {
+   progressive (listener, options) {
+     if (options.supportWebp) {
+       listener.src += '?fm=webp&q=1'
+     } else {
+       listener.src + '?fm=jpg&fl=progressive'
+     }
+
+
+```
+This is using contentful image api
