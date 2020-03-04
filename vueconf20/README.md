@@ -429,3 +429,60 @@ const counter = reactive({ num: 0 })
 #### 11 - Vue Backend - Reactivity in Vue 3 - implications 2
 * we can see what keys change on the object
   * runs every time a property is added or deleted from an object
+
+# Vueconf '20 Day 2
+Date: March 4, 2020
+Time: 8:30AM to 9:00PM
+Location: Austin Convention Center
+
+07:30 - Breakfast
+08:30 - Speed networking, Vue style!
+09:30 - 01 - Gregg Pollack - Vue 3's Composition API Explained Visually
+10:00 - 02 - Damian Dulisz - Validations in the Composition Age
+10:30 - Break 2.0
+11:00 - 03 - Jaime Jones - Demystifying the Vue Lifecycle and other pieces of the Vue instance
+11:30 - 04 - Alexander Lichter - SEO in a Vue.js world
+12:00 - Lunch 2.0
+13:00 - 05 - Lightning Talks 2.0
+14:00 - Break 2.1
+14:30 - Sean O'Donohue - Launching a New Design System on an Existing Site with Zero Downtime
+15:00 - Henry Zhu - Vue as Compiler
+15:30 - Break 2.3 - Adam Jahr - Authentication from Scratch in Vue
+16:30 - Alex Kyriakidis - What you'll love in Vue 3
+17:00 - Close and Mega Raffle - Prizes
+19:30 - Conference After Party
+
+
+## 01 Gregg Pollack - Vue 3's Composition API Explained Visually
+Gregg Pollack - `@greggpollack` - teacher at `@VueMastery`
+Founder at `@EnvyLabs`, Code School, `@StarterStudio`
+Orlando, FL
+
+### old way mixins
+* uses either mixins directly or something like this: 
+```vue
+mixins: [
+  searchMixinFactory({
+    namespace: 'productSearch'
+```
+
+### old way scoped slot
+* less performant
+* configuration in component
+
+### when to use composition api
+* first class support
+* component is too large
+
+### modular reactivity
+* you can use Vue's reactivity in a library that knows nothing about components
+
+### you can either make refs directly, or you can make a reactive object
+
+### use `toRefs` to split a reactive object into multiple refs
+
+### `event-space.js` can pull out just those parts of state you need
+
+### reactive references let you watch changes
+
+### Vue Mastery - reactivity course contains this
