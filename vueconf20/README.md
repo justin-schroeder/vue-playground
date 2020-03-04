@@ -871,3 +871,42 @@ https://www.henryzoo.com/
 * what are we dealing with? `know-that` vs `know-how`
 * Douglas A. Hall - _The Cat & the Toaster_ - "Living System Ministry in a Technological Age"
   * 
+  
+### 08 -Debbie O'brien - nuxt
+* `@debs_obrien`, `@nuxt_js`
+Palma, Spain
+
+nuxt static
+https://github.com/debs-obrien/nuxt-boilerplate-project
+
+## 
+Jared Wilcurt
+Austin Hackett
+Ben Shurts
+Eric Romrell
+Brandon Lee Griffin
+Rachelle Ginzberg
+Steven Akins
+Lee Warrick
+Frank Aillo
+Michael Crow
+Jordan Simonds
+Jose Garrido
+Michael Webb
+Steve King
+Jeremy Martin
+Brad Efting
+Neil McEachin
+Derrick Whiting
+Seth Kline
+Michael Savastano
+Tony Mao
+Dan Hunt
+Krissy Conant
+Michael Bowen
+Jack Koppa
+Greg Pollack
+Spencer Neff
+Alex Kao
+Alex DePetrillo
+Aaron Freebern
