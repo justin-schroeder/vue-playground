@@ -1006,37 +1006,37 @@ nuxt static
 https://github.com/debs-obrien/nuxt-boilerplate-project
 
 ## 09 Raffle
-Jared Wilcurt  
-* Austin Hackett  
-* Ben Shurts  
-* Eric Romrell  
-* Brandon Lee Griffin  
-* Rachelle Ginzberg  
-* Steven Akins  
-* Lee Warrick  
-* Frank Aillo  
-* Michael Crow  
-* Jordan Simonds  
-* Jose Garrido  
-* Michael Webb  
-* Steve King  
-* Jeremy Martin  
-* Brad Efting  
-* Neil McEachin  
-* Derrick Whiting  
-* Seth Kline  
-* Michael Savastano  
-* Tony Mao  
-* Dan Hunt  
-* Krissy Conant  
-* Michael Bowen  
-* Jack Koppa  
-* Greg Pollack  
-* Spencer Neff  
-* Alex Kao  
-* Alex DePetrillo  
-* Aaron Freebern  
 * Aare Pikaro  
 * Aaron Freebern  
+* Aaron Freebern  
 * Aaron Queen  
+* Alex DePetrillo  
+* Alex Kao  
+* Austin Hackett  
+* Ben Shurts  
+* Brad Efting  
+* Brandon Lee Griffin  
+* Dan Hunt  
+* Derrick Whiting  
+* Eric Romrell  
+* Frank Aillo  
+* Greg Pollack  
+* Jack Koppa  
+* Jared Wilcurt  
+* Jeremy Martin  
+* Jordan Simonds  
+* Jose Garrido  
+* Krissy Conant  
+* Lee Warrick  
 * Michael Bowen  
+* Michael Bowen  
+* Michael Crow  
+* Michael Savastano  
+* Michael Webb  
+* Neil McEachin  
+* Rachelle Ginzberg  
+* Seth Kline  
+* Spencer Neff  
+* Steve King  
+* Steven Akins  
+* Tony Mao  
