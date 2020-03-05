@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Application Testing in Vue.js](#application-testing-in-vuejs)
+  - [Links](#links)
+    - [Login Form 1 > Show and Demo the form](#login-form-1--show-and-demo-the-form)
+    - [Login Form 2 (Stubs, Mocks, and Spies)](#login-form-2-stubs-mocks-and-spies)
+- [9.1 | 15 minutes](#91--15-minutes)
+- [9.2 | 10 minutes](#92--10-minutes)
+- [9.3 | 5 minutes](#93--5-minutes)
+    - [Component Lifecycle](#component-lifecycle)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Application Testing in Vue.js
 By ALEX KYRIAKIDIS, _Creator of VueSchool.io and Vue.js Community Partner_
 
