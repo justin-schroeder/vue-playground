@@ -131,27 +131,27 @@ Date: March 3, 2020
 Time: 7:30AM to 7:00PM
 Location: Austin Convention Center
 
-0900 - Evan You - Opening Keynote with Evan - 30 min
-0940 - Eduardo - Get the most out of Vue Router - 30 min
-1010 - Break 1.0 - 30 min
+0900 - Evan You - Opening Keynote with Evan - 30 min  
+0940 - Eduardo - Get the most out of Vue Router - 30 min  
+1010 - Break 1.0 - 30 min  
 
-1040 - Natalia Tepluhina - All you need is <s>love</s> Apollo Client - 30 min
-1110 - Jamena McInteer - The State of CSS in Vue - 30 min
-1140 - Alex Kyriakidis - 05 Vue 3 - 30 min
+1040 - Natalia Tepluhina - All you need is <s>love</s> Apollo Client - 30 min  
+1110 - Jamena McInteer - The State of CSS in Vue - 30 min  
+1140 - Alex Kyriakidis - 05 Vue 3 - 30 min  
 
-1210 - Lunch 1.0 - 1 hour
-1310 - Lightning Talks 1.0 - 1 hour
+1210 - Lunch 1.0 - 1 hour  
+1310 - Lightning Talks 1.0 - 1 hour  
 
-1410 - Break 1.1 - 30 min
-1440 - John Leider - Vuetify v2+ - 30 min
-1510 - Maria Lamardo - Content Loading That Isn't Broken - 30 min
-1540 - Bart Ledoux - Documenting components made easy Styleguideist - 30 min
+1410 - Break 1.1 - 30 min  
+1440 - John Leider - Vuetify v2+ - 30 min  
+1510 - Maria Lamardo - Content Loading That Isn't Broken - 30 min  
+1540 - Bart Ledoux - Documenting components made easy Styleguideist - 30 min  
 
-1610 - Break 1.3 - 30 min
-1640 - Jack Koppa - *TypeScript & Vue @ Politico* - 30 min
-1710 - Oscar Spencer - *Unconventional Vue—Vue as a Backend Framework* - 30 min
+1610 - Break 1.3 - 30 min  
+1640 - Jack Koppa - *TypeScript & Vue @ Politico* - 30 min  
+1710 - Oscar Spencer - *Unconventional Vue—Vue as a Backend Framework* - 30 min  
 
-1800 - Conference Reception - 1 hr 30 min
+1800 - Conference Reception - 1 hr 30 min  
 
 
 ## 01 Evan You's Keynote
@@ -562,23 +562,23 @@ Date: March 4, 2020
 Time: 8:30AM to 9:00PM
 Location: Austin Convention Center
 
-07:30 - Breakfast
-08:30 - Speed networking, Vue style!
-09:30 - 01 - Gregg Pollack - Vue 3's Composition API Explained Visually
-10:00 - 02 - Damian Dulisz - Validations in the Composition Age
-10:30 - Break 2.0
-11:00 - 03 - Jaime Jones - Demystifying the Vue Lifecycle and other pieces of the Vue instance
-11:30 - 04 - Alexander Lichter - SEO in a Vue.js world - aka 04 nuxt seo
-12:00 - Lunch 2.0
-13:00 - 05 - Lightning Talks 2.0
- * nuxt and netlify cms
-14:00 - Break 2.1
-14:30 - 06 - Sean O'Donohue - Launching a New Design System on an Existing Site with Zero Downtime
-15:00 - 07 - Henry Zhu - Vue as Compiler
-15:30 - Break 2.3 - Adam Jahr - Authentication from Scratch in Vue
-16:30 - 08 - Alex Kyriakidis - What you'll love in Vue 3
-17:00 - 09 - Close and Mega Raffle - Prizes
-19:30 - Conference After Party
+07:30 - Breakfast  
+08:30 - Speed networking, Vue style!  
+09:30 - 01 - Gregg Pollack - Vue 3's Composition API Explained Visually  
+10:00 - 02 - Damian Dulisz - Validations in the Composition Age  
+10:30 - Break 2.0  
+11:00 - 03 - Jaime Jones - Demystifying the Vue Lifecycle and other pieces of the Vue instance  
+11:30 - 04 - Alexander Lichter - SEO in a Vue.js world - aka 04 nuxt seo  
+12:00 - Lunch 2.0  
+13:00 - 05 - Lightning Talks 2.0  
+ * nuxt and netlify cms  
+14:00 - Break 2.1  
+14:30 - 06 - Sean O'Donohue - Launching a New Design System on an Existing Site with Zero Downtime  
+15:00 - 07 - Henry Zhu - Vue as Compiler  
+15:30 - Break 2.3 - Adam Jahr - Authentication from Scratch in Vue  
+16:30 - 08 - Alex Kyriakidis - What you'll love in Vue 3  
+17:00 - 09 - Close and Mega Raffle - Prizes  
+19:30 - Conference After Party  
 
 
 ## 01 Gregg Pollack - Vue 3's Composition API Explained Visually
