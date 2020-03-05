@@ -326,7 +326,7 @@ Composition API
 ## 06 Lightning Talks 1.0 - 1 hour
 
 ### 06 Lightning Talks 1.0 - Gridsome
-jg@dialogs.com
+Jose Garrido - `jg@dialogs.com`
 Storyblok plugin - https://gridsome.org/plugins/gridsome-source-storyblok
 
 ### 06 Lightning Talks 1.0 - Bloomberg - Peter Keirm migrating a large legacy app to vue bloomberg
@@ -1024,19 +1024,17 @@ https://github.com/debs-obrien/nuxt-boilerplate-project
 * Jack Koppa  
 * Jared Wilcurt  
 * Jeremy Martin  
-* Jordan Simonds  
-* Jose Garrido  
-* Krissy Conant  
-* Lee Warrick  
-* Michael Bowen  
-* Michael Bowen  
+* [Jordan Simonds - Somerville, MA](https://www.linkedin.com/in/ajsimonds/)  
+* Jose Garrido - gave lightning talk on Dialogs.com's use of Gridsome 
+* [Krissy Conant - Altanta, GA](https://www.linkedin.com/in/krissy-conant/)  
+* [Lee Warrick - Orlando, FL](https://www.linkedin.com/in/lee-warrick/)  
+* [Michael Bowen - Milwaukee, WI](https://www.linkedin.com/in/michael-bowen/)  
 * Michael Crow  
-* Michael Savastano  
-* Michael Webb  
-* Neil McEachin  
-* Rachelle Ginzberg  
-* Seth Kline  
-* Spencer Neff  
+* [Michael Savastano - Johnson & Johnson, Providence RI](https://www.linkedin.com/in/savastanomichael/)  
+* [Michael Webb - Grand Rapids, MI](https://www.linkedin.com/in/michael-d-webb/)  
+* [Neil McEachin](https://www.linkedin.com/in/neilmceachin/)  
+* [Seth Kline - Harrisburg, PA](https://www.linkedin.com/in/seth-kline/)  
+* [Spencer Neff - Austin, TX](https://www.linkedin.com/in/spencerneff/)  
 * Steve King  
-* Steven Akins  
-* Tony Mao  
+* [Steven Akins - Suwanee, GA](https://www.linkedin.com/in/stevendakins/)
+* [Tony Mao - San Francisco, CA](https://www.linkedin.com/in/anthony-mao-63953266/)  
