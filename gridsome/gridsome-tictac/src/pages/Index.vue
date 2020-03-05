@@ -4,64 +4,80 @@
         <!-- Learn how to use images here: https://gridsome.org/docs/images
         <g-image alt="Example image" src="~/favicon.png" width="135"/>-->
 
-        <p class="home-links">
-            <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
-            <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
-        </p>
-
-        <br/>
-
-            <v-row align="center">
-                <v-col class="text-center" cols="12" sm="4">
-                    <div class="my-2">
-                        <v-btn small>Normal</v-btn>
-                    </div>
-                    <div class="my-2">
-                        <v-btn small color="primary">Primary</v-btn>
-                    </div>
-                    <div class="my-2">
-                        <v-btn small color="error">Error</v-btn>
-                    </div>
-                    <div class="my-2">
-                        <v-btn small disabled>Disabled</v-btn>
-                    </div>
-                </v-col>
-                <v-col class="text-center" cols="12" sm="4">
-                    <div class="my-2">
-                        <v-btn>Normal</v-btn>
-                    </div>
-                    <div class="my-2">
-                        <v-btn color="primary">Primary</v-btn>
-                    </div>
-                    <div class="my-2">
-                        <v-btn color="error">Error</v-btn>
-                    </div>
-                    <div class="my-2">
-                        <v-btn disabled>Disabled</v-btn>
-                    </div>
-                </v-col>
-                <v-col class="text-center" cols="12" sm="4">
-                    <div class="my-2">
-                        <v-btn large>Normal</v-btn>
-                    </div>
-                    <div class="my-2">
-                        <v-btn large color="primary">Primary</v-btn>
-                    </div>
-                    <div class="my-2">
-                        <v-btn large color="error">Error</v-btn>
-                    </div>
-                    <div class="my-2">
-                        <v-btn large disabled>Disabled</v-btn>
-                    </div>
-                </v-col>
-            </v-row>
+        <v-simple-table>
+            <template v-slot:default>
+                <thead>
+                <tr>
+                    <th class="text-left">Name</th>
+                    <th class="text-left">Calories</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in desserts" :key="item.name">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.calories }}</td>
+                </tr>
+                </tbody>
+            </template>
+        </v-simple-table>
     </Layout>
 </template>
 
+
 <script>
+  import Layout from '~/layouts/Default.vue'
   export default {
+    components: {
+      Layout
+    },
     metaInfo: {
       title: 'Hello, world!'
+    },
+    data: function() {
+      return {
+        desserts: [
+          {
+            name: 'Frozen Yogurt',
+            calories: 159,
+          },
+          {
+            name: 'Ice cream sandwich',
+            calories: 237,
+          },
+          {
+            name: 'Eclair',
+            calories: 262,
+          },
+          {
+            name: 'Cupcake',
+            calories: 305,
+          },
+          {
+            name: 'Gingerbread',
+            calories: 356,
+          },
+          {
+            name: 'Jelly bean',
+            calories: 375,
+          },
+          {
+            name: 'Lollipop',
+            calories: 392,
+          },
+          {
+            name: 'Honeycomb',
+            calories: 408,
+          },
+          {
+            name: 'Donut',
+            calories: 452,
+          },
+          {
+            name: 'KitKat',
+            calories: 518,
+          },
+        ],
+      }
     }
   }
 </script>

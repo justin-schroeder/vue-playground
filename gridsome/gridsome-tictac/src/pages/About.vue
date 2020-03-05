@@ -6,9 +6,14 @@
 </template>
 
 <script>
-export default {
-  metaInfo: {
-    title: 'About us'
+  import Layout from '~/layouts/Default.vue'
+
+  export default {
+    metaInfo: {
+      title: 'About us'
+    },
+    components: {
+      Layout
+    },
   }
-}
 </script>
