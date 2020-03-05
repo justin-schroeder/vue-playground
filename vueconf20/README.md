@@ -3,7 +3,7 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Vueconf '20 Day 1](#vueconf-20-day-1)
-  - [Schedule](#schedule)
+  - [Vueconf '20 Day 1 - Schedule](#vueconf-20-day-1---schedule)
   - [01 Evan You's Keynote](#01-evan-yous-keynote)
     - [Vue Rewrite](#vue-rewrite)
       - [The performance problem](#the-performance-problem)
@@ -126,10 +126,10 @@
 
 # Vueconf '20 Day 1
 
-## Schedule 
-Date: March 3, 2020
-Time: 7:30AM to 7:00PM
-Location: Austin Convention Center
+## Vueconf '20 Day 1 - Schedule 
+Date: March 3, 2020  
+Time: 7:30AM to 7:00PM  
+Location: Austin Convention Center  
 
 0900 - Evan You - Opening Keynote with Evan - 30 min  
 0940 - Eduardo - Get the most out of Vue Router - 30 min  
@@ -558,9 +558,9 @@ const counter = reactive({ num: 0 })
   * runs every time a property is added or deleted from an object
 
 # Vueconf '20 Day 2
-Date: March 4, 2020
-Time: 8:30AM to 9:00PM
-Location: Austin Convention Center
+Date: March 4, 2020  
+Time: 8:30AM to 9:00PM  
+Location: Austin Convention Center  
 
 07:30 - Breakfast  
 08:30 - Speed networking, Vue style!  
