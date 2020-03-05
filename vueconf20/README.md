@@ -1005,38 +1005,38 @@ Palma, Spain
 nuxt static
 https://github.com/debs-obrien/nuxt-boilerplate-project
 
-## 
-Jared Wilcurt
-Austin Hackett
-Ben Shurts
-Eric Romrell
-Brandon Lee Griffin
-Rachelle Ginzberg
-Steven Akins
-Lee Warrick
-Frank Aillo
-Michael Crow
-Jordan Simonds
-Jose Garrido
-Michael Webb
-Steve King
-Jeremy Martin
-Brad Efting
-Neil McEachin
-Derrick Whiting
-Seth Kline
-Michael Savastano
-Tony Mao
-Dan Hunt
-Krissy Conant
-Michael Bowen
-Jack Koppa
-Greg Pollack
-Spencer Neff
-Alex Kao
-Alex DePetrillo
-Aaron Freebern
-Aare Pikaro
-Aaron Freebern
-Aaron Queen
-Michael Bowen
+## 09 Raffle
+Jared Wilcurt  
+* Austin Hackett  
+* Ben Shurts  
+* Eric Romrell  
+* Brandon Lee Griffin  
+* Rachelle Ginzberg  
+* Steven Akins  
+* Lee Warrick  
+* Frank Aillo  
+* Michael Crow  
+* Jordan Simonds  
+* Jose Garrido  
+* Michael Webb  
+* Steve King  
+* Jeremy Martin  
+* Brad Efting  
+* Neil McEachin  
+* Derrick Whiting  
+* Seth Kline  
+* Michael Savastano  
+* Tony Mao  
+* Dan Hunt  
+* Krissy Conant  
+* Michael Bowen  
+* Jack Koppa  
+* Greg Pollack  
+* Spencer Neff  
+* Alex Kao  
+* Alex DePetrillo  
+* Aaron Freebern  
+* Aare Pikaro  
+* Aaron Freebern  
+* Aaron Queen  
+* Michael Bowen  
