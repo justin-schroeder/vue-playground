@@ -29,7 +29,7 @@ async function getNumber (n, timeout = 1000) {
 }
 
 export default {
-  name: 'HelloWorld',
+  name: 'Experiment1',
   props: {
     msg: String
   },
