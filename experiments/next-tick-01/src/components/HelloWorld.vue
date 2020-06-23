@@ -11,6 +11,9 @@
     <div ref="noRef" v-if="!numRef">
       <h1>NO REF YET</h1>
     </div>
+    <div v-if="numRef">
+      <p>Ref: {{ refPhrase }}</p>
+    </div>
   </div>
 </template>
 
@@ -34,14 +37,24 @@ export default {
     return {
       numApples: null,
       numOranges: null,
-      numRef: null
+      numRef: null,
+      hasApples: null
+    }
+  },
+  computed: {
+    refPhrase () {
+      if (this.numRef) {
+        return this.numRef.label
+      }
+      return 'no'
     }
   },
   async mounted () {
     this.numApples = await getNumber(2)
-    const that = this
-    getNumber(3, 2000).then(num => { that.numOranges = num })
+    // if you make the callback to $nextTick async, then this is no longer bound to $vm
+    this.hasApples = this.numApples > 0
     this.$nextTick(async () => {
+      console.log(this.hasApples)
       if (this.$refs.numApples) {
         this.numRef = this.$refs.numApples
       } else if (this.$refs.numOranges) {
@@ -49,6 +62,12 @@ export default {
       } else {
         this.numRef = this.$refs.noRef
       }
+      this.numOranges = await getNumber(3, 2000)
+      this.$nextTick(() => {
+        if (this.$refs.numOranges) {
+          this.numRef = this.$refs.numOranges
+        }
+      })
     })
   },
   components: {
