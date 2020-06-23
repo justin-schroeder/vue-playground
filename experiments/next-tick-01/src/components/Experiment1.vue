@@ -20,7 +20,7 @@
 <script>
 import NumInput from './NumInput'
 
-async function getNumber (n, timeout = 1000) {
+export async function getNumber (n, timeout = 1000) {
   return new Promise(function (resolve) {
     setTimeout(() => {
       resolve(n)

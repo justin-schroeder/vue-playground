@@ -2,16 +2,19 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <Experiment1 msg="Num Apples:"/>
+    <hr>
+    <Experiment2 />
   </div>
 </template>
 
 <script>
 import Experiment1 from './components/Experiment1.vue'
+import Experiment2 from './components/Experiment2.vue'
 
 export default {
   name: 'App',
   components: {
-    Experiment1
+    Experiment1, Experiment2
   }
 }
 </script>
