@@ -42,3 +42,49 @@ Vue 3 Reactivity - he created a course that would make this a lot more understan
   2. if changes, render func creates new VNode
   3. send to the patch engine to diff them and update the DOM
 
+## L02 How to use Render Functions
+
+### L02.1 - Advantages of VDom 1
+* render to iOS, webGL, etc
+* Vue2 already has capability, not officially documented
+* Vue3 custom render API is official, 3rd parties can build
+  custom renderers
+
+### L02.2 - Advantages of VDom 2
+* complex type-ahead box example
+  * lots of interactive logic
+  * template syntax is restrictive
+  * render funcs might let you go deeper
+* templates are good 99% of the time, then you want render func
+
+### L02.3 - Render Function
+```vue
+render(h) {
+  return h('div', {
+    attrs: {
+      id: 'foo'
+    },
+    on: {
+      click: this.onClick
+    }
+  }, 'hello')
+}
+```
+* Vue 2 was highly verbose. They changed the API to simplify it.
+* flat props structure
+* globally imported `h` helper
+  * when you want to pass nested render functions, you have to pass h down
+  * with globally imported `h` you can split it into multiple funcs in one file
+```vue
+import {h} from 'vue'
+
+render() {
+  return h('div', {
+    id: 'foo'
+    onClick: this.onClick
+  }, 'hello')
+}
+```
+* if you put an attr in, if Vue3 detects it's a data attr, it treats it as that.
+* Vue 3 is a re-write in typescript
+
