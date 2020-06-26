@@ -88,3 +88,102 @@ render() {
 * if you put an attr in, if Vue3 detects it's a data attr, it treats it as that.
 * Vue 3 is a re-write in typescript
 
+## L03 How to use Render Functions
+15min
+
+### L03.1 High Level intro to render funcs
+* just put `render() {}` inside the option
+* in vue3, `import {h} from 'vue'`
+```vue
+import {h} from 'vue'
+
+render() {
+  return h('div')
+}
+```
+* give it props
+```vue
+import {h} from 'vue'
+
+render() {
+  return h('div', {
+    id: 'hello'  
+  })
+}
+```
+* give it children
+```vue
+import {h} from 'vue'
+
+render() {
+  return h('div', {
+    id: 'hello'  
+  }, [h('span', 'world')])
+}
+```
+* how do you use `v-if`? use a ternery
+* how do you use `v-for`? 
+  * use `return this.list.map(item => {})`
+  
+### L03.2 slots in render funcs
+* probably always have to use slots with render funcs
+  * typically, markup-heavy or feature components
+    * related to look of application
+    * for these use template
+  * when to use render funcs
+    * utility components
+    * take slot content and wrap them up
+  * grab slots: `this.$slots.default && this.$slots.default()`
+* scoped slots
+  * pass argument into `this.$slots.default(scope)`
+* remember to guarantee slots is an array
+```vue
+import {h} from 'vue'
+
+const App = {
+  render() {
+    const slot = this.$slots.default
+      ? this.$slots.default()
+      : []
+    return slot // ... more to come
+  }
+}
+```
+* Becasue it's an array, you can put it in the children position of normal element
+  * `return h('div', slot)`
+### L03.3 stack component
+* Stack element would add padding 
+* it's hard to do this with templates, because it's recursive
+```vue
+<Stack size="4">
+  <div>hello</div>
+  <div>hello</div>
+  <Stack size="2">
+    <div>hello</div>
+    <div>hello</div>
+  </Stack>
+</Stack>
+```
+* you can do it with render funcs
+```vue
+import {h} from 'vue'
+
+const Stack = {
+  render() {
+    const slot = this.$slots.default
+      ? this.$slots.default()
+      : []
+    return return h('div', { class: 'stack' }, slot.map(child=> {
+      return h('div', { class: `mt-${this.$props.size}` }, [
+        child
+      ])
+    })
+  }
+}
+```
+* see example here: [stack.html](./stack.html)
+  * note, I couldn't get his code to work
+  * I get `mt-undefined`
+* templates are easier to optimize the component
+  * also, easier for designers to style with CSS
+  
