@@ -319,3 +319,69 @@ const vdom = h('div', {class: 'red'}, [
 mount(vdom, document.getElementById('app'))
 </script>
 ```
+
+**See [My Solution in `./L04-4_exercise_try.html`](./L04-4_exercise_try.html)**
+
+## L05 Creating a Mount function
+
+### L05.1 going through mount function
+* Evan's implementation of `h` is just like mine
+* in props, he uses `for (const key in vnode.props) {`
+  * he says we _should_ check if it's a property or an attribute
+  * but he ended up using `setAttribute` just like I did
+* in children, he detected string with typeof like I did
+  * he explicitly says to ignore cases like `h('span', null, ['hello', h('span')]`
+    * for the case of instruction
+    * actually, vue handles this
+  * Evan uses `el.textContent` instead of using creating a text node
+* the initinal `mount()` is all about creating something that wasn't there before
+
+### L05.2 problem: implementing `patch()`
+```vue
+<div id="app"></div>
+
+<script>
+
+function h(tag, props, children) {
+  return { tag, props, children}
+}
+
+function mount(vnode, container) {
+  // additional change - add the element back to the vnode so it can be used later
+  const el = vnode.el = document.createElement(vnode.tag)
+  if (vnode.props) {
+    for (const key in vnode.props) {
+      const value = vnode.props[key]
+      el.setAttribute(key, value)
+    } 
+  }
+  if (vnode.children) {
+    if (typeof vnode.children === 'string') {
+      el.textContent = vnode.children
+    } else {
+      vnode.children.forEach(child => { mount(child, el) })
+    }
+  }
+}
+
+const vdom = h('div', {class: 'red'}, [
+  h('span', null, ['hello'])
+])
+
+mount(vdom, document.getElementById('app'))
+
+/**
+ * find the minimal changes and update the dom
+ * use vdom.el to access the old real DOM tree
+ */
+function patch(h1, h2) {
+
+}
+
+const vdom2 = h('div', {class: 'green'}, [
+  h('span', null, ['changed!'])
+])
+
+patch (vdom, vdom2);
+</script>
+```
