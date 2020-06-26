@@ -1,0 +1,64 @@
+<style>
+  .red {
+    color: red;
+  }
+</style>
+
+<div id="app"></div>
+
+<script>
+  /**
+   * return something like this:
+   * const vdom = {
+   *   tag: 'div',
+   *   children: [
+   *     {
+   *       tag: 'div',
+   *       children: [
+   *         {
+   *           tag: 'span',
+   *           children: 'hello'
+   *         }
+   *       ]
+   *     }
+   *   ]
+   * }
+   */
+  function h(tag, props, children) {
+    return {
+      tag,
+      props,
+      children
+    };
+  }
+
+  /**
+   * mount the vnode into the container, recursively.
+   * if `vnode` is a string, make it a text node.
+   * @param vnode - a vnode created by `h`
+   * @param container - a document element
+   */
+  function mount(vnode, container) {
+    const node = (typeof vnode === 'string')
+      ? document.createTextNode(vnode)
+      : document.createElement(vnode.tag);
+    if (vnode.props) {
+      for (const [attr, val] of Object.entries(vnode.props)) {
+        node.setAttribute(attr, val);
+      }
+    }
+    if (vnode.children) {
+      const children = document.createDocumentFragment();
+      vnode.children.forEach(child => mount(child, children))
+      node.appendChild(children)
+    }
+    container.appendChild(node);
+  }
+
+  const vdom = h('div', {class: 'red'}, [
+    h('span', null, ['hello'])
+  ])
+
+  mount(vdom, document.getElementById('app'))
+</script>
+
