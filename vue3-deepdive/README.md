@@ -1,3 +1,29 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Vue 3 Deep Dive with Evan You](#vue-3-deep-dive-with-evan-you)
+  - [L01 - Vue 3 Overview](#l01---vue-3-overview)
+    - [Render functions](#render-functions)
+    - [Reactivity Module](#reactivity-module)
+    - [Vue 3 Modules of Vue Core](#vue-3-modules-of-vue-core)
+    - [Ex01 - simple component lifecycle](#ex01---simple-component-lifecycle)
+  - [L02 How to use Render Functions](#l02-how-to-use-render-functions)
+    - [L02.1 - Advantages of VDom 1](#l021---advantages-of-vdom-1)
+    - [L02.2 - Advantages of VDom 2](#l022---advantages-of-vdom-2)
+    - [L02.3 - Render Function](#l023---render-function)
+  - [L03 How to use Render Functions](#l03-how-to-use-render-functions)
+    - [L03.1 High Level intro to render funcs](#l031-high-level-intro-to-render-funcs)
+    - [L03.2 slots in render funcs](#l032-slots-in-render-funcs)
+    - [L03.3 stack component](#l033-stack-component)
+  - [L04 Compiler & Renderer API](#l04-compiler--renderer-api)
+    - [L04.1 Vue 3 Template Explorer](#l041-vue-3-template-explorer)
+    - [L04.2 diff between block and VNode](#l042-diff-between-block-and-vnode)
+    - [L04.3 `v-if` is a structural directive](#l043-v-if-is-a-structural-directive)
+    - [L04.4 exercise: creating a render function](#l044-exercise-creating-a-render-function)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Vue 3 Deep Dive with Evan You
 
 ## L01 - Vue 3 Overview
@@ -188,8 +214,9 @@ const Stack = {
   * also, easier for designers to style with CSS
   
 ## L04 Compiler & Renderer API
+https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/compiler-and-renderer-api
 
-### Vue 3 Template Explorer
+### L04.1 Vue 3 Template Explorer
 * he uses it for debugging the compiler
 * paste in source template, and see what's gone wrong
 * example, hoisting avoids excess garbage collection
@@ -209,7 +236,7 @@ const Stack = {
   manually cache 
 * in vue3 
 
-### diff between block and VNode
+### L04.2 diff between block and VNode
 if we have a render func and replicate
 ```vue
 <div>
@@ -252,7 +279,7 @@ What if we had this?
 * after it's created, we'll have a property of a block called dynamic node
 * If you have a complex DOM structure, no matter how complex it is, 
 
-### `v-if` is a structural directive
+### L04.3 `v-if` is a structural directive
 * it may alter the structure, causing it to disappear
 * the root block can't make assumptions about dynamic section inside
 ```vue
@@ -269,7 +296,7 @@ What if we had this?
 * so we want to generate a render function that gives enough hints to compiler to be 
   as optimized as possible
   
-### exercise: creating a render function
+### L04.4 exercise: creating a render function
 * gives an example of how vue works in general
 * implement the following funcs: 
 ```vue
