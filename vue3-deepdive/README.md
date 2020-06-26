@@ -385,3 +385,5 @@ const vdom2 = h('div', {class: 'green'}, [
 patch (vdom, vdom2);
 </script>
 ```
+
+My solution: [`L05-2_patch.html`](./L05-2_patch.html)

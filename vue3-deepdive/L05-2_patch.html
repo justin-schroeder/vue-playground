@@ -1,0 +1,85 @@
+<style>
+  .red {
+    color: red;
+  }
+</style>
+
+<div id="app"></div>
+
+<script>
+  /**
+   * return something like this:
+   * const vdom = {
+   *   tag: 'div',
+   *   props: { class: 'red' }
+   *   children: [
+   *     {
+   *       tag: 'div',
+   *       children: [
+   *         {
+   *           tag: 'span',
+   *           children: 'hello'
+   *         }
+   *       ]
+   *     }
+   *   ]
+   * }
+   */
+
+  function h(tag, props, children) {
+    return {tag, props, children}
+  }
+
+  function mount(vnode, container) {
+    // additional change - add the element back to the vnode so it can be used later
+    const el = vnode.el = document.createElement(vnode.tag)
+    if (vnode.props) {
+      for (const key in vnode.props) {
+        const value = vnode.props[key]
+        el.setAttribute(key, value)
+      }
+    }
+    if (vnode.children) {
+      if (typeof vnode.children === 'string') {
+        el.textContent = vnode.children
+      } else {
+        vnode.children.forEach(child => { mount(child, el) })
+      }
+    }
+  }
+
+  const vdom = h('div', {class: 'red'}, [
+    h('span', null, ['hello'])
+  ])
+
+  mount(vdom, document.getElementById('app'))
+
+  /**
+   * make the minimal changes and update the dom
+   * use vdom.el to access the old real DOM tree
+   */
+  function patch(h1, h2) {
+    if (h2.props) {
+      const {props: h1Props} = h1;
+      const {props: h2Props} = h2;
+      for (const key in h2Props) {
+        const value = vnode.props[key]
+        const attrChanged = h1Props && key in h1Props && h1Props[key] !== value
+        const attrAdded = !h1Props
+        if (attrAdded || attrChanged) {
+          h2.el.setAttribute(key, value)
+        }
+      }
+      for (const key in h2Props) {
+
+      }
+    }
+  }
+
+  const vdom2 = h('div', {class: 'green'}, [
+    h('span', null, ['changed!'])
+  ])
+
+  patch(vdom, vdom2);
+</script>
+
