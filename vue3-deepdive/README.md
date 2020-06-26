@@ -187,3 +187,108 @@ const Stack = {
 * templates are easier to optimize the component
   * also, easier for designers to style with CSS
   
+## L04 Compiler & Renderer API
+
+### Vue 3 Template Explorer
+* he uses it for debugging the compiler
+* paste in source template, and see what's gone wrong
+* example, hoisting avoids excess garbage collection
+* another optimization - `@click` listener
+  * Vue3 identifies props that could change from props
+    that won't change, skipping object enumeration
+  * compiler generated hints help with performance
+    * you can only do this with templates,
+    * render functions bypass this optimization
+* there is an option that caches the event handler
+  * now the onClick is static as far as template is concerned
+* one of the most common causes of rerendering is when you use
+  an inline event handler like `@click="foo(123)`. In vue2, this
+  would cause the parent component to rerender every time rerender
+  * can cause cascade effect
+* in react there's useCallback or useMemo that lets you
+  manually cache 
+* in vue3 
+
+### diff between block and VNode
+if we have a render func and replicate
+```vue
+<div>
+  <div>
+    <span>hello</span> 
+  </div>
+</div>
+```
+* generated vdom (simulated)
+```vue
+const vdom = {
+  tag: 'div',
+  children: [
+    {
+      tag: 'div',
+      children: [
+        {
+          tag: 'span',
+          children: 'hello'
+        }
+      ]
+    }
+  ]
+}
+```
+* usually, we need a kind of brute-force diffing to see if `hello` changed to `msg`
+What if we had this? 
+```vue
+<div>
+  <div></div>
+  <div>
+    <span>{{ msg }}</span> 
+  </div>
+</div>
+```
+* as a human, we see that msg is the only part that can change, but compiler doesn't know
+* we want to give enough hints to compiler to skip things
+* the way we do that is with blocks
+* there's a "patch flag" which indicates that it should be tracked as a dynamic node
+* after it's created, we'll have a property of a block called dynamic node
+* If you have a complex DOM structure, no matter how complex it is, 
+
+### `v-if` is a structural directive
+* it may alter the structure, causing it to disappear
+* the root block can't make assumptions about dynamic section inside
+```vue
+<div>
+  <div></div>
+  <div v-if="ok">
+    <span>{{ msg }}</span> 
+  </div>
+</div>
+```
+* so here, we end up having blocks for both the v-if section and the parent section
+* but this is more efficient than having every vnode. 
+* it's an order of magnitude better
+* so we want to generate a render function that gives enough hints to compiler to be 
+  as optimized as possible
+  
+### exercise: creating a render function
+* gives an example of how vue works in general
+* implement the following funcs: 
+```vue
+<div id="app"></div>
+
+<script>
+
+function h(tag, props, children) {
+
+}
+
+function mount(vnode, container) {
+
+}
+
+const vdom = h('div', {class: 'red'}, [
+  h('span', null, ['hello'])
+])
+
+mount(vdom, document.getElementById('app'))
+</script>
+```
