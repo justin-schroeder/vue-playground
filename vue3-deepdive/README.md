@@ -387,3 +387,31 @@ patch (vdom, vdom2);
 ```
 
 My solution: [`L05-2_patch.html`](./L05-2_patch.html)
+
+## L06 Creating a Patch Function
+
+### L06.1 implementing `patch()` - attrs
+### L06.2 implementing `patch()` - children arrays
+https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/creating-a-patch-function
+7:25
+* if it's keyed, e.g. `<div v-for="item in list" :key="item.id"/>`
+* then item id is unique
+* internal representation will look like: 
+```vue
+[
+    { tag: 'div', key: 1 },
+    { tag: 'div', key: 3 },
+    { tag: 'div', key: 2 },
+]
+```
+* we can use the keys to find the new order
+* we have to go through the list and move them 
+  based on the new position
+  - it's several 100 lines long
+  - go into vue source to see
+* we'll do a simplified version
+* potential inefficiency - if we have children with different types, we might be 
+  throwing away nodes unnecessarily
+* vue uses some smart heuristics to know which algorithm to use based on template compilation
+12:59 is where it starts working
+left off there
