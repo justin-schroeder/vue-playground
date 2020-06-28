@@ -1,0 +1,45 @@
+<script src="https://unpkg.com/vue@next"></script>
+<div id="app"></div>
+
+<script>
+  const {createApp, h} = Vue
+
+  function withMouse(Inner) {
+    return {
+      data() {
+        return {
+          x: 0,
+          y: 0
+        }
+      },
+      methods: {
+        // advantage - we don't need to worry about namespace collision
+        // the Inner component already has its own namespace.
+        update(e) {
+          this.x = e.pageX
+          this.y = e.pageY
+        }
+      },
+      mounted() {
+        window.addEventListener('mousemove', this.update)
+      },
+      unmounted() {
+        window.removeEventListener('mousemove', this.update)
+      },
+      render() {
+        return h(Inner, {
+          x: this.x,
+          y: this.y
+        })
+      }
+    }
+  }
+
+  const App = withMouse({
+    props: ['x', 'y'],
+    template: `{{ x }} {{ y }}`,
+  })
+
+
+  createApp(App).mount('#app')
+</script>

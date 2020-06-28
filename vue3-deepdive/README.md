@@ -40,6 +40,11 @@
     - [L12.1 impetus for separating](#l121-impetus-for-separating)
     - [L12.2 impetus for separating](#l122-impetus-for-separating)
     - [L12.3 extending in composition api](#l123-extending-in-composition-api)
+  - [L13 Logic Reuse](#l13-logic-reuse)
+    - [L13.1_mouse.html - vue2 mixin approach for mouse move tracker](#l131_mousehtml---vue2-mixin-approach-for-mouse-move-tracker)
+    - [L13.2_mouse.html - vue3 react HOC approach](#l132_mousehtml---vue3-react-hoc-approach)
+    - [L13.3_mouse.html - vue3 render props / scoped slots](#l133_mousehtml---vue3-render-props--scoped-slots)
+    - [L13.4_mouse.html - vue3 avoid unnecessary components](#l134_mousehtml---vue3-avoid-unnecessary-components)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -714,3 +719,92 @@ export default {
   setup
 }
 ```
+
+## [L13 Logic Reuse](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/logic-reuse)
+* logic reuse is objectively better with composition api than with mixins
+
+### [L13.1_mouse.html](./L13.1_mouse.html) - vue2 mixin approach for mouse move tracker
+* [L13.1_mouse.html](./L13.1_mouse.html)
+```vue
+const App = {
+  mixins: [MouseMixin /*, AnotherMixin leads to problem */],
+  template: `{{ x }} {{ y }}`,
+}
+```
+* problem #1 with mixins: where did that var come from? 
+  * We can kind of guess that x and y come from `MouseMixin`, but as you add mixins, 
+    you no longer know where the data is coming from.
+* problem #2 with mixins: name collisions
+  * what if other mixins have `update()` function?
+* if you have 4-5 mixins in each component
+
+### [L13.2_mouse.html](./L13.2_mouse.html) - vue3 react HOC approach
+* in react, they used HOC
+* this helps with namespace collision (prob#1) but doesn't help with prob#1 - locating vars
+```vue
+function withMouse(Inner) {
+  return {
+    render() {
+      return h(Inner)
+    }
+  }
+}
+
+const App = withMouse({
+  props: ['x', 'y'],
+  template: `{{ x }} {{ y }}`,
+})
+```
+
+### [L13.3_mouse.html](./L13.3_mouse.html) - vue3 render props / scoped slots
+* react calls it render props, vue calls it scoped slots
+```vue
+const App = {
+  components: {Mouse},
+  template: `<Mouse v-slot="{ x, y }">{{ x }} {{ y }}</Mouse>`
+}
+```
+* benefit is that the variables are directly traced to where we got them from.
+  * super explicit
+  * plus, if you have namespace collision, you can rename it locally: 
+```vue
+const App = {
+  components: {Mouse, Foo},
+  template: `
+    <Mouse v-slot="{ x, y }">
+      <Foo v-slot="{ x: foo}">
+        {{ x }} {{ y }} {{ foo }}
+      </Foo>
+    </Mouse>`
+}
+```
+* only downside: we have multiple component instances for each use 
+
+### [L13.4_mouse.html](./L13.4_mouse.html) - vue3 avoid unnecessary components
+```vue
+function useMouse() {
+  const x = ref(0)
+  const y = ref(0)
+  const update = e => {
+    x.value = e.pageX
+    y.value = e.pageY
+  }
+  onMounted(() => {
+    window.addEventListener('mousemove', update)
+  })
+  onUnmounted(() => {
+    window.removeEventListener('mousemove', update)
+  })
+}
+const App = {
+  setup() {
+    // it's a best practice to be explicit about what you're injecting here.
+    const { x, y } = useMouse()
+    return { x, y }
+  },
+  template: `{{ x }} {{ y }}`
+}
+```
+* this is objectively better than mixins
+* another problem with mixins is that they are really hard to type properly in type systems
+* everything is just function calls
