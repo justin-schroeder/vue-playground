@@ -820,3 +820,12 @@ const App = {
 * this example uses `watchEffect` on a `getUrl()` passed in to the func `useFetch`
 * really cool: when Post is destroyed, the watcher will die by itself
 * fewer component instances
+
+## [L15 Parting Words](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/parting-words)
+* if you want to read source code, learn typescript
+* publish composition functions in 
+  * github keywords: vue composition
+* react hooks can be ported to vue easy
+* libraries 
+  * vuetify - great example of render functions
+* composition api
