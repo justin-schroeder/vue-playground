@@ -1,0 +1,95 @@
+<script>
+  let activeEffect
+
+  class Dep {
+    subscribers = new Set()
+
+    depend() {
+      if (activeEffect) {
+        this.subscribers.add(activeEffect)
+      }
+    }
+
+    notify() {
+      this.subscribers.forEach(effect => {
+        effect()
+      })
+    }
+  }
+
+  /**
+   * Take advantage of single-threaded JS
+   */
+  function watchEffect(effect) {
+    activeEffect = effect
+    effect()
+    activeEffect = null
+  }
+
+  // weak map only objects as keys
+  // if object no longer exists, value gets garbage collected
+  // can't iterate over keys, though
+  const targetMap = new WeakMap()
+
+  function getDep(target, key) {
+    let depsMap = targetMap.get(target)
+    if (!depsMap) {
+      // maps give anything as key
+      // but you can't do any auto GC
+      depsMap = new Map()
+      targetMap.set(target, depsMap)
+    }
+    let dep = depsMap.get(key)
+    if (!dep) {
+      dep = new Dep()
+      depsMap.set(key, dep)
+    }
+
+    return dep
+  }
+
+  const reactiveHandlers = {
+    get(target, key, receiver) {
+      const dep = getDep(target, key)
+      dep.depend()
+      // the following
+      // return target[key] would work
+      // but prototypal inheritance, target and receiver point to different things
+      // in that case this next always does the right thing
+      return Reflect.get(target, key, receiver)
+    },
+    /**
+     * Returns a boolean depending on whether or not it
+     * was successful
+     */
+    set(target, key, value, receiver) {
+      const dep = getDep(target, key)
+      const result = Reflect.set(target, key, value, receiver)
+      dep.notify()
+      return result;
+    }
+  }
+
+  function reactive(raw) {
+    return new Proxy(raw, reactiveHandlers)
+  }
+
+
+  const state = reactive({
+    count: 0
+  })
+
+  watchEffect(() => {
+    console.log(state.count)
+  }) // 0
+
+  state.count++ // 1
+
+  // in console, try state.msg = 'hi' and note that it's logged!
+  // with proxy based implementation they are able to detect
+  // newly added properties
+  // reactivity is on the object!
+  // reactiveHandlers if you pass array to reactive, it works by default
+     // in vue 2 they had to hack arrays for push and pop
+
+</script>

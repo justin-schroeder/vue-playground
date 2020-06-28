@@ -1,0 +1,36 @@
+<script>
+  let activeEffect
+
+  class Dep {
+    constructor(value) {
+      this.subscribers = new Set()
+      this.value = value
+    }
+
+    depend() {
+      if (activeEffect) {
+        this.subscribers.add(activeEffect)
+      }
+    }
+
+    notify() {
+      this.subscribers.forEach(effect => {
+        effect()
+      })
+    }
+  }
+
+  function watchEffect(effect) {
+    activeEffect = effect
+    effect()
+    activeEffect = null
+  }
+
+  const dep = new Dep()
+  watchEffect(() => {
+    dep.depend()
+    console.log('effect run')
+  }) // effect run
+
+  dep.notify() // effect run
+</script>

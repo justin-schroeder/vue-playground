@@ -1,0 +1,57 @@
+<script>
+  let activeEffect
+
+  class Dep {
+    subscribers = new Set()
+
+    depend() {
+      if (activeEffect) {
+        this.subscribers.add(activeEffect)
+      }
+    }
+
+    notify() {
+      this.subscribers.forEach(effect => {
+        effect()
+      })
+    }
+  }
+
+  /**
+   * Take advantage of single-threaded JS
+   */
+  function watchEffect(effect) {
+    activeEffect = effect
+    effect()
+    activeEffect = null
+  }
+
+  function reactive(raw) {
+    Object.keys(raw).forEach(key => {
+      const dep = new Dep()
+      let value = raw[key]
+      Object.defineProperty(raw, key, {
+        get() {
+          dep.depend()
+          return value
+        },
+        set(newValue) {
+          value = newValue
+          dep.notify()
+        }
+      })
+    })
+    return raw
+  }
+
+
+  const state = reactive({
+    count: 0
+  })
+
+  watchEffect(() => {
+    console.log(state.count)
+  }) // 0
+
+  state.count++ // 1
+</script>

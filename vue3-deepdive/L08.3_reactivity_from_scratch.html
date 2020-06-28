@@ -1,0 +1,54 @@
+<script>
+  let activeEffect
+
+  class Dep {
+    constructor(value) {
+      this.subscribers = new Set()
+      this._value = value
+    }
+
+    get value() {
+      this.depend()
+      return this._value
+    }
+
+    set value(newValue) {
+      this._value = newValue
+      this.notify();
+    }
+
+    depend() {
+      if (activeEffect) {
+        this.subscribers.add(activeEffect)
+      }
+    }
+
+    notify() {
+      this.subscribers.forEach(effect => {
+        effect()
+      })
+    }
+  }
+
+  /**
+   * Take advantage of single-threaded JS
+   */
+  function watchEffect(effect) {
+    activeEffect = effect
+    effect()
+    activeEffect = null
+  }
+
+  const dep = new Dep('hello')
+
+  watchEffect(() => {
+    // no longer necessary because it's part of Dep
+    // dep.depend()
+    console.log(dep.value)
+  }) // 'hello' first, then 'changed'
+
+  // log the change
+  dep.value = 'changed'
+  // no longer necessary because it's part of Dep
+  // dep.notify()
+</script>

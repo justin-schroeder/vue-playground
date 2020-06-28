@@ -1,0 +1,227 @@
+<div id="app"></div>
+
+<script>
+  /**
+   * return something like this:
+   * const vdom = {
+   *   tag: 'div',
+   *   props: { class: 'red' }
+   *   children: [
+   *     {
+   *       tag: 'div',
+   *       children: [
+   *         {
+   *           tag: 'span',
+   *           children: 'hello'
+   *         }
+   *       ]
+   *     }
+   *   ]
+   * }
+   */
+  function h(tag, props, children) {
+    return {tag, props, children}
+  }
+
+  function mount(vnode, container) {
+    // additional change - add the element back to the vnode so it can be used later
+    const el = vnode.el = document.createElement(vnode.tag)
+    if (vnode.props) {
+      for (const key in vnode.props) {
+        const value = vnode.props[key]
+        if(key.startsWith('on')) {
+          el.addEventListener(key.slice(2).toLowerCase(), value)
+        } else {
+          el.setAttribute(key, value)
+        }
+      }
+    }
+    if (vnode.children) {
+      if (typeof vnode.children === 'string') {
+        el.textContent = vnode.children
+      } else {
+        vnode.children.forEach(child => { mount(child, el) })
+      }
+    }
+    container.appendChild(el);
+  }
+
+  /**
+   * make the minimal changes and update the dom
+   * use vdom.el to access the old real DOM tree
+   */
+  function patch(n1, n2) {
+    if (n1.tag === n2.tag) {
+      // props
+      // there are four cases, but for this case, we will default to {}
+      const oldProps = n1.props || {}
+      const newProps = n2.props || {}
+      const el = n2.el = n1.el
+      // with compiler giving you hints, you can skip this
+      // whole part if it's staic
+      for (const key in newProps) {
+        const oldValue = oldProps[key]
+        const newValue = newProps[key]
+        if (newValue !== oldValue) {
+          el.setAttribute(key, newValue)
+        }
+      }
+      for (const key in oldProps) {
+        if (!(key in newProps)) {
+          el.removeAttribute(key)
+        }
+      }
+
+      // children
+      const oldChildren = n1.children
+      const newChildren = n2.children
+      if (typeof newChildren === 'string') {
+        if (typeof oldChildren === 'string') {
+          if (newChildren !== oldChildren) {
+            el.textContent = newChildren
+          }
+        } else {
+          el.textContent = newChildren
+        }
+      } else {
+        // newChildren is array
+        if (typeof oldChildren === 'string') {
+          el.innerHTML = ''
+          newChildren.forEach(child => { mount(child, el)})
+        } else {
+          // newChildren & oldChildren are both arrays
+          // in vue we have keyed arrays
+          // full vue implementation would take account of moved array items
+          // but that's 100s of lines long instead, we'll just assume they have
+          // had same order, but some items added or removed at end.
+          const commonLength = Math.min(oldChildren.length, newChildren.length)
+          for (let i = 0; i < commonLength; i++) {
+            patch(oldChildren[i], newChildren[i])
+          }
+          // key simplification: DOM nodes won't be moved around
+          if (newChildren.length > oldChildren.length) {
+            newChildren.slice(oldChildren.length).forEach(child => {
+              mount(child, el)
+            })
+          } else if (newChildren.length < oldChildren.length) {
+            oldChildren.slice(newChildren.length).forEach(child => {
+              el.removeChild(child.el)
+            })
+          }
+        }
+      }
+    } else {
+      // replace
+
+    }
+  }
+
+  // reactivity
+
+  let activeEffect
+
+  class Dep {
+    subscribers = new Set()
+
+    depend() {
+      if (activeEffect) {
+        this.subscribers.add(activeEffect)
+      }
+    }
+
+    notify() {
+      this.subscribers.forEach(effect => {
+        effect()
+      })
+    }
+  }
+
+  /**
+   * Take advantage of single-threaded JS
+   */
+  function watchEffect(effect) {
+    activeEffect = effect
+    effect()
+    activeEffect = null
+  }
+
+  // weak map only objects as keys
+  // if object no longer exists, value gets garbage collected
+  // can't iterate over keys, though
+  const targetMap = new WeakMap()
+
+  function getDep(target, key) {
+    let depsMap = targetMap.get(target)
+    if (!depsMap) {
+      // maps give anything as key
+      // but you can't do any auto GC
+      depsMap = new Map()
+      targetMap.set(target, depsMap)
+    }
+    let dep = depsMap.get(key)
+    if (!dep) {
+      dep = new Dep()
+      depsMap.set(key, dep)
+    }
+
+    return dep
+  }
+
+  const reactiveHandlers = {
+    get(target, key, receiver) {
+      const dep = getDep(target, key)
+      dep.depend()
+      // the following
+      // return target[key] would work
+      // but prototypal inheritance, target and receiver point to different things
+      // in that case this next always does the right thing
+      return Reflect.get(target, key, receiver)
+    },
+    /**
+     * Returns a boolean depending on whether or not it
+     * was successful
+     */
+    set(target, key, value, receiver) {
+      const dep = getDep(target, key)
+      const result = Reflect.set(target, key, value, receiver)
+      dep.notify()
+      return result;
+    }
+  }
+
+  function reactive(raw) {
+    return new Proxy(raw, reactiveHandlers)
+  }
+
+  const App = {
+    data: reactive({
+      count: 0
+    }),
+    render() {
+      return h('div', {
+        onClick: () => {
+          this.data.count++
+        }
+      }, String(this.data.count))
+    }
+  }
+
+  function mountApp(component, container) {
+    let isMounted = false;
+    let prevVdom
+    watchEffect(() => {
+      if (!isMounted) {
+        prevVdom = component.render()
+        mount(prevVdom, container)
+        isMounted = true
+
+      } else {
+        const newVdom = component.render()
+        patch(prevVdom, newVdom)
+        prevVdom = newVdom
+      }
+     })
+  }
+
+  mountApp(App, document.getElementById('app'))
+</script>

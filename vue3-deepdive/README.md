@@ -426,4 +426,38 @@ See his solution: [`L05-2_patch.html`](./L05-2_patch.html)
 * though vue3 still uses an update function, there are other smart ways to think about 
   template compilation
   * there are ways it could be even more efficient if they didn't support render functions
-  
+
+## [L07 Intro to Reactivity](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/intro-to-reactivity)
+* metaphor of spreadsheet
+* essence of declarative rendering: `onStateChanged(() => { view = render(state) })`
+* the dependency tracking system is also seen in
+  * `knockout.js`, Meteor Tracker, `Vue.js`, `MobX`
+* tough to find right granularity of tracking
+  * at component level seems to be the sweet spot
+
+```vue
+import { reactive, watchEffect } from 'vue'
+
+const state = reqctive({
+  count: 0
+})
+
+watchEffect(() => {
+  console.log(
+...
+```
+
+## [L08 Building Reactivity from Scratch](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/building-reactivity-from-scratch)
+3 steps
+* [`L08.1_reactivity_from_scratch.html`](./L08.1_reactivity_from_scratch.html)
+* [`L08.2_reactivity_from_scratch.html`](./L08.2_reactivity_from_scratch.html)
+* [`L08.3_reactivity_from_scratch.html`](./L08.3_reactivity_from_scratch.html)
+
+## [L09 Building the Reactive API](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/building-the-reactive-api)
+3 steps
+* [`L09.1_build_reactivity.html`](./L09.1_build_reactivity.html)
+* [`L09.2_build_reactivity.html`](./L09.2_build_reactivity.html)
+  * uses es6 proxies
+
+## [L10 Creating a Mini Vue](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/creating-a-mini-vue)
+* [`L10.1_build_vue.html`](./L10.1_build_vue.html)
