@@ -21,6 +21,21 @@
     - [L04.2 diff between block and VNode](#l042-diff-between-block-and-vnode)
     - [L04.3 `v-if` is a structural directive](#l043-v-if-is-a-structural-directive)
     - [L04.4 exercise: creating a render function](#l044-exercise-creating-a-render-function)
+  - [L05 Creating a Mount function](#l05-creating-a-mount-function)
+    - [L05.1 going through mount function](#l051-going-through-mount-function)
+    - [L05.2 problem: implementing `patch()`](#l052-problem-implementing-patch)
+  - [L06 Creating a Patch Function](#l06-creating-a-patch-function)
+    - [L06.1 implementing `patch()` - attrs](#l061-implementing-patch---attrs)
+    - [L06.2 implementing `patch()` - children arrays](#l062-implementing-patch---children-arrays)
+    - [L06.3 Vue coverage](#l063-vue-coverage)
+  - [L07 Intro to Reactivity](#l07-intro-to-reactivity)
+  - [L08 Building Reactivity from Scratch](#l08-building-reactivity-from-scratch)
+  - [L09 Building the Reactive API](#l09-building-the-reactive-api)
+  - [L10 Creating a Mini Vue](#l10-creating-a-mini-vue)
+  - [L11 The Composition API](#l11-the-composition-api)
+    - [L11.1 watchEffect](#l111-watcheffect)
+    - [L11.2 onMounted](#l112-onmounted)
+    - [L11.3 return from `setup()`](#l113-return-from-setup)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -461,3 +476,123 @@ watchEffect(() => {
 
 ## [L10 Creating a Mini Vue](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/creating-a-mini-vue)
 * [`L10.1_build_vue.html`](./L10.1_build_vue.html)
+~~~~
+## [L11 The Composition API](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/the-composition-api)
+* Composition API = Reactivity API + Lifecycle Hooks
+* `ref` is like a container
+* all of the composition API methods happen within a new `setup()`
+  * this lets it be used alongside existing options
+  * `setup()` is called before `beforeCreate()`
+    * you _don't_ have access to `this`
+    * inside `setup()` you'll assume you don't know rest of options
+  * `watch(() => state.count, (count, oldCount) => {})` 
+    * is lazy (only called on update / change)
+    * behaves almost the same as `this.$watch` from 2.0
+  * `watchEffect(() => console.log(state.count)` 
+    * cannot be lazy
+    * have to collect dependencies up front
+    * can be more straightforward for a lot of use cases
+  * `watch` gets the old value, and can change it, while `watchEffect` is more of just
+    an observer
+```vue
+import {reactive, ref, computed, watchEffect, watch, onMounted} from 'vue'
+export default {
+  setup() {
+    const state = reactive({ count: 0 })
+    // NOT lazy - will be called even with console.log
+    watchEffect(() => console.log(state.count))
+    const count = ref(0)
+    // `plusOne` is a computed ref
+    const plusOne = computed(() => state.count+1)
+    watch([count, plusOne], ([count, plusOne], [oldCount, oldPlusOne]) => {
+      // lazy - only call when one has changed
+    })
+  }
+}
+```
+
+### L11.1 watchEffect
+
+```vue
+import {reactive, ref, computed, watchEffect, watch, onMounted} from 'vue'
+export default {
+  props: ["id"],
+  setup(props) {
+    const fetchedData = ref(null);
+    watchEffect(() => {
+      fetch(`url${props.id}`).then(res => res.json()).then(data => {
+        fetchedData.value = data
+      })      
+    })
+  
+    onMounted(() => console.log('mounted!'))
+    return {
+      state, 
+      increment: () => { state.count++ }
+    }
+  }
+}
+```
+
+* note that `props.id` is used inside `watchEffect`, which means that whenever
+  `props.id` changes, it will eventually end up calling watchEffect again.
+  * when you get props passed in, it is a reference to the latest props
+    * you shouldn't mutate it, you'll get warning
+
+### L11.2 onMounted
+* abstracting out `onMounted` lets you reuse behavior across components
+
+```vue
+import {reactive, ref, computed, watchEffect, watch, onMounted} from 'vue'
+
+function useFeature() {
+  onMounted(() => console.log('mounted!'))
+}
+
+export default {
+  props: ["id"],
+  setup(props) {
+    const fetchedData = ref(null);
+    useFeature()
+    watchEffect(() => {
+      fetch(`url${props.id}`).then(res => res.json()).then(data => {
+        fetchedData.value = data
+      })      
+    })
+    return {
+      state, 
+      increment: () => { state.count++ }
+    }
+  }
+}
+```
+
+### L11.3 return from `setup()`
+* return the template render context
+* anything inside of `state` will be unwrapped
+  * then inside of template you don't have to do `{{state.count}}`, just `{{count}}`
+
+```vue
+import {reactive, ref, computed, watchEffect, watch, onMounted} from 'vue'
+
+function useFeature() {
+  onMounted(() => console.log('mounted!'))
+}
+
+export default {
+  props: ["id"],
+  setup(props) {
+    const fetchedData = ref(null);
+    useFeature()
+    watchEffect(() => {
+      fetch(`url${props.id}`).then(res => res.json()).then(data => {
+        fetchedData.value = data
+      })      
+    })
+    return {
+      state, 
+      increment: () => { state.count++ }
+    }
+  }
+}
+```
