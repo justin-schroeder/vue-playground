@@ -26,7 +26,6 @@
    *   ]
    * }
    */
-
   function h(tag, props, children) {
     return {tag, props, children}
   }
@@ -47,10 +46,15 @@
         vnode.children.forEach(child => { mount(child, el) })
       }
     }
+    container.appendChild(el);
   }
 
+  /**
+   * simplification - we can have a non-array string to set text content
+   * in place of the actual array
+   **/
   const vdom = h('div', {class: 'red'}, [
-    h('span', null, ['hello'])
+    h('span', null, 'hello')
   ])
 
   mount(vdom, document.getElementById('app'))
@@ -100,6 +104,9 @@
         } else {
           // newChildren & oldChildren are both arrays
           // in vue we have keyed arrays
+          // full vue implementation would take account of moved array items
+          // but that's 100s of lines long instead, we'll just assume they have
+          // had same order, but some items added or removed at end.
           const commonLength = Math.min(oldChildren.length, newChildren.length)
           for (let i = 0; i < commonLength; i++) {
             patch(oldChildren[i], newChildren[i])
@@ -123,7 +130,7 @@
   }
 
   const vdom2 = h('div', {class: 'green'}, [
-    h('span', null, ['changed!'])
+    h('span', null, 'changed!')
   ])
 
   patch(vdom, vdom2);

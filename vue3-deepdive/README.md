@@ -386,8 +386,6 @@ patch (vdom, vdom2);
 </script>
 ```
 
-My solution: [`L05-2_patch.html`](./L05-2_patch.html)
-
 ## L06 Creating a Patch Function
 
 ### L06.1 implementing `patch()` - attrs
@@ -413,5 +411,19 @@ https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/creating-a-patch
 * potential inefficiency - if we have children with different types, we might be 
   throwing away nodes unnecessarily
 * vue uses some smart heuristics to know which algorithm to use based on template compilation
-12:59 is where it starts working
-left off there
+
+See his solution: [`L05-2_patch.html`](./L05-2_patch.html)
+
+### L06.3 Vue coverage
+* Very cool resource: https://vue-next-coverage.netlify.app/
+* overall, 93%
+* as they are rewriting the runtime code, they're thinking about the compiler, and 
+  thinking of how to skip as much as possible
+* our solution is 60 lines long, and the real solution is 100s of lines long
+* the engine has to do this for each node. If you can incrementally improve perf per node,
+  you can really speed the rendering
+  * the `patch()` function 
+* though vue3 still uses an update function, there are other smart ways to think about 
+  template compilation
+  * there are ways it could be even more efficient if they didn't support render functions
+  
