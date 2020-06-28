@@ -36,6 +36,10 @@
     - [L11.1 watchEffect](#l111-watcheffect)
     - [L11.2 onMounted](#l112-onmounted)
     - [L11.3 return from `setup()`](#l113-return-from-setup)
+  - [L12 Code Organization](#l12-code-organization)
+    - [L12.1 impetus for separating](#l121-impetus-for-separating)
+    - [L12.2 impetus for separating](#l122-impetus-for-separating)
+    - [L12.3 extending in composition api](#l123-extending-in-composition-api)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -476,7 +480,7 @@ watchEffect(() => {
 
 ## [L10 Creating a Mini Vue](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/creating-a-mini-vue)
 * [`L10.1_build_vue.html`](./L10.1_build_vue.html)
-~~~~
+
 ## [L11 The Composition API](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/the-composition-api)
 * Composition API = Reactivity API + Lifecycle Hooks
 * `ref` is like a container
@@ -594,5 +598,119 @@ export default {
       increment: () => { state.count++ }
     }
   }
+}
+```
+
+## [L12 Code Organization](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/code-organization)
+* you can always extract elements into external functions like `onMounted()` above
+
+### L12.1 impetus for separating
+* the impetus comes from distinct state managed by different sections
+* problem: code that gets split between option blocks, 
+  * gets much worst with each additional option
+```vue
+import {reactive, ref, computed, watchEffect, watch, onMounted} from 'vue'
+
+function useFeature() {
+  onMounted(() => console.log('mounted!'))
+}
+
+export default {
+  template: `{{ event.count }}`,
+  props: ["id"],
+
+  data() {
+    return {
+      foo: 1 // feature A
+      bar: 2 // feature B
+      baz: 3 // feature C
+    }
+  }
+
+  methods: {
+    one() {}, // feature A
+    two() {}, // feature B
+    three() {}, // feature C
+  }
+
+  setup(props) {
+
+    return {
+
+    }
+  }
+}
+```
+
+### L12.2 impetus for separating
+4:51
+* transformation into composition API
+* whenever you extract a part of your behavior, it automatically becomes available to 
+  other components as well!!
+* can put in `./use` or `./composition`
+```vue
+import {reactive, ref, computed, watchEffect, watch, onMounted} from 'vue'
+
+function useFeatureA() {
+  const foo = ref(0)
+  const plusone = computed(() => foo.value + 1 );
+  
+  function incrementFoo() {}
+  watchEffect(() => { ... })
+  return {
+    foo,
+    plusone
+  }
+}
+
+export default {
+  template: `{{ event.count }}`,
+  props: ["id"], 
+
+  setup(props) {
+    const {foo, plusone} = useFeatureA();
+    const { bar } = useFeatureB();
+    const { baz } = useFeatureC();
+    return {
+      foo, plusone, bar, baz
+    }
+  }
+}
+```
+
+### L12.3 extending in composition api
+* in vue 2, you can do extends
+* how to do that in vue3 composition api? 
+* do this, and then in another component, you can call this component's setup function
+  inside of that function's setup function, and you've essentially achieved logic extension!
+
+```vue
+import {reactive, ref, computed, watchEffect, watch, onMounted} from 'vue'
+
+function useFeatureA() {
+  const foo = ref(0)
+  const plusone = computed(() => foo.value + 1 );
+  
+  function incrementFoo() {}
+  watchEffect(() => { ... })
+  return {
+    foo,
+    plusone
+  }
+}
+
+setup(props) {
+  const {foo, plusone} = useFeatureA();
+  const { bar } = useFeatureB();
+  const { baz } = useFeatureC();
+  return {
+    foo, plusone, bar, baz
+  }
+}
+
+export default {
+  template: `{{ event.count }}`,
+  props: ["id"], 
+  setup
 }
 ```
