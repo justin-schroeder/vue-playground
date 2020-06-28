@@ -45,6 +45,8 @@
     - [L13.2_mouse.html - vue3 react HOC approach](#l132_mousehtml---vue3-react-hoc-approach)
     - [L13.3_mouse.html - vue3 render props / scoped slots](#l133_mousehtml---vue3-render-props--scoped-slots)
     - [L13.4_mouse.html - vue3 avoid unnecessary components](#l134_mousehtml---vue3-avoid-unnecessary-components)
+  - [L14 Composition API Example](#l14-composition-api-example)
+    - [L14.1_fetch.html - useFetch](#l141_fetchhtml---usefetch)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -808,3 +810,13 @@ const App = {
 * this is objectively better than mixins
 * another problem with mixins is that they are really hard to type properly in type systems
 * everything is just function calls
+
+## [L14 Composition API Example](https://www.vuemastery.com/courses/vue3-deep-dive-with-evan-you/Composition-api-example)
+
+### [L14.1_fetch.html](./L14.1_fetch.html) - useFetch
+* you can use `reactive` to write `useFetch` but Evan prefers to start with `ref`
+  * if you are returning object with refs, you can't destructure 
+  * it makes it easier to reorganize
+* this example uses `watchEffect` on a `getUrl()` passed in to the func `useFetch`
+* really cool: when Post is destroyed, the watcher will die by itself
+* fewer component instances
