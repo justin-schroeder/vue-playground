@@ -1,9 +1,11 @@
 import Vue from 'vue'
+import VTooltip from 'v-tooltip'
 import App from './App.vue'
 import VueFormulate from '@braid/vue-formulate'
 import MyCustomLabel from './components/MyCustomLabel'
 
-Vue.config.productionTip = false
+// Register v-tooltip (or whatever extras you might want to use)
+Vue.use(VTooltip)
 
 // Register our slot component globally
 Vue.component('MyCustomLabel', MyCustomLabel)
@@ -15,7 +17,7 @@ Vue.use(VueFormulate, {
   },
   // Define any props we want to pass to our slot component
   slotProps: {
-    label: ['tooltop']
+    label: ['tooltip']
   }
 })
 
